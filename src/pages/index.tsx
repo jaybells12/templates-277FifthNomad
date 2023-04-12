@@ -1,7 +1,5 @@
-export default function Home() {
-  return (
-    <main>
-      
-    </main>
-  )
+import { Template277FN } from "src/template";
+
+export default function Index() {
+  return <Template277FN />;
 }
