@@ -18,15 +18,27 @@ const items = [
   "inquire",
 ];
 
-export const NavMenu: FunctionComponent<any> = (props: any) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export type NavMenuProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onToggle: () => void;
+};
+
+export const NavMenu: FunctionComponent<NavMenuProps> = (
+  props: NavMenuProps
+) => {
   return (
     <>
-      <NavMenuIcon onClick={onOpen} />
+      <NavMenuIcon
+        onClick={() => {
+          console.log(props.isOpen);
+          props.onToggle();
+        }}
+      />
       <StyledNavMenu
-        isOpen={isOpen}
+        isOpen={props.isOpen}
         placement="top"
-        onClose={onClose}
+        onClose={props.onClose}
         size="full"
       >
         <DrawerOverlay />

@@ -6,6 +6,6 @@ export const StyledNavLink = styled(Link)`
   letter-spacing: 2px;
   margin: 0 1.5rem;
   &:last-of-type {
-    margin-right: 0;
+    margin-right: 3rem;
   }
 `;
