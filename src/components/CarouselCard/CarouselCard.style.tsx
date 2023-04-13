@@ -1,15 +1,14 @@
 import styled from "styled-components";
-import { Image, Heading, Text, Menu, MenuItem } from "@chakra-ui/react";
+import { Heading, Text } from "@chakra-ui/react";
 
-export const StyledCardImage = styled(Image)`
-  width: 600px;
-  height: 346px;
+export const StyledCardHeading = styled(Heading)`
+  letter-spacing: 2px;
 `;
 
-export const StyledCardHeading = styled(Heading)``;
+export const StyledCardDescription = styled(Text)`
+  line-height: 1.8;
+`;
 
-export const StyledCardDescription = styled(Text)``;
-
-export const StyledCardFeatures = styled(Menu)``;
-
-export const StyledCardFeatureItem = styled(MenuItem)``;
+export const StyledCardFeatureItem = styled(Text)`
+  line-height: 1.8;
+`;
