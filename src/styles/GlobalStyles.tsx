@@ -1,4 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
+
+export const PRIMARY_COLOR = "#fff8f2";
+export const ACCENT_COLOR = "#86878d";
+export const FONT = "Helvetica, Verdana, sans-serif";
 
 export const GlobalStyles: any = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -48,8 +52,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-.chakra-accordion__item {
-    border-top-width: 0px;
-    border-bottom-width: 1px;
-  }
-`
+body{
+  font-family: ${FONT};
+}
+`;
