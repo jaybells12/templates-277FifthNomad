@@ -28,6 +28,7 @@ export type CarouselCardProps = {
 
 // Need to play with popover. Opening it seems to cause scroll jump to top of page,
 // however, artifically extending height of body fixes this behavior
+// Check out Collapse component
 
 export const CarouselCard: FunctionComponent<CarouselCardProps> = (
   props: CarouselCardProps
@@ -55,8 +56,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
             closeOnBlur={false}
             eventListeners={false}
             autoFocus={false}
-            returnFocusOnClose={false}
-            preventOverflow={true}
+            preventOverflow={false}
             placement="bottom-start"
           >
             <PopoverTrigger>
