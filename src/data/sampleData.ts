@@ -3,6 +3,10 @@ import cardImg1 from "../../public/TW__5764_HIGH-RES.webp"
 import cardImg2 from "../../public/TW__5698_HIGH-RES.webp"
 import cardImg3 from "../../public/TW__5477_HIGH-RES.webp"
 import cardImg4 from "../../public/TW__5748_HIGH-RES.webp"
+import cardImg5 from "../../public/Kitchens.webp"
+import cardImg6 from "../../public/Bath.webp"
+import cardImg7 from "../../public/Fluff_TW__5521_HIGH-RES.webp"
+
 
 const cardsData = [
   {
@@ -60,7 +64,18 @@ const cardsData = [
   },
 ]
 
+const slideshow = [
+  cardImg1.src,
+  cardImg5.src,
+  cardImg6.src,
+  cardImg7.src
+]
+
+const slideshowTag = "Homes designed by internationally acclaimed architect Rafael Viñoly, with thoughtfully appointed interiors by Jeffrey Beers International."
+
 export default {
   NavLogo,
-  cardsData
+  cardsData,
+  slideshow,
+  slideshowTag
 }

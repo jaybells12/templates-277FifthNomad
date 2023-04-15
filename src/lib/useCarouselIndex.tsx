@@ -1,19 +1,21 @@
 import { useState } from "react";
+import { useThrottledFunction } from "./useThrottle";
 
 export const useCarouselIndex = (
-  length: number
+  length: number,
+  delay: number
 ): [
   { current: number; next: number; prev: number },
   number,
-  () => void,
-  () => void
+  (args) => void,
+  (args) => void
 ] => {
   const [index, setIndex] = useState({
     current: 0,
     next: 1,
     prev: length - 1,
   });
-  const plusOne = () => {
+  const plusOne = useThrottledFunction(() => {
     setIndex((prevState) => {
       const current =
         prevState.current + 1 === length ? 0 : prevState.current + 1;
@@ -21,8 +23,9 @@ export const useCarouselIndex = (
       const prev = prevState.prev + 1 === length ? 0 : prevState.prev + 1;
       return { current, next, prev };
     });
-  };
-  const minusOne = () => {
+  }, delay);
+
+  const minusOne = useThrottledFunction(() => {
     setIndex((prevState) => {
       const current =
         prevState.current - 1 < 0 ? length - 1 : prevState.current - 1;
@@ -30,6 +33,7 @@ export const useCarouselIndex = (
       const prev = prevState.prev - 1 < 0 ? length - 1 : prevState.prev - 1;
       return { current, next, prev };
     });
-  };
+  }, delay);
+
   return [index, length, plusOne, minusOne];
 };

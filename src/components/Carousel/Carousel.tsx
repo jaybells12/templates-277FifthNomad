@@ -38,10 +38,12 @@ const carouselStyles = {
 // Lots of issues with carousel.
 // Need to throttle controls
 // Overflow behavior needs tweaking, hiding scroll bars while allowing card popovers to still be displayed
+// After working on slideshow component, could refactor this using framer/motion
 
 export const Carousel: FunctionComponent<any> = (props: any) => {
   const [index, carouselLength, next, prev] = useCarouselIndex(
-    sampleData.cardsData.length
+    sampleData.cardsData.length,
+    1050
   );
   return (
     <>

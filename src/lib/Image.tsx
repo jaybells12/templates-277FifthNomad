@@ -3,18 +3,26 @@
   Need to verify if its actually working as intended
 */
 import NextImage from "next/image";
-import { chakra } from "@chakra-ui/react";
+import { chakra, shouldForwardProp } from "@chakra-ui/react";
+import { isValidMotionProp } from "framer-motion";
 
-export const Image = chakra(NextImage, {
+export const MotionImage = chakra(NextImage, {
   shouldForwardProp: (prop) =>
     [
       "width",
       "height",
+      "fill",
       "src",
       "alt",
       "quality",
       "placeholder",
       "blurDataURL",
       "loader ",
+      isValidMotionProp(prop) || shouldForwardProp(prop),
     ].includes(prop),
 });
+
+// export const MotionImage = chakra(Image, {
+//   shouldForwardProp: (prop) =>
+//     ,
+// });
