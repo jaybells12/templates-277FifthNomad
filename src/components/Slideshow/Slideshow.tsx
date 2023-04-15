@@ -10,9 +10,6 @@ export type SlideshowProps = {
   tagline: string;
 };
 
-// Need little index indicator
-// Images are not being normalized in their sizing
-
 export const Slideshow: FunctionComponent<SlideshowProps> = (
   props: SlideshowProps
 ) => {
@@ -49,29 +46,3 @@ export const Slideshow: FunctionComponent<SlideshowProps> = (
     </VStack>
   );
 };
-
-/*
-<motion.div
-          key={props.images[index.current]}
-          transition={{ duration: 1 }}
-          initial={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: "-100vw" }}
-        >
-          <StyledImage
-            width={800}
-            height={600}
-            src={props.images[index.current]}
-          />
-        </motion.div>
-        <motion.div
-          key={props.images[index.next]}
-          transition={{ duration: 1 }}
-          initial={{ opacity: 0, x: "100vw" }}
-          animate={{ opacity: 1, x: 0 }}
-        >
-          <StyledImage
-            width={800}
-            height={600}
-            src={props.images[index.next]}
-          />
-*/
