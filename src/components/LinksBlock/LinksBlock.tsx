@@ -16,6 +16,7 @@ export const LinksBlock: FunctionComponent<LinksBlockProps> = (
     <StyledLinksBlock
       align="flex-start"
       divider={<Divider color={ACCENT_COLOR} />}
+      gap={"0.5rem"}
     >
       {props.links.map((link, idx) => (
         <motion.div
@@ -28,7 +29,6 @@ export const LinksBlock: FunctionComponent<LinksBlockProps> = (
           <Link
             key={idx}
             href={`#${link}`}
-            mx="1rem"
             fontSize="0.75rem"
             letterSpacing="2px"
             lineHeight="1.8"

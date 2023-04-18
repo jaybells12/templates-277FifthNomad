@@ -7,6 +7,7 @@ import cardImg4 from "../../public/TW__5748_HIGH-RES.webp"
 import cardImg5 from "../../public/Kitchens.webp"
 import cardImg6 from "../../public/Bath.webp"
 import cardImg7 from "../../public/Fluff_TW__5521_HIGH-RES.webp"
+import aboutImg1 from "../../public/Loggia-Image-958x1440.jpg"
 
 
 const cardsData = [
@@ -87,8 +88,16 @@ const videoSrc = "/Unbranded-277-5th-Ave-New-York-NY-100162-Fredrik-Eklund-1.mp4
 
 const navLinks = ["residences", "inquire"];
 
+const aboutBlock = {
+  imgSrc: aboutImg1.src,
+  links: blockLinks,
+  title: "Uniting Sky and Earth",
+  description: "In the very heart of NoMad, where the elegance of uptown meets the energy of downtown, 277 Fifth Avenue soars toward the clouds.\n\nAward of Excellence & Winner for Best Tall Residential Building"
+}
+
 
 export default {
+  aboutBlock,
   logo,
   videoSrc,
   navLogo,
