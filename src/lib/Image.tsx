@@ -21,8 +21,3 @@ export const MotionImage = chakra(NextImage, {
       isValidMotionProp(prop) || shouldForwardProp(prop),
     ].includes(prop),
 });
-
-// export const MotionImage = chakra(Image, {
-//   shouldForwardProp: (prop) =>
-//     ,
-// });

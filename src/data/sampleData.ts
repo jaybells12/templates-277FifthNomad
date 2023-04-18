@@ -1,4 +1,5 @@
-import NavLogo from "../../public/277-Fifth-Logo-horizontal-1.svg"
+import navLogo from "../../public/277-Fifth-Logo-horizontal-1.svg"
+import logo from "../../public/277-Fifth-Logo-NoMad-1.svg"
 import cardImg1 from "../../public/TW__5764_HIGH-RES.webp"
 import cardImg2 from "../../public/TW__5698_HIGH-RES.webp"
 import cardImg3 from "../../public/TW__5477_HIGH-RES.webp"
@@ -73,9 +74,28 @@ const slideshow = [
 
 const slideshowTag = "Homes designed by internationally acclaimed architect Rafael Viñoly, with thoughtfully appointed interiors by Jeffrey Beers International."
 
+const blockLinks = [
+  "residences",
+  "amenities",
+  "nomad",
+  "availability"
+]
+
+const CTATagline = "The Tallest Residential Condominium on Fifth Avenue.\nImmediate Occupancy"
+
+const videoSrc = "/Unbranded-277-5th-Ave-New-York-NY-100162-Fredrik-Eklund-1.mp4"
+
+const navLinks = ["residences", "inquire"];
+
+
 export default {
-  NavLogo,
+  logo,
+  videoSrc,
+  navLogo,
+  navLinks,
   cardsData,
   slideshow,
-  slideshowTag
+  slideshowTag,
+  blockLinks,
+  CTATagline,
 }

@@ -4,17 +4,18 @@ import { NavMenu } from "../NavMenu";
 import { StyledNavBar } from "./NavBar.style";
 import { FunctionComponent } from "react";
 import { useDisclosure, Text } from "@chakra-ui/react";
-import sampleData from "@/data/sampleData";
-
-const links = ["residences", "inquire"];
 
 // Need Href prop for each link
+export type NavBarProps = {
+  links: string[];
+  logoSrc: string;
+};
 
-export const NavBar: FunctionComponent<any> = (props: any) => {
+export const NavBar: FunctionComponent<NavBarProps> = (props: NavBarProps) => {
   const { isOpen, onClose, onToggle } = useDisclosure();
   return (
     <StyledNavBar position="relative" zIndex="2000">
-      <NavLogo src={sampleData.NavLogo.src} />
+      <NavLogo src={props.logoSrc} />
       {isOpen ? (
         <Text
           onClick={onClose}
@@ -26,7 +27,7 @@ export const NavBar: FunctionComponent<any> = (props: any) => {
           CLOSE
         </Text>
       ) : (
-        links.map((link, idx) => <NavLink key={idx} text={link} />)
+        props.links.map((link, idx) => <NavLink key={idx} text={link} />)
       )}
       <NavMenu isOpen={isOpen} onToggle={onToggle} onClose={onClose} />
     </StyledNavBar>

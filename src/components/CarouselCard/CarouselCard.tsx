@@ -15,7 +15,7 @@ import {
   StyledCardDescription,
   StyledCardFeatureItem,
 } from "./CarouselCard.style";
-import { Image } from "@/lib/Image";
+import { MotionImage } from "@/lib/Image";
 import { FunctionComponent } from "react";
 import { PRIMARY_COLOR } from "@/styles/GlobalStyles";
 
@@ -40,7 +40,12 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
       <Stack spacing="1.5rem">
         <CardBody p="0">
           <Stack spacing="1.5rem">
-            <Image width={600} height={346} src={props.src} alt={props.title} />
+            <MotionImage
+              width={600}
+              height={346}
+              src={props.src}
+              alt={props.title}
+            />
             {/*@ts-ignore*/}
             <StyledCardHeading as="h5" size="md">
               {props.title.toUpperCase()}
