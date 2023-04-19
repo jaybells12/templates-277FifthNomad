@@ -1,4 +1,4 @@
-import { useCarouselIndex } from "@/lib/useCarouselIndex";
+import { useCarousel } from "@/lib/useCarousel";
 import { TextBar } from "../TextBar";
 import { motion, AnimatePresence } from "framer-motion";
 import { FunctionComponent } from "react";
@@ -16,7 +16,7 @@ export const Slideshow: FunctionComponent<SlideshowProps> = (
   // Using a delay interval just slightly longer than animation duration
   // Because it seems to prevent a reverse animation anomaly
   // which appears to happen when rapidly advancing through the slides
-  const [index, , plusOne] = useCarouselIndex(props.images.length, 800);
+  const [index, , plusOne] = useCarousel(props.images.length, 800);
   return (
     <VStack overflow="hidden">
       <AnimatePresence initial={false} mode="popLayout">

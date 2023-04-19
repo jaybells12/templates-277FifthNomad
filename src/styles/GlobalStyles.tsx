@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const PRIMARY_COLOR = "#fff8f2";
 export const ACCENT_COLOR = "#86878d";
+export const TRIM_COLOR = "#3B3D47";
 export const FONT = "Helvetica, Verdana, sans-serif";
 
 export const GlobalStyles: any = createGlobalStyle`
@@ -54,5 +55,6 @@ table {
 }
 body{
   font-family: ${FONT};
+  background-color: ${PRIMARY_COLOR}
 }
 `;
