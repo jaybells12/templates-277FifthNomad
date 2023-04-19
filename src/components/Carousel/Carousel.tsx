@@ -1,83 +1,106 @@
-import { CarouselCard } from "../CarouselCard";
+import { CarouselCard, CarouselCardProps } from "../CarouselCard";
 import { FunctionComponent } from "react";
-import sampleData from "@/data/sampleData";
 import { Box, HStack, Text } from "@chakra-ui/react";
-import { Button } from "@chakra-ui/react";
-import { useCarouselIndex } from "@/lib/useCarouselIndex";
+import { useCarousel } from "@/lib/useCarousel";
+import { CarouselControls } from "../CarouselControls";
+import { motion, AnimatePresence } from "framer-motion";
 
-const carouselStyles = {
+const carouselVariants = {
   active: {
-    visibility: "visible",
-    transform: "translateX(30%)",
-    opacity: "1",
-    transition:
-      "transform 1s ease-in-out, opacity 1s ease-in-out, visibility 0s",
+    x: 200,
+    opacity: 1,
+    display: "inline-block",
+    transition: {
+      x: { duration: 1 },
+      opacity: { duration: 1 },
+    },
   },
   inactive: {
-    visibility: "hidden",
-    opacity: "0",
-    transform: "translateX(290%)",
-    transition: "transform 1s ease-in-out, opacity 0s 1s, visibility 0s 1s",
+    opacity: 0,
+    x: 1680,
+    transition: {
+      x: { duration: 1 },
+      opacity: { delay: 0.5 },
+    },
   },
-  left: {
-    visibility: "hidden",
-    opacity: "0",
-    transform: "translateX(-100%)",
-    transition:
-      "transform 1s ease-in-out, opacity 1s ease-in-out, visibility 0s 1s",
+  next: {
+    x: 965,
+    opacity: 1,
+    display: "inline-block",
+    transition: {
+      x: { duration: 1 },
+      opacity: { duration: 1 },
+    },
   },
-  right: {
-    visibility: "visible",
-    opacity: "1",
-    transform: "translateX(160%)",
-    transition:
-      "transform 1s ease-in-out, opacity 0s ease-in-out, visibility 0s",
+  prev: {
+    x: -615,
+    opacity: 0,
+    display: "inline-block",
+    transition: {
+      x: { duration: 1 },
+      opacity: { duration: 1 },
+    },
   },
 };
 
-// Lots of issues with carousel.
-// Need to throttle controls
-// Overflow behavior needs tweaking, hiding scroll bars while allowing card popovers to still be displayed
-// After working on slideshow component, could refactor this using framer/motion
+export type CarouselProps = {
+  cards: CarouselCardProps[];
+};
 
-export const Carousel: FunctionComponent<any> = (props: any) => {
-  const [index, carouselLength, next, prev] = useCarouselIndex(
-    sampleData.cardsData.length,
+export const Carousel: FunctionComponent<CarouselProps> = (
+  props: CarouselProps
+) => {
+  const [index, carouselLength, next, prev] = useCarousel(
+    props.cards.length,
     1050
   );
   return (
-    <>
-      <Button onClick={next}>PLUS</Button>
-      <Text>Next:{index.next}</Text>
-      <Text>Current:{index.current}</Text>
-      <Text>Prev:{index.prev}</Text>
-      <Button sx={carouselStyles.active} onClick={prev}>
-        MINUS
-      </Button>
-      <HStack overflowX="hidden" minW="100vw" maxW="1200px">
-        {sampleData.cardsData.map((card, idx) => (
-          <Box
-            position="relative"
-            left={`${idx * -50}%`}
-            sx={
-              idx === index.current
-                ? carouselStyles.active
-                : idx === index.prev
-                ? carouselStyles.left
-                : idx === index.next
-                ? carouselStyles.right
-                : carouselStyles.inactive
-            }
-          >
-            <CarouselCard
-              src={card.image.src}
-              title={card.title}
-              description={card.description}
-              features={card.features}
-            />
-          </Box>
-        ))}
+    <Box position="relative" overflowY="visible" overflowX="clip">
+      <CarouselControls
+        nextFn={next}
+        prevFn={prev}
+        position="absolute"
+        right={0}
+        top={-10}
+        zIndex={2}
+      />
+      <HStack position="relative" minW="100vw" maxWidth="1200px">
+        <AnimatePresence initial={false} mode="sync">
+          {props.cards.map((card, idx) => (
+            <motion.div
+              key={idx}
+              variants={carouselVariants}
+              initial={
+                idx === index.current
+                  ? "active"
+                  : idx === index.next
+                  ? "next"
+                  : idx === index.prev
+                  ? "prev"
+                  : "inactive"
+              }
+              animate={
+                idx === index.current
+                  ? "next"
+                  : idx === index.next
+                  ? "inactive"
+                  : idx === index.prev
+                  ? "active"
+                  : "prev"
+              }
+            >
+              <CarouselCard
+                position="absolute"
+                top={0}
+                src={card.src}
+                title={card.title}
+                description={card.description}
+                features={card.features}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </HStack>
-    </>
+    </Box>
   );
 };

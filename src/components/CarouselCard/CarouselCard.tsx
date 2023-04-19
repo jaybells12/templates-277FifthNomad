@@ -9,6 +9,7 @@ import {
   Text,
   PopoverContent,
   PopoverBody,
+  PositionProps,
 } from "@chakra-ui/react";
 import {
   StyledCardHeading,
@@ -24,7 +25,7 @@ export type CarouselCardProps = {
   title: string;
   description: string;
   features: string[];
-};
+} & PositionProps;
 
 // Need to play with popover. Opening it seems to cause scroll jump to top of page,
 // however, artifically extending height of body fixes this behavior
@@ -35,23 +36,20 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
 ) => {
   const [show, setShow] = useBoolean(false);
 
+  const { src, title, description, features, ...rest } = props;
+
   return (
-    <Card w="600px" bgColor={PRIMARY_COLOR} variant="unstyled">
+    <Card w="600px" bgColor={PRIMARY_COLOR} variant="unstyled" {...rest}>
       <Stack spacing="1.5rem">
         <CardBody p="0">
           <Stack spacing="1.5rem">
-            <MotionImage
-              width={600}
-              height={346}
-              src={props.src}
-              alt={props.title}
-            />
+            <MotionImage width={600} height={346} src={src} alt={title} />
             {/*@ts-ignore*/}
             <StyledCardHeading as="h5" size="md">
-              {props.title.toUpperCase()}
+              {title.toUpperCase()}
             </StyledCardHeading>
             <StyledCardDescription size="md">
-              {props.description}
+              {description}
             </StyledCardDescription>
           </Stack>
         </CardBody>
@@ -83,7 +81,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
               mt="-0.5rem"
             >
               <PopoverBody>
-                {props.features.map((feature, idx) => (
+                {features.map((feature, idx) => (
                   <StyledCardFeatureItem key={idx} fontSize="md">
                     - {feature}
                   </StyledCardFeatureItem>
