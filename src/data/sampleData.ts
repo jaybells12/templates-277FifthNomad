@@ -97,10 +97,11 @@ const aboutBlock = {
 
 // How to link to pdf?
 const residenceBlock = {
+  factSheet: "/277_5TH_FactSheet.pdf",
   cards: carouselCards,
-  text: {
+  textCard: {
     title: "Residences",
-    description: "Distinguished one-to-three bedroom residences showcase panoramic views of the Manhattan skyline. Interiors are graced with oversized windows and ceilings reaching ten feet, complemented by warm woods and elegant natural stones.",
+    text: "Distinguished one-to-three bedroom residences showcase panoramic views of the Manhattan skyline. Interiors are graced with oversized windows and ceilings reaching ten feet, complemented by warm woods and elegant natural stones.",
     facts: "/277_5TH_FactSheet.pdf"
   }
 }
@@ -117,4 +118,5 @@ export default {
   slideshowTag,
   blockLinks,
   CTATagline,
+  residenceBlock
 }

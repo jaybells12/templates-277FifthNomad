@@ -5,15 +5,17 @@ import {
   TextProps,
   HeadingProps,
   FlexboxProps,
+  BoxProps,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 
 export type TextCardProps = {
   title: string;
   text: string;
-  cardProps?: FlexboxProps;
+  cardProps?: FlexboxProps & BoxProps;
   titleProps?: HeadingProps;
   textProps?: TextProps;
+  children?: JSX.Element;
 };
 
 export const TextCard: FunctionComponent<TextCardProps> = (
@@ -21,8 +23,18 @@ export const TextCard: FunctionComponent<TextCardProps> = (
 ) => {
   return (
     <VStack {...props.cardProps}>
-      <Heading {...props.titleProps}>{props.title}</Heading>
-      <Text {...props.textProps}>{props.text}</Text>
+      <Heading fontSize={"4rem"} fontWeight={"normal"} {...props.titleProps}>
+        {props.title}
+      </Heading>
+      <Text
+        fontSize={"1rem"}
+        lineHeight={1.8}
+        fontWeight={"light"}
+        {...props.textProps}
+      >
+        {props.text}
+      </Text>
+      {props.children}
     </VStack>
   );
 };

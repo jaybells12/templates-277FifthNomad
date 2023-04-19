@@ -20,6 +20,7 @@ export const LinksBlock: FunctionComponent<LinksBlockProps> = (
     >
       {props.links.map((link, idx) => (
         <motion.div
+          key={idx}
           whileHover={{ x: 15 }}
           transition={{
             duration: 0.5,
@@ -27,7 +28,6 @@ export const LinksBlock: FunctionComponent<LinksBlockProps> = (
           }}
         >
           <Link
-            key={idx}
             href={`#${link}`}
             fontSize="0.75rem"
             letterSpacing="2px"

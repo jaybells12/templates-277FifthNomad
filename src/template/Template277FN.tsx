@@ -10,6 +10,7 @@ import { TextBar } from "@/components/TextBar";
 import { Slideshow } from "@/components/Slideshow";
 import { CallToAction } from "@/components/CallToAction";
 import { CarouselControls } from "@/components/CarouselControls";
+import { ResidencesBlock } from "@/components/ResidencesBlock";
 
 export const Template277FN: FunctionComponent<any> = (props: any) => {
   return (
@@ -30,7 +31,11 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         images={sampleData.slideshow}
         tagline={sampleData.slideshowTag}
       />
-      <Carousel cards={sampleData.carouselCards} />
+      <ResidencesBlock
+        factSheet={sampleData.residenceBlock.factSheet}
+        cards={sampleData.residenceBlock.cards}
+        textCard={sampleData.residenceBlock.textCard}
+      />
     </>
   );
 };
