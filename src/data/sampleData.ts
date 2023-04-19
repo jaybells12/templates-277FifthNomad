@@ -10,9 +10,9 @@ import cardImg7 from "../../public/Fluff_TW__5521_HIGH-RES.webp"
 import aboutImg1 from "../../public/Loggia-Image-958x1440.jpg"
 
 
-const cardsData = [
+const carouselCards = [
   {
-    image: cardImg1,
+    src: cardImg1.src,
     title: "living spaces",
     description: "Residences with luxuriously appointed interiors by Jeffrey Beers International showcase thrilling panoramic views of the Manhattan skyline.",
     features: [
@@ -27,7 +27,7 @@ const cardsData = [
     ]
   },
   {
-    image: cardImg2,
+    src: cardImg2.src,
     title: "kitchens",
     description: "Custom kitchens are tailored to your every need with white oak cabinetry, marble slab countertops, and a suite of fully-integrated stainless steel Miele appliances.",
     features: [
@@ -39,7 +39,7 @@ const cardsData = [
     ]
   },
   {
-    image: cardImg3,
+    src: cardImg3.src,
     title: "primary baths",
     description: "Spa-like baths are clad in floor-to-ceiling marble with custom walnut vanities and metal frame medicine cabinets with integrated lighting.",
     features: [
@@ -54,7 +54,7 @@ const cardsData = [
     ]
   },
   {
-    image: cardImg4,
+    src: cardImg4.src,
     title: "loggia residences",
     description: "Select residences offer expansive double-height loggias to escape from it all. Each is outfitted with lounge seating, a jacuzzi, and unbelievable views.",
     features: [
@@ -95,14 +95,24 @@ const aboutBlock = {
   description: "In the very heart of NoMad, where the elegance of uptown meets the energy of downtown, 277 Fifth Avenue soars toward the clouds.\n\nAward of Excellence & Winner for Best Tall Residential Building"
 }
 
+// How to link to pdf?
+const residenceBlock = {
+  cards: carouselCards,
+  text: {
+    title: "Residences",
+    description: "Distinguished one-to-three bedroom residences showcase panoramic views of the Manhattan skyline. Interiors are graced with oversized windows and ceilings reaching ten feet, complemented by warm woods and elegant natural stones.",
+    facts: "/277_5TH_FactSheet.pdf"
+  }
+}
+
 
 export default {
   aboutBlock,
-  logo,
+  logo: logo.src,
   videoSrc,
-  navLogo,
+  navLogo: navLogo.src,
   navLinks,
-  cardsData,
+  carouselCards,
   slideshow,
   slideshowTag,
   blockLinks,

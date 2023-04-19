@@ -1,7 +1,5 @@
-/*
-Receives Image, Header, Description, Links
-*/
 import { Grid, GridItem, Heading, VStack, Text } from "@chakra-ui/react";
+import { TextCard } from "../TextCard";
 import { Image } from "@chakra-ui/next-js";
 import { LinksBlock } from "../LinksBlock";
 import { FunctionComponent } from "react";
@@ -36,19 +34,21 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
         />
       </GridItem>
       <GridItem w="70%" area={"text"} placeSelf="end center">
-        <VStack>
-          <Heading
-            as="h3"
-            size={"3xl"}
-            fontWeight={"normal"}
-            lineHeight={"85px"}
-          >
-            {props.header}
-          </Heading>
-          <Text fontWeight={"light"} lineHeight={1.8} whiteSpace={"pre-line"}>
-            {props.description}
-          </Text>
-        </VStack>
+        <TextCard
+          title={props.header}
+          text={props.description}
+          titleProps={{
+            as: "h3",
+            size: "3xl",
+            fontWeight: "normal",
+            lineHeight: "85px",
+          }}
+          textProps={{
+            fontWeight: "light",
+            lineHeight: "1.8",
+            whiteSpace: "pre-line",
+          }}
+        />
       </GridItem>
       <GridItem w="70%" area={"links"} marginTop={"3rem"}>
         <LinksBlock links={props.links} />
