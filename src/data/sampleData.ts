@@ -1,5 +1,5 @@
-import navLogo from "../../public/277-Fifth-Logo-horizontal-1.svg"
-import logo from "../../public/277-Fifth-Logo-NoMad-1.svg"
+import navLogo from "../../public/277-Fifth-Logo-NoMad-horizontal.svg"
+import logo from "../../public/277-Fifth-Logo-NoMad-white.svg"
 import cardImg1 from "../../public/TW__5764_HIGH-RES.webp"
 import cardImg2 from "../../public/TW__5698_HIGH-RES.webp"
 import cardImg3 from "../../public/TW__5477_HIGH-RES.webp"
@@ -137,23 +137,25 @@ const aboutBlock = {
   imgSrc: aboutImg1.src,
   links: blockLinks,
   title: "Uniting Sky and Earth",
-  description: "In the very heart of NoMad, where the elegance of uptown meets the energy of downtown, 277 Fifth Avenue soars toward the clouds.\n\nAward of Excellence & Winner for Best Tall Residential Building"
+  text: "In the very heart of NoMad, where the elegance of uptown meets the energy of downtown, 277 Fifth Avenue soars toward the clouds.\n\nAward of Excellence & Winner for Best Tall Residential Building"
 }
 
-// How to link to pdf?
+const amenitiesBlock = {
+  cards: amenitiesCards,
+  text: "Over 7,000 square feet of thoughtfully curated recreational spaces."
+}
+
 const residenceBlock = {
   factSheet: "/277_5TH_FactSheet.pdf",
   cards: carouselCards,
   textCard: {
     title: "Residences",
     text: "Distinguished one-to-three bedroom residences showcase panoramic views of the Manhattan skyline. Interiors are graced with oversized windows and ceilings reaching ten feet, complemented by warm woods and elegant natural stones.",
-    facts: "/277_5TH_FactSheet.pdf"
   }
 }
 
 
 export default {
-  aboutBlock,
   logo: logo.src,
   videoSrc,
   navLogo: navLogo.src,
@@ -163,5 +165,7 @@ export default {
   slideshowTag,
   blockLinks,
   CTATagline,
+  aboutBlock,
+  amenitiesBlock,
   residenceBlock
 }

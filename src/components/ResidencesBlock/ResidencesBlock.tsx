@@ -1,35 +1,27 @@
-/*
-Text Card
-  Header
-  Paragraph
-Button
-Carousel
-  controls
-  cards (how many displayed? at least 2)
-    Image
-    Title
-    Para
-    F&F
-*/
 import { TextCard, TextCardProps } from "../TextCard";
 import { Button, Container } from "@chakra-ui/react";
 import { Carousel } from "../Carousel";
 import { FunctionComponent } from "react";
 import { TRIM_COLOR, PRIMARY_COLOR } from "@/styles/GlobalStyles";
-import { CarouselCardProps } from "../CarouselCard";
 
 export type ResidencesBlockProps = {
   factSheet: string;
-  cards: CarouselCardProps[];
   textCard: TextCardProps;
+  splitControls: boolean;
+  cards: {
+    imgSrc: string;
+    title: string;
+    text: string;
+    features?: string[];
+  }[];
 };
 
 export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
   props: ResidencesBlockProps
 ) => {
-  const { cards, factSheet, textCard } = props;
+  const { cards, factSheet, textCard, splitControls } = props;
   return (
-    <Container as="section" maxW={"full"} p={0}>
+    <Container as="section" minW={"full"} maxW={"unset"} p={0}>
       <TextCard
         title={textCard.title}
         text={textCard.text}
@@ -64,6 +56,8 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
       </TextCard>
       <Carousel
         cards={cards}
+        split={splitControls}
+        //These values are to match template as is, could be rearranged to be dynamically input
         cardProps={{ cardWth: 600, imgWth: 600, imgHgt: 346, gap: 6 }}
       />
     </Container>

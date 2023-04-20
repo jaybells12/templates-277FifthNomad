@@ -22,10 +22,10 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         videoSrc={sampleData.videoSrc}
       />
       <AboutBlock
-        description={sampleData.aboutBlock.description}
-        header={sampleData.aboutBlock.title}
-        imageSrc={sampleData.aboutBlock.imgSrc}
+        imgSrc={sampleData.aboutBlock.imgSrc}
         links={sampleData.aboutBlock.links}
+        title={sampleData.aboutBlock.title}
+        text={sampleData.aboutBlock.text}
       />
       <Slideshow
         images={sampleData.slideshow}
@@ -35,6 +35,7 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         factSheet={sampleData.residenceBlock.factSheet}
         cards={sampleData.residenceBlock.cards}
         textCard={sampleData.residenceBlock.textCard}
+        splitControls={false}
       />
     </>
   );

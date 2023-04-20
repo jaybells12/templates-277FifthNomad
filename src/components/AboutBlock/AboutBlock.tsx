@@ -5,15 +5,16 @@ import { LinksBlock } from "../LinksBlock";
 import { FunctionComponent } from "react";
 
 export type AboutBlockProps = {
-  imageSrc: string;
-  header: string;
-  description: string;
+  imgSrc: string;
+  title: string;
+  text: string;
   links: string[];
 };
 
 export const AboutBlock: FunctionComponent<AboutBlockProps> = (
   props: AboutBlockProps
 ) => {
+  const { imgSrc, title, text, links } = props;
   return (
     <Grid
       templateAreas={`"image text"
@@ -26,17 +27,12 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
       marginInline={"auto"}
     >
       <GridItem w="100%" h="100%" area={"image"} position="relative">
-        <Image
-          fill
-          src={props.imageSrc}
-          alt={props.imageSrc}
-          sx={{ objectFit: "contain" }}
-        />
+        <Image fill src={imgSrc} alt={imgSrc} sx={{ objectFit: "contain" }} />
       </GridItem>
       <GridItem w="70%" area={"text"} placeSelf="end center">
         <TextCard
-          title={props.header}
-          text={props.description}
+          title={title}
+          text={text}
           titleProps={{
             as: "h3",
             size: "3xl",
@@ -51,7 +47,7 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
         />
       </GridItem>
       <GridItem w="70%" area={"links"} marginTop={"3rem"}>
-        <LinksBlock links={props.links} />
+        <LinksBlock links={links} />
       </GridItem>
     </Grid>
   );

@@ -9,5 +9,5 @@ export const StyledTextBar = styled(Container)`
   letter-spacing: 2.5px;
   font-size: 1.25rem;
   padding: 3rem 11rem;
-  max-width: 100vw;
+  min-width: 100vw;
 `;

@@ -74,8 +74,25 @@ const carouselVariants = {
       : {},
 };
 
+// const controlStyles = {
+//   split: {},
+//   block: {
+//     position: "absolute",
+//     right: "200px",
+//     top: "-100px",
+//   },
+// };
+// // position="absolute"
+// //         right={200}
+// //         top={-100}
 export type CarouselProps = {
-  cards: CarouselCardProps[];
+  split: boolean;
+  cards: {
+    imgSrc: string;
+    title: string;
+    text: string;
+    features?: string[];
+  }[];
   cardProps: {
     cardWth: number;
     imgHgt: number;
@@ -87,25 +104,24 @@ export type CarouselProps = {
 export const Carousel: FunctionComponent<CarouselProps> = (
   props: CarouselProps
 ) => {
-  const { cards, cardProps } = props;
+  const { split, cards, cardProps } = props;
   const [index, direction, next, prev] = useCarousel(cards.length, 1050);
 
   return (
     <Box position="relative" overflowY="visible" overflowX="clip">
-      <CarouselControls
-        nextFn={next}
-        prevFn={prev}
-        position="absolute"
-        right={200}
-        top={-100}
-        zIndex={2}
-      />
+      <CarouselControls nextFn={next} prevFn={prev} zIndex={2} split={split} />
       <HStack
         position="relative"
         minW="100vw"
         maxWidth="1200px"
         gap={`${cardProps.gap}rem`}
       >
+        {/*
+         * Had to use an AnimatePresence component to wrap each motion.div
+         * Was not able to figure out how to get the animations to work properly
+         * with only one AnimatePresence. I think it has something to do with setting
+         * the right "initial" options. Will come back later to play around with it.
+         */}
         <AnimatePresence
           custom={{ direction, width: cardProps.cardWth, gap: cardProps.gap }}
           mode={"popLayout"}
@@ -178,43 +194,3 @@ export const Carousel: FunctionComponent<CarouselProps> = (
     </Box>
   );
 };
-/*
-{props.cards.map((card, idx) => (
-          <motion.div
-            key={idx}
-            variants={carouselVariants}
-            initial={
-              idx === index.current
-                ? "active"
-                : idx === index.next
-                ? "next"
-                : idx === index.prev
-                ? "prev"
-                : "inactive"
-            }
-            animate={
-              idx === index.current
-                ? "active"
-                : idx === index.next
-                ? "next"
-                : idx === index.prev
-                ? "prev"
-                : "inactive"
-            }
-          >
-            <CarouselCard
-              position="absolute"
-              top={0}
-              //There is a slight offset along the horizontal axis, this fixes it, but I do not know whats causing it
-              left={idx * -2}
-              cardWth={600}
-              imgSrc={card.imgSrc}
-              imgWth={600}
-              imgHgt={346}
-              title={card.title}
-              text={card.text}
-              features={card.features}
-            />
-          </motion.div>
-        ))}
-*/
