@@ -15,7 +15,11 @@ export const useCarousel = (
     next: 1,
     prev: length - 1,
   });
-  const plusOne = useThrottledFunction(() => {
+
+  const [direction, setDirection] = useState(1);
+
+  const nextItem = useThrottledFunction(() => {
+    setDirection(1);
     setIndex((prevState) => {
       const current =
         prevState.current + 1 === length ? 0 : prevState.current + 1;
@@ -25,7 +29,8 @@ export const useCarousel = (
     });
   }, throttleDelay);
 
-  const minusOne = useThrottledFunction(() => {
+  const prevItem = useThrottledFunction(() => {
+    setDirection(-1);
     setIndex((prevState) => {
       const current =
         prevState.current - 1 < 0 ? length - 1 : prevState.current - 1;
@@ -35,5 +40,5 @@ export const useCarousel = (
     });
   }, throttleDelay);
 
-  return [index, length, plusOne, minusOne];
+  return [index, direction, nextItem, prevItem];
 };

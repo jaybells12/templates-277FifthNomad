@@ -62,7 +62,10 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
           Fact Sheet
         </Button>
       </TextCard>
-      <Carousel cards={cards} />
+      <Carousel
+        cards={cards}
+        cardProps={{ cardWth: 600, imgWth: 600, imgHgt: 346, gap: 6 }}
+      />
     </Container>
   );
 };

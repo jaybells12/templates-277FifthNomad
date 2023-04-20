@@ -18,6 +18,5 @@ export const MotionImage = chakra(NextImage, {
       "placeholder",
       "blurDataURL",
       "loader ",
-      isValidMotionProp(prop) || shouldForwardProp(prop),
     ].includes(prop),
 });

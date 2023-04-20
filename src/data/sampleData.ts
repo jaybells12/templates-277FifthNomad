@@ -8,13 +8,58 @@ import cardImg5 from "../../public/Kitchens.webp"
 import cardImg6 from "../../public/Bath.webp"
 import cardImg7 from "../../public/Fluff_TW__5521_HIGH-RES.webp"
 import aboutImg1 from "../../public/Loggia-Image-958x1440.jpg"
+import amDining from "../../public/Amenity_Dining.jpg"
+import amFitness from "../../public/Amenity_Fitness.jpg"
+import amGames from "../../public/Amenity_Games.jpg"
+import amKids from "../../public/Amenity_Kids.jpg"
+import amLobby from "../../public/Amenity_Lobby.jpg"
+import amSuite from "../../public/Amenity_Suite.jpg"
+import amTerrace from "../../public/Amenity_Terrace.jpg"
 
+const amenitiesCards = [
+  {
+    imgSrc: amKids.src,
+    title: "kid's club",
+    text: "This playful space bursting with games and activities to explore."
+  },
+  {
+    imgSrc: amLobby.src,
+    title: "lobby library",
+    text: "A curated entry with a dramatic, double-height bookcase wall."
+  },
+  {
+    imgSrc: amTerrace.src,
+    title: "setback terrace",
+    text: "A furnished and landscaped common setback Fifth Avenue terrace."
+  },
+  {
+    imgSrc: amFitness.src,
+    title: "fitness club",
+    text: "An expansive fitness space with a separate training and yoga studio, in addition to men's and women's spas."
+  },
+  {
+    imgSrc: amSuite.src,
+    title: "entertaining suite",
+    text: "A space to gather and entertain, complete with separate bar and kitchen pantry."
+  },
+  {
+    imgSrc: amDining.src,
+    title: "private dining room",
+    text: "Gather friends and family to share an exquisite meal in this elegant setting."
+  },
+  {
+    imgSrc: amGames.src,
+    title: "games lounge",
+    text: "Set a friendly match at the custom ping pong table and see who comes out on top."
+  },
+
+]
 
 const carouselCards = [
   {
-    src: cardImg1.src,
+    imgSrc: cardImg1.src,
     title: "living spaces",
-    description: "Residences with luxuriously appointed interiors by Jeffrey Beers International showcase thrilling panoramic views of the Manhattan skyline.",
+    text: "Residences with luxuriously appointed interiors by Jeffrey Beers International showcase thrilling panoramic views of the Manhattan skyline.",
     features: [
       "Residential entrance door and surround casing panels in dark stained rift cut White Oak with black metal door trim detail complemented with polished nickel Valli & Valli door hardware",
       "10 to 11-foot ceiling heights in entertaining rooms in select residences; 20-foot double-height ceilings in select Loggia Residences",
@@ -27,9 +72,9 @@ const carouselCards = [
     ]
   },
   {
-    src: cardImg2.src,
+    imgSrc: cardImg2.src,
     title: "kitchens",
-    description: "Custom kitchens are tailored to your every need with white oak cabinetry, marble slab countertops, and a suite of fully-integrated stainless steel Miele appliances.",
+    text: "Custom kitchens are tailored to your every need with white oak cabinetry, marble slab countertops, and a suite of fully-integrated stainless steel Miele appliances.",
     features: [
       "Light stained White Oak cabinetry with recessed satin brushed metal accent trims throughout kitchen counters and islands; upper cabinet doors provided in two options: metal trimmed white back-painted glass or light stained White Oak",
       "Calacatta Saccheli polished marble slab countertops, backsplash with integrated cooktop niches, and island countertop with waterfall edges, all in a polished finish",
@@ -39,9 +84,9 @@ const carouselCards = [
     ]
   },
   {
-    src: cardImg3.src,
+    imgSrc: cardImg3.src,
     title: "primary baths",
-    description: "Spa-like baths are clad in floor-to-ceiling marble with custom walnut vanities and metal frame medicine cabinets with integrated lighting.",
+    text: "Spa-like baths are clad in floor-to-ceiling marble with custom walnut vanities and metal frame medicine cabinets with integrated lighting.",
     features: [
       "Bianco Dolomiti marble tile flooring in a honed finish",
       "San Nicola marble tile walls in a honed finish",
@@ -54,9 +99,9 @@ const carouselCards = [
     ]
   },
   {
-    src: cardImg4.src,
+    imgSrc: cardImg4.src,
     title: "loggia residences",
-    description: "Select residences offer expansive double-height loggias to escape from it all. Each is outfitted with lounge seating, a jacuzzi, and unbelievable views.",
+    text: "Select residences offer expansive double-height loggias to escape from it all. Each is outfitted with lounge seating, a jacuzzi, and unbelievable views.",
     features: [
       "Double-height outdoor space",
       "Lounge seating",

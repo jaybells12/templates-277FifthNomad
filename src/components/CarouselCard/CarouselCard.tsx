@@ -1,116 +1,104 @@
 import {
-  Stack,
   Card,
-  CardBody,
   CardFooter,
   useBoolean,
   Popover,
   PopoverTrigger,
   Text,
+  Heading,
   PopoverContent,
   PopoverBody,
-  PositionProps,
+  CardProps,
 } from "@chakra-ui/react";
-import {
-  StyledCardHeading,
-  StyledCardDescription,
-  StyledCardFeatureItem,
-} from "./CarouselCard.style";
-import { MotionImage } from "@/lib/Image";
-import { FunctionComponent } from "react";
-import { PRIMARY_COLOR } from "@/styles/GlobalStyles";
+import { Image } from "@chakra-ui/next-js";
+import { FunctionComponent, forwardRef } from "react";
 
 export type CarouselCardProps = {
-  src: string;
+  imgSrc: string;
+  imgHgt: number;
+  imgWth: number;
+  cardWth: number | string;
   title: string;
-  description: string;
-  features: string[];
-} & PositionProps;
+  text: string;
+  features?: string[];
+} & CardProps;
 
 // Need to play with popover. Opening it seems to cause scroll jump to top of page,
-// however, artifically extending height of body fixes this behavior
 // Check out Collapse component
 
-export const CarouselCard: FunctionComponent<CarouselCardProps> = (
-  props: CarouselCardProps
-) => {
-  const [show, setShow] = useBoolean(false);
+export const CarouselCard: FunctionComponent<CarouselCardProps> = forwardRef(
+  (props: CarouselCardProps, ref) => {
+    const [show, setShow] = useBoolean(false);
 
-  const { src, title, description, features, ...rest } = props;
+    const { imgSrc, title, text, features, imgHgt, imgWth, cardWth, ...rest } =
+      props;
 
-  return (
-    <Card w="600px" bgColor={PRIMARY_COLOR} variant="unstyled" {...rest}>
-      <Stack spacing="1.5rem">
-        <CardBody p="0">
-          <Stack spacing="1.5rem">
-            <MotionImage width={600} height={346} src={src} alt={title} />
-            {/*@ts-ignore*/}
-            <StyledCardHeading as="h5" size="md">
-              {title.toUpperCase()}
-            </StyledCardHeading>
-            <StyledCardDescription size="md">
-              {description}
-            </StyledCardDescription>
-          </Stack>
-        </CardBody>
-        <CardFooter p="0">
-          <Popover
-            flip={false}
-            closeOnBlur={false}
-            eventListeners={false}
-            autoFocus={false}
-            preventOverflow={false}
-            placement="bottom-start"
-          >
-            <PopoverTrigger>
-              <Text
-                size="md"
-                onClick={setShow.toggle}
-                textAlign="left"
-                letterSpacing="1.5px"
-                cursor="pointer"
+    return (
+      <Card
+        w={cardWth}
+        bgColor={"inherit"}
+        variant="unstyled"
+        {...rest}
+        ref={ref}
+      >
+        <Image
+          width={imgWth}
+          height={imgHgt}
+          src={imgSrc}
+          alt={title}
+          mb={"1.5rem"}
+        />
+        <Heading
+          as={"h5"}
+          size={"sm"}
+          letterSpacing={"2px"}
+          fontWeight={"normal"}
+          mb={"1.5rem"}
+        >
+          {title.toUpperCase()}
+        </Heading>
+        <Text size={"md"} lineHeight={1.8} mb={"1.5rem"}>
+          {text}
+        </Text>
+        {features && (
+          <CardFooter p="0">
+            <Popover
+              flip={false}
+              closeOnBlur={false}
+              eventListeners={false}
+              autoFocus={false}
+              preventOverflow={false}
+              placement="bottom-start"
+            >
+              <PopoverTrigger>
+                <Text
+                  size="md"
+                  onClick={setShow.toggle}
+                  letterSpacing="1.5px"
+                  cursor="pointer"
+                >
+                  FEATURES & FINISHES {show ? "-" : "+"}
+                </Text>
+              </PopoverTrigger>
+              <PopoverContent
+                width={cardWth}
+                bgColor={"inherit"}
+                border={"none"}
+                boxShadow={"none"}
+                mt={"1rem"}
               >
-                FEATURES & FINISHES {show ? "-" : "+"}
-              </Text>
-            </PopoverTrigger>
-            <PopoverContent
-              w="600px"
-              bgColor={PRIMARY_COLOR}
-              border="0"
-              borderRadius="0"
-              mt="-0.5rem"
-            >
-              <PopoverBody>
-                {features.map((feature, idx) => (
-                  <StyledCardFeatureItem key={idx} fontSize="md">
-                    - {feature}
-                  </StyledCardFeatureItem>
-                ))}
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
-        </CardFooter>
-      </Stack>
-    </Card>
-  );
-};
-
-/*
-<StyledCardFeatures>
-            <MenuButton
-              onClick={setShow.toggle}
-              w="100%"
-              textAlign="left"
-              letterSpacing="1.5px"
-            >
-              FEATURES & FINISHES {show ? "-" : "+"}
-            </MenuButton>
-            <MenuList>
-              {props.features.map((feature, idx) => (
-                <StyledCardFeatureItem key={idx}>
-                  - {feature}
-                </StyledCardFeatureItem>
-              ))}
-            </MenuList>
-          </StyledCardFeatures>
-*/
+                <PopoverBody p={"0"}>
+                  {features.map((feature, idx) => (
+                    <Text key={idx} fontSize={"md"} lineHeight={1.8}>
+                      - {feature}
+                    </Text>
+                  ))}
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+          </CardFooter>
+        )}
+      </Card>
+    );
+  }
+);
