@@ -1,6 +1,6 @@
-import { CarouselCard, CarouselCardProps } from "../CarouselCard";
+import { CarouselCard } from "../CarouselCard";
 import { FunctionComponent } from "react";
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { Box, HStack, FlexboxProps, TextProps } from "@chakra-ui/react";
 import { useCarousel } from "@/lib/useCarousel";
 import { CarouselControls } from "../CarouselControls";
 import { motion, AnimatePresence } from "framer-motion";
@@ -74,17 +74,6 @@ const carouselVariants = {
       : {},
 };
 
-// const controlStyles = {
-//   split: {},
-//   block: {
-//     position: "absolute",
-//     right: "200px",
-//     top: "-100px",
-//   },
-// };
-// // position="absolute"
-// //         right={200}
-// //         top={-100}
 export type CarouselProps = {
   split: boolean;
   cards: {
@@ -97,14 +86,15 @@ export type CarouselProps = {
     cardWth: number;
     imgHgt: number;
     imgWth: number;
-    gap: number | string;
+    gap: number;
   };
+  flexProps?: FlexboxProps & TextProps;
 };
 
 export const Carousel: FunctionComponent<CarouselProps> = (
   props: CarouselProps
 ) => {
-  const { split, cards, cardProps } = props;
+  const { split, cards, cardProps, flexProps } = props;
   const [index, direction, next, prev] = useCarousel(cards.length, 1050);
 
   return (
@@ -112,8 +102,9 @@ export const Carousel: FunctionComponent<CarouselProps> = (
       <CarouselControls nextFn={next} prevFn={prev} zIndex={2} split={split} />
       <HStack
         position="relative"
-        minW="100vw"
+        minW="100%"
         maxWidth="1200px"
+        sx={split && { transform: "translateX(-20%)" }}
         gap={`${cardProps.gap}rem`}
       >
         {/*
@@ -121,72 +112,86 @@ export const Carousel: FunctionComponent<CarouselProps> = (
          * Was not able to figure out how to get the animations to work properly
          * with only one AnimatePresence. I think it has something to do with setting
          * the right "initial" options. Will come back later to play around with it.
+         * Also, initial=false on AnimatePresence does not seem to be suppressing page
+         * load animation, going to try setting initial values for motion.div elements ;
          */}
         <AnimatePresence
           custom={{ direction, width: cardProps.cardWth, gap: cardProps.gap }}
           mode={"popLayout"}
+          initial={false}
         >
           <motion.div
             style={{ margin: 0 }}
             variants={carouselVariants}
             key={cards[index.prev].imgSrc}
             custom={{ direction, width: cardProps.cardWth, gap: cardProps.gap }}
+            initial={"enter"}
             animate={"enter"}
             exit={"exitLeft"}
           >
             <CarouselCard
               cardWth={cardProps.cardWth}
-              imgSrc={cards[index.prev].imgSrc}
-              imgHgt={cardProps.imgHgt}
               imgWth={cardProps.imgWth}
+              imgHgt={cardProps.imgHgt}
+              imgSrc={cards[index.prev].imgSrc}
               text={cards[index.prev].text}
               title={cards[index.prev].title}
+              split={split}
               features={cards[index.prev].features}
+              {...flexProps}
             />
           </motion.div>
         </AnimatePresence>
         <AnimatePresence
           custom={{ direction, width: cardProps.cardWth, gap: cardProps.gap }}
           mode={"popLayout"}
+          initial={false}
         >
           <motion.div
             style={{ margin: 0 }}
             variants={carouselVariants}
             key={cards[index.current].imgSrc}
             custom={{ direction, width: cardProps.cardWth, gap: cardProps.gap }}
+            initial={"enter"}
             animate={"enter"}
           >
             <CarouselCard
               cardWth={cardProps.cardWth}
-              imgSrc={cards[index.current].imgSrc}
-              imgHgt={cardProps.imgHgt}
               imgWth={cardProps.imgWth}
+              imgHgt={cardProps.imgHgt}
+              imgSrc={cards[index.current].imgSrc}
               text={cards[index.current].text}
               title={cards[index.current].title}
+              split={split}
               features={cards[index.current].features}
+              {...flexProps}
             />
           </motion.div>
         </AnimatePresence>
         <AnimatePresence
           custom={{ direction, width: cardProps.cardWth, gap: cardProps.gap }}
           mode={"popLayout"}
+          initial={false}
         >
           <motion.div
             style={{ margin: 0 }}
             variants={carouselVariants}
             key={cards[index.next].imgSrc}
             custom={{ direction, width: cardProps.cardWth, gap: cardProps.gap }}
+            initial={"enter"}
             animate={"enter"}
             exit={"exitRight"}
           >
             <CarouselCard
               cardWth={cardProps.cardWth}
-              imgSrc={cards[index.next].imgSrc}
-              imgHgt={cardProps.imgHgt}
               imgWth={cardProps.imgWth}
+              imgHgt={cardProps.imgHgt}
+              imgSrc={cards[index.next].imgSrc}
               text={cards[index.next].text}
               title={cards[index.next].title}
+              split={split}
               features={cards[index.next].features}
+              {...flexProps}
             />
           </motion.div>
         </AnimatePresence>

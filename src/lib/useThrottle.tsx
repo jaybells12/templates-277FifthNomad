@@ -2,17 +2,20 @@
 takes a function, returns a memoized callback 
 */
 
-import { useCallback, useRef, useEffect } from "react";
+import { useCallback, useRef, useEffect, MutableRefObject } from "react";
 
-const getRemainingTime = (lastTriggered, throttleMs) => {
+const getRemainingTime = (lastTriggered: number, throttleMs: number) => {
   const elapsedTime = Date.now() - lastTriggered;
   const remainingTime = throttleMs - elapsedTime;
 
   return remainingTime < 0 ? 0 : remainingTime;
 };
 
-export const useThrottledFunction = (cb, interval) => {
-  const lastTriggered = useRef(Date.now());
+export const useThrottledFunction = (
+  cb: any,
+  interval: number,
+  lastTriggered: MutableRefObject<number>
+) => {
   const timeoutRef = useRef(null);
 
   const cancel = useCallback(() => {

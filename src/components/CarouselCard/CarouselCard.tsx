@@ -20,23 +20,36 @@ export type CarouselCardProps = {
   cardWth: number | string;
   title: string;
   text: string;
+  split: boolean;
   features?: string[];
 } & CardProps;
 
 // Need to play with popover. Opening it seems to cause scroll jump to top of page,
+// Also seems to open under other elements, need ot play with zIndex
 // Check out Collapse component
 
 export const CarouselCard: FunctionComponent<CarouselCardProps> = forwardRef(
   (props: CarouselCardProps, ref) => {
     const [show, setShow] = useBoolean(false);
 
-    const { imgSrc, title, text, features, imgHgt, imgWth, cardWth, ...rest } =
-      props;
+    const {
+      imgSrc,
+      title,
+      text,
+      features,
+      imgHgt,
+      imgWth,
+      cardWth,
+      split,
+      ...rest
+    } = props;
 
     return (
       <Card
+        display={"flex"}
         w={cardWth}
         bgColor={"inherit"}
+        color={split && "white"}
         variant="unstyled"
         {...rest}
         ref={ref}
@@ -57,7 +70,12 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = forwardRef(
         >
           {title.toUpperCase()}
         </Heading>
-        <Text size={"md"} lineHeight={1.8} mb={"1.5rem"}>
+        <Text
+          size={"md"}
+          lineHeight={1.8}
+          mb={"1.5rem"}
+          width={split && "310px"}
+        >
           {text}
         </Text>
         {features && (

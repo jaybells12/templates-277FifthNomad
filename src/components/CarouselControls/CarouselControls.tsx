@@ -21,10 +21,10 @@ const STATIC_COLOR = "#DBCED5";
 const layout = {
   split: {
     position: "absolute",
-    top: "30%",
+    top: "37%",
     left: "50%",
     transform: "translateX(-50%)",
-    width: "95%",
+    width: "88%",
     display: "flex",
     justifyContent: "space-between",
   },
@@ -65,7 +65,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
           sx={
             split && {
               filter:
-                "invert(100%) sepia(5%) saturate(22%) hue-rotate(215deg) brightness(107%) contrast(104%)",
+                "brightness(0) saturate(100%) invert(100%) sepia(5%) saturate(22%) hue-rotate(215deg) brightness(107%) contrast(104%)",
             }
           }
         />
@@ -87,7 +87,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
           sx={
             split && {
               filter:
-                "invert(100%) sepia(5%) saturate(22%) hue-rotate(215deg) brightness(107%) contrast(104%)",
+                "brightness(0) saturate(100%) invert(100%) sepia(5%) saturate(22%) hue-rotate(215deg) brightness(107%) contrast(104%)",
             }
           }
         />

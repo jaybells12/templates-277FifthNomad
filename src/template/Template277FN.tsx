@@ -1,16 +1,11 @@
+import sampleData from "@/data/sampleData";
 import { FunctionComponent } from "react";
 import { NavBar } from "@/components/NavBar/NavBar";
 import { Hero } from "@/components/Hero";
 import { AboutBlock } from "@/components/AboutBlock";
-import { Carousel } from "@/components/Carousel";
-import { LinksBlock } from "@/components/LinksBlock";
-import { VideoBlock } from "@/components/VideoBlock";
-import sampleData from "@/data/sampleData";
-import { TextBar } from "@/components/TextBar";
-import { Slideshow } from "@/components/Slideshow";
-import { CallToAction } from "@/components/CallToAction";
-import { CarouselControls } from "@/components/CarouselControls";
+import { SlideshowBlock } from "@/components/SlideshowBlock";
 import { ResidencesBlock } from "@/components/ResidencesBlock";
+import { AmenitiesBlock } from "@/components/AmenitiesBlock";
 
 export const Template277FN: FunctionComponent<any> = (props: any) => {
   return (
@@ -27,15 +22,20 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         title={sampleData.aboutBlock.title}
         text={sampleData.aboutBlock.text}
       />
-      <Slideshow
+      <SlideshowBlock
         images={sampleData.slideshow}
-        tagline={sampleData.slideshowTag}
+        text={sampleData.slideshowTag}
       />
       <ResidencesBlock
         factSheet={sampleData.residenceBlock.factSheet}
         cards={sampleData.residenceBlock.cards}
         textCard={sampleData.residenceBlock.textCard}
         splitControls={false}
+      />
+      <AmenitiesBlock
+        splitControls={true}
+        cards={sampleData.amenitiesBlock.cards}
+        text={sampleData.amenitiesBlock.text}
       />
     </>
   );
