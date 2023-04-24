@@ -6,19 +6,18 @@ export const useCarousel = (
   throttleDelay: number
 ): [
   { current: number; next: number; prev: number },
-  number,
+  1 | -1,
   (args) => void,
   (args) => void
 ] => {
   const lastTriggered = useRef(Date.now());
-  // const throttleRef = useRef(true);
   const [index, setIndex] = useState({
     current: 0,
     next: 1,
     prev: length - 1,
   });
 
-  const [direction, setDirection] = useState(1);
+  const [direction, setDirection] = useState<1 | -1>(1);
 
   const nextItem = useThrottledFunction(
     () => {

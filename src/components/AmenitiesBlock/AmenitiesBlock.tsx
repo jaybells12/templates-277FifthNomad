@@ -43,7 +43,10 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
         split={splitControls}
         cards={cards}
         cardProps={{ cardWth: 940, imgHgt: 484, imgWth: 794, gap: 0 }}
-        flexProps={{ alignItems: "center", textAlign: "center" }}
+        flexProps={{
+          alignItems: "center",
+          textAlign: "center",
+        }}
       />
       <TextBar text={text} />
     </Container>

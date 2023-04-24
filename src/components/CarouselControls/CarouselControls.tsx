@@ -52,7 +52,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
       <Circle
         size="50px"
         position="relative"
-        onClick={nextFn}
+        onClick={prevFn}
         border={"2px"}
         style={{ transition: "background-color 0.3s ease" }}
         _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}
@@ -73,7 +73,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
       <Circle
         size="50px"
         position="relative"
-        onClick={prevFn}
+        onClick={nextFn}
         border={"2px"}
         style={{ transition: "background-color 0.3s ease" }}
         _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}

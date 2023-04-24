@@ -17,11 +17,7 @@ import amSuite from "../../public/Amenity_Suite.jpg"
 import amTerrace from "../../public/Amenity_Terrace.jpg"
 
 const amenitiesCards = [
-  {
-    imgSrc: amKids.src,
-    title: "kid's club",
-    text: "This playful space bursting with games and activities to explore."
-  },
+  
   {
     imgSrc: amLobby.src,
     title: "lobby library",
@@ -52,25 +48,16 @@ const amenitiesCards = [
     title: "games lounge",
     text: "Set a friendly match at the custom ping pong table and see who comes out on top."
   },
+  {
+    imgSrc: amKids.src,
+    title: "kid's club",
+    text: "This playful space bursting with games and activities to explore."
+  },
 
 ]
 
-const carouselCards = [
-  {
-    imgSrc: cardImg1.src,
-    title: "living spaces",
-    text: "Residences with luxuriously appointed interiors by Jeffrey Beers International showcase thrilling panoramic views of the Manhattan skyline.",
-    features: [
-      "Residential entrance door and surround casing panels in dark stained rift cut White Oak with black metal door trim detail complemented with polished nickel Valli & Valli door hardware",
-      "10 to 11-foot ceiling heights in entertaining rooms in select residences; 20-foot double-height ceilings in select Loggia Residences",
-      "Floor-to-ceiling windows",
-      "5 1⁄2” wide American White Oak flooring",
-      "Laundry closets with Bosch washer and dryer",
-      "Sustainable CalGreen, CEC/Water Sense polished chrome Dornbracht plumbing fixtures",
-      "Conduit provided to anticipate future electronically controlled solar shades",
-      "Valli & Valli door hardware throughout"
-    ]
-  },
+const residencesCards = [
+  
   {
     imgSrc: cardImg2.src,
     title: "kitchens",
@@ -107,6 +94,21 @@ const carouselCards = [
       "Lounge seating",
       "Jacuzzi",
       "Manhattan skyline views"
+    ]
+  },
+  {
+    imgSrc: cardImg1.src,
+    title: "living spaces",
+    text: "Residences with luxuriously appointed interiors by Jeffrey Beers International showcase thrilling panoramic views of the Manhattan skyline.",
+    features: [
+      "Residential entrance door and surround casing panels in dark stained rift cut White Oak with black metal door trim detail complemented with polished nickel Valli & Valli door hardware",
+      "10 to 11-foot ceiling heights in entertaining rooms in select residences; 20-foot double-height ceilings in select Loggia Residences",
+      "Floor-to-ceiling windows",
+      "5 1⁄2” wide American White Oak flooring",
+      "Laundry closets with Bosch washer and dryer",
+      "Sustainable CalGreen, CEC/Water Sense polished chrome Dornbracht plumbing fixtures",
+      "Conduit provided to anticipate future electronically controlled solar shades",
+      "Valli & Valli door hardware throughout"
     ]
   },
 ]
@@ -147,7 +149,7 @@ const amenitiesBlock = {
 
 const residenceBlock = {
   factSheet: "/277_5TH_FactSheet.pdf",
-  cards: carouselCards,
+  cards: residencesCards,
   textCard: {
     title: "Residences",
     text: "Distinguished one-to-three bedroom residences showcase panoramic views of the Manhattan skyline. Interiors are graced with oversized windows and ceilings reaching ten feet, complemented by warm woods and elegant natural stones.",
@@ -160,7 +162,7 @@ export default {
   videoSrc,
   navLogo: navLogo.src,
   navLinks,
-  carouselCards,
+  residencesCards,
   slideshow,
   slideshowTag,
   blockLinks,
