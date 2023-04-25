@@ -3,7 +3,16 @@ import { TextCard } from "../TextCard";
 import Image from "next/image";
 import { Container, Box } from "@chakra-ui/react";
 
-export const InfoBlock: FunctionComponent<any> = (props: any) => {
+export type InfoBlockProps = {
+  title: string;
+  text: string;
+  topImg: string;
+  botImg: string;
+};
+
+export const InfoBlock: FunctionComponent<InfoBlockProps> = (
+  props: InfoBlockProps
+) => {
   const { title, text, topImg, botImg } = props;
   return (
     <Container

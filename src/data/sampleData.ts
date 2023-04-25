@@ -17,6 +17,11 @@ import amSuite from "../../public/Amenity_Suite.jpg"
 import amTerrace from "../../public/Amenity_Terrace.jpg"
 import infoFountain from "../../public/Info-Fountain.png"
 import infoFlatiron from "../../public/Info-Flatiron.png"
+import av19c from "../../public/Avail_19C.jpg"
+import av22a from "../../public/Avail_22A.jpg"
+import av40a from "../../public/Avail_40A.jpg"
+import av45b from "../../public/Avail_45B.jpg"
+import av48b from "../../public/Avail_48B.jpg"
 
 const amenitiesCards = [
   
@@ -115,6 +120,59 @@ const residencesCards = [
   },
 ]
 
+const availability: Array<{[key: string]: string | { src: string }}> = [
+  {
+    "residence": "19C",
+    "bed/bath": "1/1",
+    "int. / ext. sq ft": "828",
+    "exposures": "E, S",
+    "price": "$1,965,000",
+    "monthly cc": "$1,194",
+    "monthly re tax": "$1,563",
+    "floorplan": { src: av19c.src}
+  },
+  {
+    "residence": "22A",
+    "bed/bath": "2/2",
+    "int. / ext. sq ft": "1,343",
+    "exposures": "N, W",
+    "price": "$3,500,000",
+    "monthly cc": "$1,936",
+    "monthly re tax": "$2,522",
+    "floorplan": { src: av22a.src}
+  },
+  {
+    "residence": "40A",
+    "bed/bath": "3/3",
+    "int. / ext. sq ft": "1,748",
+    "exposures": "N, E, W",
+    "price": "$5,500,000",
+    "monthly cc": "$2,572",
+    "monthly re tax": "$3,350",
+    "floorplan": { src: av40a.src}
+  },
+  {
+    "residence": "45B",
+    "bed/bath": "2/2",
+    "int. / ext. sq ft": "1,423",
+    "exposures": "S, N, E",
+    "price": "$4,500,000",
+    "monthly cc": "$2,052",
+    "monthly re tax": "$2,672",
+    "floorplan": { src: av45b.src}
+  },
+  {
+    "residence": "48B",
+    "bed/bath": "3/3.5",
+    "int. / ext. sq ft": "2,333 / 206",
+    "exposures": "N, E, S",
+    "price": "$9,995,000",
+    "monthly cc": "$3,438",
+    "monthly re tax": "$4,477",
+    "floorplan": { src: av48b.src}
+  },
+]
+
 const slideshow = [
   cardImg1.src,
   cardImg5.src,
@@ -165,6 +223,10 @@ const infoBlock = {
   botImgSrc: infoFlatiron.src,
 }
 
+const availabilityBlock = {
+  data: availability,
+}
+
 export default {
   logo: logo.src,
   videoSrc,
@@ -178,5 +240,6 @@ export default {
   aboutBlock,
   amenitiesBlock,
   residenceBlock,
-  infoBlock
+  infoBlock,
+  availabilityBlock,
 }

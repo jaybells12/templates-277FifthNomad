@@ -7,6 +7,7 @@ import { SlideshowBlock } from "@/components/SlideshowBlock";
 import { ResidencesBlock } from "@/components/ResidencesBlock";
 import { AmenitiesBlock } from "@/components/AmenitiesBlock";
 import { InfoBlock } from "@/components/InfoBlock";
+import { AvailabilityBlock } from "@/components/AvailabilityBlock";
 
 export const Template277FN: FunctionComponent<any> = (props: any) => {
   return (
@@ -44,6 +45,7 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         topImg={sampleData.infoBlock.topImgSrc}
         botImg={sampleData.infoBlock.botImgSrc}
       />
+      <AvailabilityBlock data={sampleData.availabilityBlock.data} />
     </>
   );
 };
