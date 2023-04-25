@@ -6,6 +6,7 @@ import { AboutBlock } from "@/components/AboutBlock";
 import { SlideshowBlock } from "@/components/SlideshowBlock";
 import { ResidencesBlock } from "@/components/ResidencesBlock";
 import { AmenitiesBlock } from "@/components/AmenitiesBlock";
+import { InfoBlock } from "@/components/InfoBlock";
 
 export const Template277FN: FunctionComponent<any> = (props: any) => {
   return (
@@ -30,12 +31,18 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         factSheet={sampleData.residenceBlock.factSheet}
         cards={sampleData.residenceBlock.cards}
         textCard={sampleData.residenceBlock.textCard}
-        splitControls={false}
+        splitVariant={false}
       />
       <AmenitiesBlock
-        splitControls={true}
         cards={sampleData.amenitiesBlock.cards}
         text={sampleData.amenitiesBlock.text}
+        splitVariant={true}
+      />
+      <InfoBlock
+        title={sampleData.infoBlock.title}
+        text={sampleData.infoBlock.text}
+        topImg={sampleData.infoBlock.topImgSrc}
+        botImg={sampleData.infoBlock.botImgSrc}
       />
     </>
   );

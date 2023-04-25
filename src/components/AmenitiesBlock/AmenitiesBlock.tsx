@@ -11,13 +11,13 @@ export type AmenitiesBlockProps = {
     text: string;
   }[];
   text: string;
-  splitControls: boolean;
+  splitVariant: boolean;
 };
 
 export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
   props: AmenitiesBlockProps
 ) => {
-  const { cards, text, splitControls } = props;
+  const { cards, text, splitVariant } = props;
   return (
     <Container
       as={"section"}
@@ -40,7 +40,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
         Amenities
       </Heading>
       <Carousel
-        split={splitControls}
+        split={splitVariant}
         cards={cards}
         cardProps={{ cardWth: 940, imgHgt: 484, imgWth: 794, gap: 0 }}
         flexProps={{

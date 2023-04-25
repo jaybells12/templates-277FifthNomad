@@ -7,7 +7,7 @@ import { TRIM_COLOR, PRIMARY_COLOR } from "@/styles/GlobalStyles";
 export type ResidencesBlockProps = {
   factSheet: string;
   textCard: TextCardProps;
-  splitControls: boolean;
+  splitVariant: boolean;
   cards: {
     imgSrc: string;
     title: string;
@@ -19,7 +19,7 @@ export type ResidencesBlockProps = {
 export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
   props: ResidencesBlockProps
 ) => {
-  const { cards, factSheet, textCard, splitControls } = props;
+  const { cards, factSheet, textCard, splitVariant } = props;
   return (
     <Container as="section" minW={"full"} maxW={"unset"} p={0}>
       <TextCard
@@ -56,7 +56,7 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
       </TextCard>
       <Carousel
         cards={cards}
-        split={splitControls}
+        split={splitVariant}
         //These values are to match template as is, could be rearranged to be dynamically input
         cardProps={{ cardWth: 600, imgWth: 600, imgHgt: 346, gap: 6 }}
       />

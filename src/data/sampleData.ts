@@ -15,6 +15,8 @@ import amKids from "../../public/Amenity_Kids.jpg"
 import amLobby from "../../public/Amenity_Lobby.jpg"
 import amSuite from "../../public/Amenity_Suite.jpg"
 import amTerrace from "../../public/Amenity_Terrace.jpg"
+import infoFountain from "../../public/Info-Fountain.png"
+import infoFlatiron from "../../public/Info-Flatiron.png"
 
 const amenitiesCards = [
   
@@ -156,6 +158,12 @@ const residenceBlock = {
   }
 }
 
+const infoBlock = {
+  title: "NoMad",
+  text: "With a distinguished Fifth Avenue address and moments away from Madison Square Park, 277 Fifth Ave boasts access to Manhattan’s most elite restaurants, parks, shops, and hotels.",
+  topImgSrc: infoFountain.src,
+  botImgSrc: infoFlatiron.src,
+}
 
 export default {
   logo: logo.src,
@@ -169,5 +177,6 @@ export default {
   CTATagline,
   aboutBlock,
   amenitiesBlock,
-  residenceBlock
+  residenceBlock,
+  infoBlock
 }
