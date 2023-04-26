@@ -1,4 +1,4 @@
-import { Grid, GridItem, Heading, VStack, Text } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import { TextCard } from "../TextCard";
 import { Image } from "@chakra-ui/next-js";
 import { LinksBlock } from "../LinksBlock";

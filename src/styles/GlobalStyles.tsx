@@ -1,9 +1,10 @@
 import { createGlobalStyle } from "styled-components";
+import { publicSans } from "@/providers/StyleProvider";
+import { PortraitText, PortraitCondensed } from "src/fonts/fonts";
 
 export const PRIMARY_COLOR = "#fff8f2";
 export const ACCENT_COLOR = "#86878d";
 export const TRIM_COLOR = "#3B3D47";
-export const FONT = "Helvetica, Verdana, sans-serif";
 
 export const GlobalStyles: any = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -53,8 +54,10 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-body{
-  font-family: ${FONT};
-  background-color: ${PRIMARY_COLOR}
+body {
+  font-family: "${PortraitText.style.fontFamily}, ${publicSans.style.fontFamily}, sans-serif"
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: "${PortraitCondensed.style.fontFamily}, ${publicSans.style.fontFamily}, sans-serif"
 }
 `;
