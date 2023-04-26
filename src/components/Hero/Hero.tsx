@@ -4,12 +4,18 @@ import { Logo } from "../Logo";
 import { VideoBlock } from "../VideoBlock";
 import { Container } from "@chakra-ui/react";
 export type HeroProps = {
-  logoSrc: string;
+  logo: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
   videoSrc: string;
   tagline: string;
 };
 
 export const Hero: FunctionComponent<HeroProps> = (props: HeroProps) => {
+  const { logo, videoSrc, tagline } = props;
   return (
     <Container
       as={"section"}
@@ -18,23 +24,23 @@ export const Hero: FunctionComponent<HeroProps> = (props: HeroProps) => {
       padding={"0"}
     >
       <Logo
-        src={props.logoSrc}
-        alt={"Logo"}
+        src={logo.src}
+        alt={logo.alt}
         position={"absolute"}
         left={"0"}
         right={"0"}
         margin={"0 auto"}
         top={"10%"}
         zIndex={"2"}
-        width={90}
-        height={144}
+        width={logo.width}
+        height={logo.height}
       />
-      <VideoBlock src={props.videoSrc} />
+      <VideoBlock src={videoSrc} />
       <CallToAction
-        tagline={props.tagline}
-        position="absolute"
-        bottom="10%"
-        zIndex="2"
+        tagline={tagline}
+        position={"absolute"}
+        bottom={"10%"}
+        zIndex={"2"}
       />
     </Container>
   );

@@ -1,5 +1,5 @@
 import navLogo from "../../public/277-Fifth-Logo-NoMad-horizontal.svg"
-import logo from "../../public/277-Fifth-Logo-NoMad-white.svg"
+import logoImg from "../../public/277-Fifth-Logo-NoMad-white.svg"
 import cardImg1 from "../../public/TW__5764_HIGH-RES.webp"
 import cardImg2 from "../../public/TW__5698_HIGH-RES.webp"
 import cardImg3 from "../../public/TW__5477_HIGH-RES.webp"
@@ -195,6 +195,13 @@ const videoSrc = "/Unbranded-277-5th-Ave-New-York-NY-100162-Fredrik-Eklund-1.mp4
 
 const navLinks = ["residences", "inquire"];
 
+const logo = {
+  src: logoImg.src,
+  alt: "logo",
+  width: logoImg.width,
+  height: logoImg.height
+}
+
 const aboutBlock = {
   imgSrc: aboutImg1.src,
   links: blockLinks,
@@ -227,8 +234,17 @@ const availabilityBlock = {
   data: availability,
 }
 
+const InquireBlock = {
+  contact: {
+    logo,
+    contactInfo: ["sales@277fifthnomad.com", "212 779 2772"],
+    address: "277 Fifth Avenue, New York, NY",
+    teamsInfo: ["Douglas Elliman Development Marketing", "Julia Jiang Hawkins and Charles Hawkins of\nThe Julia Jiang and Charles Hawkins Team", "Fredrik Eklund and John Gomes ofThe Eklund|Gomes Team"]
+  }
+}
+
 export default {
-  logo: logo.src,
+  logo,
   videoSrc,
   navLogo: navLogo.src,
   navLinks,

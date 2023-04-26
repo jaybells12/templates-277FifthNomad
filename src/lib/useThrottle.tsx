@@ -1,7 +1,3 @@
-/*
-takes a function, returns a memoized callback 
-*/
-
 import { useCallback, useRef, useEffect, MutableRefObject } from "react";
 
 const getRemainingTime = (lastTriggered: number, throttleMs: number) => {
@@ -16,15 +12,6 @@ export const useThrottledFunction = (
   interval: number,
   lastTriggered: MutableRefObject<number>
 ) => {
-  const timeoutRef = useRef(null);
-
-  const cancel = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-  }, []);
-
   const throttledFn = useCallback(
     (args) => {
       let remainingTime = getRemainingTime(lastTriggered.current, interval);
@@ -32,29 +19,10 @@ export const useThrottledFunction = (
       if (remainingTime === 0) {
         lastTriggered.current = Date.now();
         cb(args);
-        cancel();
       }
     },
-    [cb, cancel]
+    [cb]
   );
-
-  useEffect(() => cancel, [cancel]);
 
   return throttledFn;
 };
-
-/*
-
-else if (!timeoutRef.current) {
-        timeoutRef.current = setTimeout(() => {
-          remainingTime = getRemainingTime(lastTriggered.current, interval);
-
-          if (remainingTime === 0) {
-            lastTriggered.current = Date.now();
-            cb(args);
-            cancel();
-          }
-        }, remainingTime);
-      }
-
-      */

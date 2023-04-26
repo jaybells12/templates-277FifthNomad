@@ -4,6 +4,9 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Public_Sans } from "next/font/google";
 import { PortraitCondensed, PortraitText } from "src/fonts/fonts";
+import { radioTheme } from "@/theme/RadioTheme";
+import { inputTheme } from "@/theme/InputTheme";
+import { selectTheme } from "@/theme/SelectTheme";
 
 export const publicSans = Public_Sans({ subsets: ["latin"] });
 
@@ -21,6 +24,7 @@ const theme = extendTheme({
       trim: "#3B3D47",
     },
   },
+  components: { Radio: radioTheme, Input: inputTheme, Select: selectTheme },
 });
 
 export const StyleProvider: FunctionComponent<any> = (props: any) => {

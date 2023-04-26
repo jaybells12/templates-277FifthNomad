@@ -8,13 +8,14 @@ import { ResidencesBlock } from "@/components/ResidencesBlock";
 import { AmenitiesBlock } from "@/components/AmenitiesBlock";
 import { InfoBlock } from "@/components/InfoBlock";
 import { AvailabilityBlock } from "@/components/AvailabilityBlock";
+import { InquireForm } from "@/components/InquireForm";
 
 export const Template277FN: FunctionComponent<any> = (props: any) => {
   return (
     <>
       <NavBar links={sampleData.navLinks} logoSrc={sampleData.navLogo} />
       <Hero
-        logoSrc={sampleData.logo}
+        logo={sampleData.logo}
         tagline={sampleData.CTATagline}
         videoSrc={sampleData.videoSrc}
       />
@@ -46,6 +47,10 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         botImg={sampleData.infoBlock.botImgSrc}
       />
       <AvailabilityBlock data={sampleData.availabilityBlock.data} />
+      <InquireForm
+        priceRanges={["1m", "2m", "3m"]}
+        fromRanges={["social", "web", "tv"]}
+      />
     </>
   );
 };
