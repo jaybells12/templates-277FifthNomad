@@ -1,7 +1,7 @@
 import sampleData from "@/data/sampleData";
 import { FunctionComponent } from "react";
 import { NavBar } from "@/components/NavBar/NavBar";
-import { Hero } from "@/components/Hero";
+import { HeroBlock } from "@/components/HeroBlock";
 import { AboutBlock } from "@/components/AboutBlock";
 import { SlideshowBlock } from "@/components/SlideshowBlock";
 import { ResidencesBlock } from "@/components/ResidencesBlock";
@@ -14,7 +14,7 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
   return (
     <>
       <NavBar links={sampleData.navLinks} logoSrc={sampleData.navLogo} />
-      <Hero
+      <HeroBlock
         logo={sampleData.logo}
         tagline={sampleData.CTATagline}
         videoSrc={sampleData.videoSrc}

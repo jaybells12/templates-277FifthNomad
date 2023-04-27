@@ -1,21 +1,21 @@
-import { StyledLinksBlock } from "./LinksBlock.style";
 import { Link } from "@chakra-ui/next-js";
-import { Divider, textDecoration } from "@chakra-ui/react";
+import { Divider, VStack } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { motion } from "framer-motion";
-import { ACCENT_COLOR } from "@/styles/GlobalStyles";
-
-export type LinksBlockProps = {
+/*
+Need to rename this, *Block convention is reserved for fullpage sections
+*/
+export type LinksStackProps = {
   links: string[];
 };
 
-export const LinksBlock: FunctionComponent<LinksBlockProps> = (
-  props: LinksBlockProps
+export const LinksStack: FunctionComponent<LinksStackProps> = (
+  props: LinksStackProps
 ) => {
   return (
-    <StyledLinksBlock
+    <VStack
       align="flex-start"
-      divider={<Divider color={ACCENT_COLOR} />}
+      divider={<Divider color={"brand.accent"} />}
       gap={"0.5rem"}
     >
       {props.links.map((link, idx) => (
@@ -38,6 +38,6 @@ export const LinksBlock: FunctionComponent<LinksBlockProps> = (
           </Link>
         </motion.div>
       ))}
-    </StyledLinksBlock>
+    </VStack>
   );
 };

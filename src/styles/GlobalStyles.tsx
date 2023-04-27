@@ -1,10 +1,11 @@
 import { createGlobalStyle } from "styled-components";
-import { publicSans } from "@/providers/StyleProvider";
+import { publicSans } from "@/theme/Theme";
 import { PortraitText, PortraitCondensed } from "src/fonts/fonts";
 
-export const PRIMARY_COLOR = "#fff8f2";
-export const ACCENT_COLOR = "#86878d";
-export const TRIM_COLOR = "#3B3D47";
+// Added these to the theme for Chakra, need to modify components to pull color from the theme
+export const PRIMARY_COLOR = "#fff8f2"; // brand.primary
+export const ACCENT_COLOR = "#86878d"; // brand.accent
+export const TRIM_COLOR = "#3B3D47"; // brand.trim
 
 export const GlobalStyles: any = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 

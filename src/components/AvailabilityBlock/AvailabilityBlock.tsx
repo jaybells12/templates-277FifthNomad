@@ -47,12 +47,7 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
   };
 
   return (
-    <Container
-      as={"section"}
-      width={"90%"}
-      maxW={"unset"}
-      marginInline={"auto"}
-    >
+    <Container as={"section"} variant={"section"}>
       <Heading
         as={"h2"}
         marginBottom={"5rem"}
@@ -108,19 +103,6 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
                         width={"80%"}
                         href={value.src}
                         target={"_blank"}
-                        variant={"outline"}
-                        borderRadius={0}
-                        color={TRIM_COLOR}
-                        borderColor={TRIM_COLOR}
-                        fontWeight={"normal"}
-                        fontSize={"0.75rem"}
-                        letterSpacing={"2px"}
-                        px={"2rem"}
-                        transitionDuration={"0.3s"}
-                        _hover={{
-                          color: PRIMARY_COLOR,
-                          bgColor: TRIM_COLOR,
-                        }}
                       >
                         FLOORPLAN
                       </Button>

@@ -7,6 +7,7 @@ const { definePartsStyle, defineMultiStyleConfig } =
 const underlined = definePartsStyle({
   field: {
     width: "100%",
+    bgColor: "inherit",
     borderRadius: "0",
     border: "0",
     borderBottom: "1px solid",

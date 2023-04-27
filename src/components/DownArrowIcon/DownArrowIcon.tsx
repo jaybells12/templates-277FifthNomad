@@ -7,7 +7,7 @@ export const DownArrowIcon: FunctionComponent<any> = (props: any) => {
         xmlns="http://www.w3.org/2000/svg"
         d="M1 1L12 12L23 1"
         stroke="#535353"
-        stroke-width="1"
+        strokeWidth="1"
       />
     </Icon>
   );

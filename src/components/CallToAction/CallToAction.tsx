@@ -19,7 +19,8 @@ export const CallToAction: FunctionComponent<CallToActionProps> = (
         whiteSpace="pre"
         textAlign="center"
         lineHeight="1.4"
-        fontSize="1.125rem"
+        fontWeight={"medium"}
+        fontSize="1.75rem"
       >
         {props.tagline}
       </Text>

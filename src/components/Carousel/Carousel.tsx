@@ -32,7 +32,7 @@ export const Carousel: FunctionComponent<CarouselProps> = (
   const [index, direction, next, prev] = useCarousel(cards.length, 1050);
 
   return (
-    <Box position="relative" overflowY="visible" overflowX="clip">
+    <Box position="relative" marginLeft={!split && "25%"}>
       <CarouselControls nextFn={next} prevFn={prev} zIndex={2} split={split} />
       <HStack
         position="relative"

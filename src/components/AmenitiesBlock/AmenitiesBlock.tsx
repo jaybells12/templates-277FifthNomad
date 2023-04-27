@@ -21,10 +21,10 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
   return (
     <Container
       as={"section"}
-      minW={"full"}
-      maxW={"unset"}
+      variant={"section"}
       bgColor={TRIM_COLOR}
-      p={0}
+      overflowY={"visible"}
+      overflowX={"clip"}
     >
       <Heading
         as={"h2"}

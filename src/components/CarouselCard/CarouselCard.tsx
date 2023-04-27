@@ -17,11 +17,29 @@ import { AnimatePresence, motion } from "framer-motion";
 const wholeVariant = {
   enter: ({ width, dir, pos }) =>
     dir > 0
+      ? pos > 0
+        ? {
+            x: 0,
+            opacity: 1,
+            transition: {
+              x: { from: width, duration: 1 },
+              opacity: { from: 0, duration: 1 },
+            },
+          }
+        : {
+            x: 0,
+            opacity: 1,
+            transition: {
+              x: { from: width, duration: 1 },
+            },
+          }
+      : pos < 0
       ? {
           x: 0,
           opacity: 1,
           transition: {
-            x: { from: width, duration: 1 },
+            x: { from: -width, duration: 1 },
+            opacity: { from: 0, duration: 1 },
           },
         }
       : {
@@ -99,8 +117,8 @@ export type CarouselCardProps = {
   features?: string[];
 } & CardProps;
 
-// Need to play with popover. Opening it seems to cause scroll jump to top of page,
-// Also seems to open under other elements, need ot play with zIndex
+// Popover is not pushing down content below it, because its absolutely positioned.
+// Need to change this in order to emulate template behavior.
 // Check out Collapse component
 
 export const CarouselCard: FunctionComponent<CarouselCardProps> = (
@@ -208,8 +226,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
                 closeOnBlur={false}
                 eventListeners={false}
                 autoFocus={false}
-                preventOverflow={false}
-                placement="bottom-start"
+                placement={"bottom-start"}
               >
                 <PopoverTrigger>
                   <Text

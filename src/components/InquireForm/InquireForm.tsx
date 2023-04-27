@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  FunctionComponent,
-  useState,
-  useRef,
-  MutableRefObject,
-} from "react";
+import { FunctionComponent, useState } from "react";
 import {
   Input,
   FormControl,
@@ -12,6 +6,9 @@ import {
   RadioGroup,
   Radio,
   FormErrorMessage,
+  FormLabel,
+  HStack,
+  Button,
 } from "@chakra-ui/react";
 import { DownArrowIcon } from "../DownArrowIcon";
 
@@ -29,78 +26,140 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
   const [last, setLast] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
+  const [broker, setBroker] = useState(null);
+  const [bedrooms, setBedrooms] = useState("");
+  const [range, setRange] = useState("");
+  const [heard, setHeard] = useState("");
 
   return (
-    <FormControl width={"50%"} margin={"0 auto"}>
-      <Input
-        id="firstName"
-        type={"text"}
-        placeholder={"FIRST NAME"}
-        aria-label={"First name"}
-        value={first}
-        onChange={(e) => setFirst(e.target.value)}
-      />
-      <Input
-        id="lastName"
-        type={"text"}
-        placeholder={"LAST NAME"}
-        aria-label={"Last name"}
-        value={last}
-        onChange={(e) => setLast(e.target.value)}
-      />
+    <FormControl
+      width={"50%"}
+      margin={"0 auto"}
+      display={"flex"}
+      flexDir={"column"}
+      gap={"1rem"}
+    >
+      <HStack gap={"2rem"}>
+        <Input
+          id="firstName"
+          type={"text"}
+          placeholder={"FIRST NAME *"}
+          _placeholder={{ color: "brand.placeholder" }}
+          aria-label={"First name"}
+          value={first}
+          onChange={(e) => setFirst(e.target.value)}
+          isRequired
+        />
+        <Input
+          id="lastName"
+          type={"text"}
+          placeholder={"LAST NAME *"}
+          _placeholder={{ color: "brand.placeholder" }}
+          aria-label={"Last name"}
+          value={last}
+          onChange={(e) => setLast(e.target.value)}
+          isRequired
+        />
+      </HStack>
       <Input
         id="email"
         type={"email"}
-        placeholder={"EMAIL ADDRESS"}
+        placeholder={"EMAIL ADDRESS *"}
+        _placeholder={{ color: "brand.placeholder" }}
         aria-label={"Email address"}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        isRequired
       />
       <Input
         id="telephone"
         type={"tel"}
         placeholder={"TELEPHONE"}
+        _placeholder={{ color: "brand.placeholder" }}
         aria-label={"Telephone"}
         value={tel}
         maxLength={10}
         onChange={(e) => setTel(e.target.value)}
       />
-      <RadioGroup id="residence" aria-label={"Desired residence type"}>
-        <Radio value={"1"}>1 BEDROOM</Radio>
-        <Radio value={"2"}>2 BEDROOM</Radio>
-        <Radio value={"3"}>3 BEDROOM</Radio>
+      <FormLabel htmlFor="residence" letterSpacing={"2px"}>
+        DESIRED RESIDENCE TYPE
+      </FormLabel>
+      <RadioGroup
+        id="residence"
+        aria-label={"Desired residence type"}
+        display={"flex"}
+        justifyContent={"space-between"}
+        onChange={(value) => setBedrooms(value)}
+      >
+        <Radio value={"1bed"} checked={bedrooms === "1bed"}>
+          1 BEDROOM
+        </Radio>
+        <Radio value={"2bed"} checked={bedrooms === "2bed"}>
+          2 BEDROOM
+        </Radio>
+        <Radio value={"3bed"} checked={bedrooms === "3bed"}>
+          3 BEDROOM
+        </Radio>
       </RadioGroup>
-      <Select id="price" aria-label={"Price range"} icon={<DownArrowIcon />}>
-        <option value={""} selected disabled>
+      <Select
+        id="price"
+        value={range}
+        onChange={(e) => setRange(e.target.value)}
+        aria-label={"Price range"}
+        icon={<DownArrowIcon />}
+      >
+        <option value={""} disabled>
           PRICE RANGE
         </option>
         {priceRanges.map((price, idx) => (
-          <option key={idx}>{price}</option>
+          <option key={idx} value={price}>
+            {price}
+          </option>
         ))}
       </Select>
       <Select
         id="from"
+        value={heard}
+        onChange={(e) => setHeard(e.target.value)}
         aria-label={"How did you hear about us?"}
         icon={<DownArrowIcon />}
       >
-        <option value={""} selected disabled>
+        <option value={""} disabled>
           HOW DID YOU HEAR ABOUT US?
         </option>
         {fromRanges.map((from, idx) => (
-          <option key={idx}>{from}</option>
+          <option key={idx} value={from}>
+            {from}
+          </option>
         ))}
       </Select>
-      <RadioGroup id="broker" aria-label={"Are you a broker?"}>
-        <Radio value={"yes"}>YES</Radio>
-        <Radio value={"no"}>NO</Radio>
+      <FormLabel htmlFor="broker" letterSpacing={"2px"}>
+        ARE YOU A BROKER?
+      </FormLabel>
+      <RadioGroup
+        id="broker"
+        aria-label={"Are you a broker?"}
+        onChange={(value) => setBroker(value)}
+      >
+        <Radio value={"yes"} checked={broker === "yes"} paddingRight={"2rem"}>
+          YES
+        </Radio>
+        <Radio value={"no"} checked={broker === "no"}>
+          NO
+        </Radio>
       </RadioGroup>
-      {/*Conditional Here, IF broker is yes */}
-      <Input
-        id="brokerage"
-        type={"text"}
-        placeholder={"BROKERAGE"}
-        aria-label={"Brokerage"}
-      />
+      {broker === "yes" && (
+        <Input
+          id="brokerage"
+          type={"text"}
+          placeholder={"BROKERAGE"}
+          _placeholder={{ color: "brand.placeholder" }}
+          aria-label={"Brokerage"}
+        />
+      )}
+      <Button width={"138px"} height={"34px"} lineHeight={"1"}>
+        SUBMIT
+      </Button>
     </FormControl>
   );
 };

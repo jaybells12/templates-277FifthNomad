@@ -1,8 +1,9 @@
 import { FunctionComponent } from "react";
 import { CallToAction } from "../CallToAction";
 import { Logo } from "../Logo";
-import { VideoBlock } from "../VideoBlock";
+import { VideoFull } from "../VideoFull";
 import { Container } from "@chakra-ui/react";
+
 export type HeroProps = {
   logo: {
     src: string;
@@ -14,15 +15,10 @@ export type HeroProps = {
   tagline: string;
 };
 
-export const Hero: FunctionComponent<HeroProps> = (props: HeroProps) => {
+export const HeroBlock: FunctionComponent<HeroProps> = (props: HeroProps) => {
   const { logo, videoSrc, tagline } = props;
   return (
-    <Container
-      as={"section"}
-      maxWidth={"unset"}
-      position={"relative"}
-      padding={"0"}
-    >
+    <Container as={"section"} variant={"section"} position={"relative"}>
       <Logo
         src={logo.src}
         alt={logo.alt}
@@ -35,7 +31,7 @@ export const Hero: FunctionComponent<HeroProps> = (props: HeroProps) => {
         width={logo.width}
         height={logo.height}
       />
-      <VideoBlock src={videoSrc} />
+      <VideoFull src={videoSrc} />
       <CallToAction
         tagline={tagline}
         position={"absolute"}

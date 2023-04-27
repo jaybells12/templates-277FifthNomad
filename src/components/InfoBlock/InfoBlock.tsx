@@ -15,12 +15,7 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
 ) => {
   const { title, text, topImg, botImg } = props;
   return (
-    <Container
-      as={"section"}
-      maxW={"unset"}
-      margin={"0 auto"}
-      width={"fit-content"}
-    >
+    <Container as={"section"} variant={"section"}>
       <TextCard
         title={title}
         text={text}
@@ -31,7 +26,7 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
           maxW: "min-content",
         }}
       />
-      <Box display={"inline-block"}>
+      <Box display={"inline-block"} height={"566px"}>
         <Image
           src={topImg}
           width={319}
