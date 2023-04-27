@@ -1,5 +1,6 @@
 import navLogo from "../../public/277-Fifth-Logo-NoMad-horizontal.svg"
 import logoImg from "../../public/277-Fifth-Logo-NoMad-white.svg"
+import logoImgBlack from "../../public/277-Fifth-Logo-NoMad-black.svg"
 import cardImg1 from "../../public/TW__5764_HIGH-RES.webp"
 import cardImg2 from "../../public/TW__5698_HIGH-RES.webp"
 import cardImg3 from "../../public/TW__5477_HIGH-RES.webp"
@@ -202,6 +203,13 @@ const logo = {
   height: logoImg.height
 }
 
+const logoBlack = {
+  src: logoImgBlack.src,
+  alt: "logo",
+  width: logoImgBlack.width,
+  height: logoImgBlack.height
+}
+
 const aboutBlock = {
   imgSrc: aboutImg1.src,
   links: blockLinks,
@@ -234,15 +242,18 @@ const availabilityBlock = {
   data: availability,
 }
 
-const InquireBlock = {
+const inquireBlock = {
   contact: {
-    logo,
+    logo: logoBlack,
     contactInfo: ["sales@277fifthnomad.com", "212 779 2772"],
     address: "277 Fifth Avenue, New York, NY",
-    teamsInfo: ["Douglas Elliman Development Marketing", "Julia Jiang Hawkins and Charles Hawkins of\nThe Julia Jiang and Charles Hawkins Team", "Fredrik Eklund and John Gomes ofThe Eklund|Gomes Team"]
+    teamsInfo: ["Douglas Elliman Development Marketing", "Julia Jiang Hawkins and Charles Hawkins of\nThe Julia Jiang and Charles Hawkins Team", "Fredrik Eklund and John Gomes of\nThe Eklund|Gomes Team"]
+  },
+  form:{
+    priceRanges: ["$1.5M - $2.5M","$2.5M - $5M", "$5M"],
+    fromRanges: ["Broker / MLS", "Eblast", "Event", "Online Search", "Press", "Referral", "Site Signage", "StreetEasy.com", "Social Media"]
   }
 }
-
 export default {
   logo,
   videoSrc,
@@ -258,4 +269,5 @@ export default {
   residenceBlock,
   infoBlock,
   availabilityBlock,
+  inquireBlock
 }

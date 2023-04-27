@@ -9,10 +9,12 @@ import {
   FormLabel,
   HStack,
   Button,
+  Heading,
 } from "@chakra-ui/react";
 import { DownArrowIcon } from "../DownArrowIcon";
 
 // Need to replicate telephone input field behavior
+// Need to implement Form Error Messages
 export type InquireFormProps = {
   priceRanges: string[];
   fromRanges: string[];
@@ -33,12 +35,21 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
 
   return (
     <FormControl
-      width={"50%"}
-      margin={"0 auto"}
       display={"flex"}
       flexDir={"column"}
       gap={"1rem"}
+      flexGrow={"0"}
+      width={"unset"}
     >
+      <Heading
+        as={"h2"}
+        fontSize={"7.25rem"}
+        lineHeight={"0.9"}
+        fontWeight={"normal"}
+        textAlign={"left"}
+      >
+        Inquire
+      </Heading>
       <HStack gap={"2rem"}>
         <Input
           id="firstName"

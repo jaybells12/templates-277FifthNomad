@@ -1,13 +1,31 @@
 import { FunctionComponent } from "react";
-import { InquireContact } from "../InquireContact";
-import { InquireForm } from "../InquireForm";
-import { Container } from "@chakra-ui/react";
+import { InquireContact, InquireContactProps } from "../InquireContact";
+import { InquireForm, InquireFormProps } from "../InquireForm";
+import { Container, Flex } from "@chakra-ui/react";
 
-export const InquireBlock: FunctionComponent<any> = (props: any) => {
+export type InquireBlockProps = {
+  contact: InquireContactProps;
+  form: InquireFormProps;
+};
+
+export const InquireBlock: FunctionComponent<InquireBlockProps> = (
+  props: InquireBlockProps
+) => {
+  const { contact, form } = props;
   return (
-    <Container as={"section"} variant={"section"}>
-      <InquireContact logo={} address={} contactInfo={} teamsInfo={} />
-      <InquireForm fromRanges={} priceRanges={} />
+    <Container as={"section"} variant={"section"} marginBottom={"10rem"}>
+      <Flex justify={"center"} gap={"9rem"}>
+        <InquireContact
+          logo={contact.logo}
+          address={contact.address}
+          contactInfo={contact.contactInfo}
+          teamsInfo={contact.teamsInfo}
+        />
+        <InquireForm
+          fromRanges={form.fromRanges}
+          priceRanges={form.priceRanges}
+        />
+      </Flex>
     </Container>
   );
 };

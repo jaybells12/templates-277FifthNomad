@@ -1,11 +1,13 @@
-import { Public_Sans } from "next/font/google";
 import { PortraitCondensed, PortraitText } from "src/fonts/fonts";
-import { radioTheme } from "@/theme/RadioTheme";
-import { inputTheme } from "@/theme/InputTheme";
-import { selectTheme } from "@/theme/SelectTheme";
+import { extendTheme } from "@chakra-ui/react";
+import { Public_Sans } from "next/font/google";
+import { radioTheme } from "./RadioTheme";
+import { inputTheme } from "./InputTheme";
+import { selectTheme } from "./SelectTheme";
 import { buttonTheme } from "./ButtonTheme";
 import { containerTheme } from "./ContainerTheme";
-import { extendTheme } from "@chakra-ui/react";
+import { headingTheme } from "./HeadingTheme";
+import { textTheme } from "./TextTheme";
 
 export const publicSans = Public_Sans({ subsets: ["latin"] });
 
@@ -32,5 +34,13 @@ export const Theme = extendTheme({
       placeholder: "#535353",
     },
   },
-  components: { Radio: radioTheme, Input: inputTheme, Select: selectTheme, Button: buttonTheme, Container: containerTheme },
+  components: { 
+    Radio: radioTheme, 
+    Input: inputTheme, 
+    Select: selectTheme, 
+    Button: buttonTheme, 
+    Container: containerTheme, 
+    Heading: headingTheme,
+    Text: textTheme,
+  },
 });

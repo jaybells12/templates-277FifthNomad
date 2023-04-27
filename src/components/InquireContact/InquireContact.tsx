@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { Logo } from "../Logo";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 
 export type InquireContactProps = {
   logo: {
@@ -19,23 +19,39 @@ export const InquireContact: FunctionComponent<InquireContactProps> = (
 ) => {
   const { logo, contactInfo, address, teamsInfo } = props;
   return (
-    <Box>
+    <VStack alignItems={"flex-start"} gap={"2rem"}>
       <Logo
         src={logo.src}
         alt={logo.alt}
         width={logo.width}
         height={logo.height}
       />
-      <Heading as={"h6"}>CONTACT</Heading>
-      {contactInfo.map((contact, idx) => (
-        <Text key={idx}>{contact}</Text>
-      ))}
-      <Heading as={"h6"}>SALES OFFICE</Heading>
-      <Text>{address}</Text>
-      <Heading as={"h6"}>EXCLUSIVE SALES & MARKETING</Heading>
-      {teamsInfo.map((team, idx) => (
-        <Text key={idx}>{team}</Text>
-      ))}
-    </Box>
+      <Box>
+        <Heading as={"h6"} variant={"contact"}>
+          CONTACT
+        </Heading>
+        {contactInfo.map((contact, idx) => (
+          <Text key={idx} variant={"contact"}>
+            {contact}
+          </Text>
+        ))}
+      </Box>
+      <Box>
+        <Heading as={"h6"} variant={"contact"}>
+          SALES OFFICE
+        </Heading>
+        <Text variant={"contact"}>{address}</Text>
+      </Box>
+      <Box>
+        <Heading as={"h6"} variant={"contact"}>
+          EXCLUSIVE SALES & MARKETING
+        </Heading>
+        {teamsInfo.map((team, idx) => (
+          <Text key={idx} variant={"contact"} marginBottom={"1rem"}>
+            {team}
+          </Text>
+        ))}
+      </Box>
+    </VStack>
   );
 };
