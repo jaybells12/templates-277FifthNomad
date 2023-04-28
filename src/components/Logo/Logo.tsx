@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { Image, ImageProps } from "@chakra-ui/next-js";
-import { AlertTitle, PositionProps } from "@chakra-ui/react";
+import { PositionProps } from "@chakra-ui/react";
 
 export type LogoProps = {
   src: string;

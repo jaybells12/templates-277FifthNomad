@@ -1,4 +1,3 @@
-import { TRIM_COLOR } from "@/styles/GlobalStyles";
 import { Carousel } from "../Carousel";
 import { TextBar } from "../TextBar";
 import { Container, Heading } from "@chakra-ui/react";
@@ -22,7 +21,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
     <Container
       as={"section"}
       variant={"section"}
-      bgColor={TRIM_COLOR}
+      bgColor={"brand.trim"}
       overflowY={"visible"}
       overflowX={"clip"}
     >

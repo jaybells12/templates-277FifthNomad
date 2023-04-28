@@ -10,6 +10,7 @@ import { InfoBlock } from "@/components/InfoBlock";
 import { AvailabilityBlock } from "@/components/AvailabilityBlock";
 import { InquireForm } from "@/components/InquireForm";
 import { InquireBlock } from "@/components/InquireBlock";
+import { Footer } from "@/components/Footer";
 
 export const Template277FN: FunctionComponent<any> = (props: any) => {
   return (
@@ -52,6 +53,7 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         contact={sampleData.inquireBlock.contact}
         form={sampleData.inquireBlock.form}
       />
+      <Footer text={sampleData.footer.text} logos={sampleData.footer.logos} />
     </>
   );
 };

@@ -10,7 +10,15 @@ const contact = defineStyle({
   letterSpacing: "0.2px"
 })
 
+const footer = defineStyle({
+  fontFamily: "PortraitText",
+  fontSize: "0.625rem",
+  fontWeight: "light",
+  lineHeight: "1.5",
+  textAlign: "left",
+})
+
 export const textTheme = defineStyleConfig({
-  variants: { contact },
+  variants: { contact, footer },
 
 })

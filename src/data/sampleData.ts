@@ -280,5 +280,6 @@ export default {
   residenceBlock,
   infoBlock,
   availabilityBlock,
-  inquireBlock
+  inquireBlock,
+  footer
 }
