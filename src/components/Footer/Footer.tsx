@@ -23,7 +23,7 @@ export const Footer: FunctionComponent<FooterProps> = (props: FooterProps) => {
                 href={pdf}
                 target={"_blank"}
                 textDecoration={"underline"}
-                paddingLeft={"3px"}
+                paddingLeft={"3gipx"}
               >
                 Fair Housing Notice
               </Link>

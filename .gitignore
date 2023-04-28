@@ -37,3 +37,6 @@ next-env.d.ts
 
 # vs code
 .vscode
+
+# personal
+stories.md
