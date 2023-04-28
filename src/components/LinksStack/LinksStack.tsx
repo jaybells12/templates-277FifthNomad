@@ -21,9 +21,9 @@ export const LinksStack: FunctionComponent<LinksStackProps> = (
       {props.links.map((link, idx) => (
         <motion.div
           key={idx}
-          whileHover={{ x: 15 }}
+          whileHover={{ x: 10 }}
           transition={{
-            duration: 0.5,
+            duration: 0.3,
             type: "tween",
           }}
         >

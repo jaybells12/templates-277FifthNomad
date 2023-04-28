@@ -10,6 +10,7 @@ import {
   HStack,
   Button,
   Heading,
+  Box,
 } from "@chakra-ui/react";
 import { DownArrowIcon } from "../DownArrowIcon";
 
@@ -37,7 +38,7 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
     <FormControl
       display={"flex"}
       flexDir={"column"}
-      gap={"1rem"}
+      gap={"1.75rem"}
       flexGrow={"0"}
       width={"unset"}
     >
@@ -92,26 +93,33 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
         maxLength={10}
         onChange={(e) => setTel(e.target.value)}
       />
-      <FormLabel htmlFor="residence" letterSpacing={"2px"}>
-        DESIRED RESIDENCE TYPE
-      </FormLabel>
-      <RadioGroup
-        id="residence"
-        aria-label={"Desired residence type"}
-        display={"flex"}
-        justifyContent={"space-between"}
-        onChange={(value) => setBedrooms(value)}
-      >
-        <Radio value={"1bed"} checked={bedrooms === "1bed"}>
-          1 BEDROOM
-        </Radio>
-        <Radio value={"2bed"} checked={bedrooms === "2bed"}>
-          2 BEDROOM
-        </Radio>
-        <Radio value={"3bed"} checked={bedrooms === "3bed"}>
-          3 BEDROOM
-        </Radio>
-      </RadioGroup>
+      <Box>
+        <FormLabel
+          htmlFor="residence"
+          fontSize={"0.875rem"}
+          letterSpacing={"2px"}
+          marginBottom={"1.25rem"}
+        >
+          DESIRED RESIDENCE TYPE
+        </FormLabel>
+        <RadioGroup
+          id="residence"
+          aria-label={"Desired residence type"}
+          display={"flex"}
+          justifyContent={"space-between"}
+          onChange={(value) => setBedrooms(value)}
+        >
+          <Radio value={"1bed"} checked={bedrooms === "1bed"}>
+            1 BEDROOM
+          </Radio>
+          <Radio value={"2bed"} checked={bedrooms === "2bed"}>
+            2 BEDROOM
+          </Radio>
+          <Radio value={"3bed"} checked={bedrooms === "3bed"}>
+            3 BEDROOM
+          </Radio>
+        </RadioGroup>
+      </Box>
       <Select
         id="price"
         value={range}
@@ -144,21 +152,29 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
           </option>
         ))}
       </Select>
-      <FormLabel htmlFor="broker" letterSpacing={"2px"}>
-        ARE YOU A BROKER?
-      </FormLabel>
-      <RadioGroup
-        id="broker"
-        aria-label={"Are you a broker?"}
-        onChange={(value) => setBroker(value)}
-      >
-        <Radio value={"yes"} checked={broker === "yes"} paddingRight={"2rem"}>
-          YES
-        </Radio>
-        <Radio value={"no"} checked={broker === "no"}>
-          NO
-        </Radio>
-      </RadioGroup>
+      <Box>
+        <FormLabel
+          htmlFor="broker"
+          fontSize={"0.875rem"}
+          letterSpacing={"2px"}
+          marginBottom={"1.25rem"}
+        >
+          ARE YOU A BROKER?
+        </FormLabel>
+        <RadioGroup
+          id="broker"
+          aria-label={"Are you a broker?"}
+          textAlign={"left"}
+          onChange={(value) => setBroker(value)}
+        >
+          <Radio value={"yes"} checked={broker === "yes"} paddingRight={"2rem"}>
+            YES
+          </Radio>
+          <Radio value={"no"} checked={broker === "no"}>
+            NO
+          </Radio>
+        </RadioGroup>
+      </Box>
       {broker === "yes" && (
         <Input
           id="brokerage"

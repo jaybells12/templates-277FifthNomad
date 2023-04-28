@@ -11,7 +11,7 @@ const underlined = definePartsStyle({
     borderRadius: "0",
     border: "0",
     borderBottom: "1px solid",
-    borderColor: "brand.accent",
+    borderColor: "brand.inputBorder",
     padding: "11px 0 11px 0",
     fontFamily: "PortraitText",
     letterSpacing: "2px",

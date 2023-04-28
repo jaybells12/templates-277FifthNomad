@@ -2,7 +2,7 @@ import { StyledNavMenuIcon } from "./NavMenuIcon.style";
 import { FunctionComponent } from "react";
 import { forwardRef, IconProps } from "@chakra-ui/react";
 
-//In order to use componenet as Chakra Menu button, need to implement and accept ref
+//In order to use component as Chakra Menu button, need to implement and accept ref
 export const NavMenuIcon: FunctionComponent<any> = forwardRef<IconProps, "svg">(
   (props: any, ref: any) => {
     return (

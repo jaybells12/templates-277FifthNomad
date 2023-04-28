@@ -23,6 +23,10 @@ import av22a from "../../public/Avail_22A.jpg"
 import av40a from "../../public/Avail_40A.jpg"
 import av45b from "../../public/Avail_45B.jpg"
 import av48b from "../../public/Avail_48B.jpg"
+import ftLogo1 from "../../public/Footer-Shokai.svg"
+import ftLogo2 from "../../public/Footer-DEDM.svg"
+import ftLogo3 from "../../public/Footer-Julia-Jiang.svg"
+import ftLogo4 from "../../public/Footer-EG.svg"
 
 const amenitiesCards = [
   
@@ -253,6 +257,13 @@ const inquireBlock = {
     priceRanges: ["$1.5M - $2.5M","$2.5M - $5M", "$5M"],
     fromRanges: ["Broker / MLS", "Eblast", "Event", "Online Search", "Press", "Referral", "Site Signage", "StreetEasy.com", "Social Media"]
   }
+}
+
+const footer = {
+  text: "The complete offering terms are in an offering plan amendment available from Successor Sponsor. File No. CD17-0021. This is not an offering. Successor Sponsor: Shokai 5th Avenue LLC, 224 West 30th Street, Suite 601, New York, NY 10001 This advertising material is not an offer to sell nor a solicitation of an offer to buy to residents of any jurisdiction in which registration requirements have not been fulfilled. Equal Housing Opportunity. Sponsor reserves the right to make changes in accordance with the terms of the Offering Plan. Equal housing opportunity.",
+  logos: [
+    ftLogo1, ftLogo2, ftLogo3, ftLogo4
+  ]
 }
 export default {
   logo,

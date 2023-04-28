@@ -24,5 +24,11 @@ const baseStyle = definePartsStyle({
     },
   },
 });
+const sizes = {
+  md: definePartsStyle({
+    control: { w:"3.5", h:"3.5"},
+    label:{ fontSize: "0.875rem", letterSpacing: "2px"}
+  })
+}
 
-export const radioTheme = defineMultiStyleConfig({ baseStyle });
+export const radioTheme = defineMultiStyleConfig({ baseStyle, sizes });

@@ -5,8 +5,9 @@ const contact = defineStyle({
   fontWeight: "light",
   fontSize: "1rem",
   lineHeight: "1.7",
-  whiteSpace: "pre-line",
+  whiteSpace: "pre",
   textAlign: "left",
+  letterSpacing: "0.2px"
 })
 
 export const textTheme = defineStyleConfig({

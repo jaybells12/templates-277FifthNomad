@@ -3,7 +3,7 @@ import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
 const contact = defineStyle({
   fontFamily: "PortraitText",
   fontWeight: "light",
-  fontSize: "1rem",
+  fontSize: "0.875rem",
   letterSpacing: "2px",
   lineHeight: "1.8",
   textAlign: "left",
