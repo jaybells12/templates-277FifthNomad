@@ -53,7 +53,11 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         contact={sampleData.inquireBlock.contact}
         form={sampleData.inquireBlock.form}
       />
-      <Footer text={sampleData.footer.text} logos={sampleData.footer.logos} />
+      <Footer
+        text={sampleData.footer.text}
+        logos={sampleData.footer.logos}
+        pdf={sampleData.footer.pdf}
+      />
     </>
   );
 };

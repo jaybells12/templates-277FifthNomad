@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { Link } from "@chakra-ui/next-js";
 import { Container, HStack, Text, VStack } from "@chakra-ui/react";
 import { HouseIcon } from "../HouseIcon";
 import { Logo } from "../Logo";
@@ -15,7 +16,19 @@ export const Footer: FunctionComponent<FooterProps> = (props: FooterProps) => {
       <VStack width={"70%"} margin={"0 auto"} gap={"2rem"}>
         <HStack width={"100%"}>
           <HouseIcon />
-          <Text variant={"footer"}>{text}</Text>
+          <Text variant={"footer"}>
+            {text}
+            {pdf && (
+              <Link
+                href={pdf}
+                target={"_blank"}
+                textDecoration={"underline"}
+                paddingLeft={"3px"}
+              >
+                Fair Housing Notice
+              </Link>
+            )}
+          </Text>
         </HStack>
         <HStack width={"100%"} justifyContent={"space-between"}>
           {logos.map((logo, idx) => (

@@ -263,7 +263,8 @@ const footer = {
   text: "The complete offering terms are in an offering plan amendment available from Successor Sponsor. File No. CD17-0021. This is not an offering. Successor Sponsor: Shokai 5th Avenue LLC, 224 West 30th Street, Suite 601, New York, NY 10001 This advertising material is not an offer to sell nor a solicitation of an offer to buy to residents of any jurisdiction in which registration requirements have not been fulfilled. Equal Housing Opportunity. Sponsor reserves the right to make changes in accordance with the terms of the Offering Plan. Equal housing opportunity.",
   logos: [
     ftLogo1, ftLogo2, ftLogo3, ftLogo4
-  ]
+  ],
+  pdf: "/fairhousingnotice.pdf"
 }
 export default {
   logo,
