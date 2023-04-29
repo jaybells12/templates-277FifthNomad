@@ -47,7 +47,7 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
   };
 
   return (
-    <Container as={"section"} variant={"section"}>
+    <Container as={"section"} id={"availability"} variant={"section"}>
       <Heading
         as={"h2"}
         marginBottom={"5rem"}

@@ -8,18 +8,25 @@ import { ResidencesBlock } from "@/components/ResidencesBlock";
 import { AmenitiesBlock } from "@/components/AmenitiesBlock";
 import { InfoBlock } from "@/components/InfoBlock";
 import { AvailabilityBlock } from "@/components/AvailabilityBlock";
-import { InquireForm } from "@/components/InquireForm";
 import { InquireBlock } from "@/components/InquireBlock";
 import { Footer } from "@/components/Footer";
+import { useScrolledOffset } from "@/lib/useScrolledOffset";
 
 export const Template277FN: FunctionComponent<any> = (props: any) => {
+  const isScrolled = useScrolledOffset(600);
   return (
     <>
-      <NavBar links={sampleData.navLinks} logoSrc={sampleData.navLogo} />
+      <NavBar
+        links={sampleData.navLinks}
+        menuLinks={sampleData.navMenuLinks}
+        logoSrc={sampleData.navLogo}
+        scrolled={isScrolled}
+      />
       <HeroBlock
         logo={sampleData.logo}
         tagline={sampleData.CTATagline}
         videoSrc={sampleData.videoSrc}
+        scrolled={isScrolled}
       />
       <AboutBlock
         imgSrc={sampleData.aboutBlock.imgSrc}
@@ -43,6 +50,7 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         splitVariant={true}
       />
       <InfoBlock
+        companyName={sampleData.companyName}
         title={sampleData.infoBlock.title}
         text={sampleData.infoBlock.text}
         topImg={sampleData.infoBlock.topImgSrc}

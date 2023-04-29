@@ -1,24 +1,11 @@
 import { NavMenuIcon } from "../NavMenuIcon";
 import { NavMenuItem } from "../NavMenuItem";
 import { StyledNavMenu } from "./NavMenu.style";
-import {
-  useDisclosure,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerBody,
-} from "@chakra-ui/react";
+import { DrawerOverlay, DrawerContent, DrawerBody } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { PRIMARY_COLOR } from "@/styles/GlobalStyles";
-
-const items = [
-  "residences",
-  "amenities",
-  "nomad", // Company name here?
-  "availability",
-  "inquire",
-];
 
 export type NavMenuProps = {
+  items: string[];
   isOpen: boolean;
   onClose: () => void;
   onToggle: () => void;
@@ -27,32 +14,33 @@ export type NavMenuProps = {
 export const NavMenu: FunctionComponent<NavMenuProps> = (
   props: NavMenuProps
 ) => {
+  const { items, onToggle, onClose, isOpen } = props;
+
   return (
     <>
       <NavMenuIcon
         onClick={() => {
-          console.log(props.isOpen);
-          props.onToggle();
+          onToggle();
         }}
       />
       <StyledNavMenu
-        isOpen={props.isOpen}
-        placement="top"
-        onClose={props.onClose}
-        size="full"
+        isOpen={isOpen}
+        placement={"top"}
+        onClose={onClose}
+        size={"full"}
       >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody
-            display="flex"
-            gap="3rem"
-            alignItems="center"
-            justifyContent="center"
-            flexDirection="column"
-            bgColor={PRIMARY_COLOR}
+            display={"flex"}
+            gap={"3rem"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            flexDirection={"column"}
+            bgColor={"brand.primary"}
           >
             {items.map((item, idx) => (
-              <NavMenuItem key={idx} text={item} />
+              <NavMenuItem key={idx} text={item} onClose={onClose} />
             ))}
           </DrawerBody>
         </DrawerContent>
@@ -60,14 +48,3 @@ export const NavMenu: FunctionComponent<NavMenuProps> = (
     </>
   );
 };
-
-// <StyledNavMenu>
-//   <MenuButton as={NavMenuIcon} />
-//   {/*(Try Drawer) Need to figure out how to get this to take up entire window, and disable scrolling (overflow)*/}
-//   <MenuList minH="full" minW="full">
-//     {items.map((item, idx) => (
-//       <NavMenuItem key={idx} text={item} />
-//     ))}
-//   </MenuList>
-// </StyledNavMenu>
-// @ts-ignore

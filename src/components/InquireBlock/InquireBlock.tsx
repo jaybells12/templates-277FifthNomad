@@ -13,7 +13,12 @@ export const InquireBlock: FunctionComponent<InquireBlockProps> = (
 ) => {
   const { contact, form } = props;
   return (
-    <Container as={"section"} variant={"section"} marginBottom={"10rem"}>
+    <Container
+      as={"section"}
+      id={"inquire"}
+      variant={"section"}
+      marginBottom={"10rem"}
+    >
       <Flex justify={"center"} gap={"9rem"}>
         <InquireContact
           logo={contact.logo}

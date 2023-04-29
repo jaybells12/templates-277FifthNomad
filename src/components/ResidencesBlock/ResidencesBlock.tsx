@@ -22,6 +22,7 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
   return (
     <Container
       as={"section"}
+      id={"residences"}
       variant={"section"}
       overflowY={"visible"}
       overflowX={"clip"}

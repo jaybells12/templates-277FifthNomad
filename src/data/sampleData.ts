@@ -266,6 +266,17 @@ const footer = {
   ],
   pdf: "/fairhousingnotice.pdf"
 }
+
+const companyName = "nomad";
+
+const navMenuLinks = [
+  "residences",
+  "amenities",
+  companyName,
+  "availability",
+  "inquire",
+];
+
 export default {
   logo,
   videoSrc,
@@ -282,5 +293,7 @@ export default {
   infoBlock,
   availabilityBlock,
   inquireBlock,
-  footer
+  footer,
+  companyName,
+  navMenuLinks
 }

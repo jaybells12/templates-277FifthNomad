@@ -10,5 +10,22 @@ export type NavLinkProps = {
 export const NavLink: FunctionComponent<NavLinkProps> = (
   props: NavLinkProps
 ) => {
-  return <StyledNavLink href="/#">{props.text.toUpperCase()}</StyledNavLink>;
+  const { text } = props;
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const href = e.currentTarget.href;
+    const targetId = href.replace(/.*\#/, "");
+    const elem = document.getElementById(targetId);
+    window.scrollTo();
+    elem?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <StyledNavLink href={`#${text}`} onClick={handleScroll}>
+      {text.toUpperCase()}
+    </StyledNavLink>
+  );
 };

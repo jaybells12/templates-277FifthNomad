@@ -33,6 +33,7 @@ export const Footer: FunctionComponent<FooterProps> = (props: FooterProps) => {
         <HStack width={"100%"} justifyContent={"space-between"}>
           {logos.map((logo, idx) => (
             <Logo
+              key={idx}
               src={logo.src}
               alt={"footer logo"}
               width={logo.width}

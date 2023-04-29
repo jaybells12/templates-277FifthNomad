@@ -20,6 +20,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
   return (
     <Container
       as={"section"}
+      id={"amenities"}
       variant={"section"}
       bgColor={"brand.trim"}
       overflowY={"visible"}

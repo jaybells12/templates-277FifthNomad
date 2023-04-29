@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Container, Box } from "@chakra-ui/react";
 
 export type InfoBlockProps = {
+  companyName: string;
   title: string;
   text: string;
   topImg: string;
@@ -13,9 +14,9 @@ export type InfoBlockProps = {
 export const InfoBlock: FunctionComponent<InfoBlockProps> = (
   props: InfoBlockProps
 ) => {
-  const { title, text, topImg, botImg } = props;
+  const { title, text, topImg, botImg, companyName } = props;
   return (
-    <Container as={"section"} variant={"section"}>
+    <Container as={"section"} id={`${companyName}`} variant={"section"}>
       <TextCard
         title={title}
         text={text}
