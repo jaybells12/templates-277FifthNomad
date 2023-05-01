@@ -20,6 +20,7 @@ export const TextBar: FunctionComponent<TextBarProps> = (
         lineHeight={"1.4"}
         letterSpacing={"2.7px"}
         opacity={"0.6"}
+        textAlign={"left"}
       >
         {text.toUpperCase()}
       </Text>

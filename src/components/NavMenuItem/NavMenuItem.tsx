@@ -1,3 +1,4 @@
+import { useScrollEasing } from "@/lib/useScrollEasing";
 import { Link } from "@chakra-ui/next-js";
 import { FunctionComponent } from "react";
 
@@ -11,16 +12,7 @@ export const NavMenuItem: FunctionComponent<NavMenuItemProps> = (
 ) => {
   const { text, onClose } = props;
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
-    onClose();
-    const href = e.currentTarget.href;
-    const targetId = href.replace(/.*\#/, "");
-    const elem = document.getElementById(targetId);
-    elem?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
+  const handleScroll = useScrollEasing();
 
   return (
     <Link
@@ -31,7 +23,10 @@ export const NavMenuItem: FunctionComponent<NavMenuItemProps> = (
       fontWeight={"light"}
       _hover={{ textDecoration: "underline" }}
       _first={{ marginTop: "7rem" }}
-      onClick={handleScroll}
+      onClick={(e) => {
+        onClose();
+        handleScroll(e);
+      }}
     >
       {text.toUpperCase()}
     </Link>

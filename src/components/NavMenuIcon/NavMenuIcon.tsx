@@ -20,7 +20,7 @@ export const NavMenuIcon: FunctionComponent<any> = forwardRef<IconProps, "svg">(
           x2="35"
           y2="1"
           stroke="rgb(59, 61, 71)"
-          strokeWidth="1.5px"
+          strokeWidth="1px"
           shapeRendering="crispEdges"
         />
         <line
@@ -29,7 +29,7 @@ export const NavMenuIcon: FunctionComponent<any> = forwardRef<IconProps, "svg">(
           x2="35"
           y2="9"
           stroke="rgb(59, 61, 71)"
-          strokeWidth="1.5px"
+          strokeWidth="1px"
           shapeRendering="crispEdges"
         />
       </StyledNavMenuIcon>

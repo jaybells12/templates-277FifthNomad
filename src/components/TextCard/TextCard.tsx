@@ -21,20 +21,12 @@ export type TextCardProps = {
 export const TextCard: FunctionComponent<TextCardProps> = (
   props: TextCardProps
 ) => {
+  const { title, text, cardProps, titleProps, textProps, children } = props;
   return (
-    <VStack {...props.cardProps}>
-      <Heading fontSize={"4rem"} fontWeight={"normal"} {...props.titleProps}>
-        {props.title}
-      </Heading>
-      <Text
-        fontSize={"1rem"}
-        lineHeight={1.8}
-        fontWeight={"light"}
-        {...props.textProps}
-      >
-        {props.text}
-      </Text>
-      {props.children}
+    <VStack {...cardProps}>
+      <Heading {...titleProps}>{title}</Heading>
+      <Text {...textProps}>{text}</Text>
+      {children}
     </VStack>
   );
 };

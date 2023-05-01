@@ -1,27 +1,56 @@
-import { Container, Grid, GridItem } from "@chakra-ui/react";
+import { Container, HStack, VStack } from "@chakra-ui/react";
 import { TextCard } from "../TextCard";
 import { Image } from "@chakra-ui/next-js";
 import { LinksStack } from "../LinksStack";
 import { FunctionComponent } from "react";
+import { StaticImageData } from "next/image";
 
 export type AboutBlockProps = {
-  imgSrc: string;
+  img: StaticImageData;
   title: string;
   text: string;
   links: string[];
 };
 
-/*
- * Need to rebuild this component as a flex component. Pic | text (links on bottom)
- */
-
 export const AboutBlock: FunctionComponent<AboutBlockProps> = (
   props: AboutBlockProps
 ) => {
-  const { imgSrc, title, text, links } = props;
+  const { img, title, text, links } = props;
   return (
     <Container as={"section"} variant={"section"}>
-      <Grid
+      <HStack align={"center"} justify={"center"} gap={"8rem"}>
+        <Image src={img.src} alt={img.src} width={520} height={782} />
+        <VStack gap={"4rem"}>
+          <TextCard
+            title={title}
+            text={text}
+            cardProps={{
+              maxWidth: "374px",
+            }}
+            titleProps={{
+              as: "h2",
+              fontSize: "7.25rem",
+              fontWeight: "normal",
+              lineHeight: "0.9",
+              textAlign: "left",
+            }}
+            textProps={{
+              fontSize: "1.0625rem",
+              fontWeight: "light",
+              lineHeight: "1.7",
+              whiteSpace: "pre-line",
+              textAlign: "left",
+            }}
+          />
+          <LinksStack links={links} />
+        </VStack>
+      </HStack>
+    </Container>
+  );
+};
+
+/*
+<Grid
         templateAreas={`"image text"
                       "image text"
                       "image links"`}
@@ -31,32 +60,7 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
         maxW={868}
         marginInline={"auto"}
       >
-        <GridItem w="100%" h="100%" area={"image"} position="relative">
-          <Image fill src={imgSrc} alt={imgSrc} sx={{ objectFit: "contain" }} />
-        </GridItem>
-        <GridItem w="70%" area={"text"} placeSelf="end center">
-          <TextCard
-            title={title}
-            text={text}
-            titleProps={{
-              as: "h3",
-              fontSize: "7.25rem",
-              fontWeight: "normal",
-              lineHeight: "0.9",
-              textAlign: "left",
-            }}
-            textProps={{
-              fontWeight: "light",
-              lineHeight: "1.8",
-              whiteSpace: "pre-line",
-              textAlign: "left",
-            }}
-          />
-        </GridItem>
-        <GridItem w="70%" area={"links"} marginTop={"3rem"}>
-          <LinksStack links={links} />
-        </GridItem>
-      </Grid>
-    </Container>
-  );
-};
+        <GridItem w="100%" h="100%" area={"image"} position="relative"> 
+              {/* </GridItem>
+        <GridItem w="70%" area={"text"} placeSelf="end center"> 
+*/

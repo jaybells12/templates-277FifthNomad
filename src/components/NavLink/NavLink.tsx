@@ -1,3 +1,4 @@
+import { useScrollEasing } from "@/lib/useScrollEasing";
 import { StyledNavLink } from "./NavLink.style";
 import { FunctionComponent } from "react";
 
@@ -12,16 +13,7 @@ export const NavLink: FunctionComponent<NavLinkProps> = (
 ) => {
   const { text } = props;
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
-    const href = e.currentTarget.href;
-    const targetId = href.replace(/.*\#/, "");
-    const elem = document.getElementById(targetId);
-    window.scrollTo();
-    elem?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
+  const handleScroll = useScrollEasing();
 
   return (
     <StyledNavLink href={`#${text}`} onClick={handleScroll}>

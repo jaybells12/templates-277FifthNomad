@@ -2,9 +2,8 @@ import { Link } from "@chakra-ui/next-js";
 import { Divider, VStack } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { motion } from "framer-motion";
-/*
-Need to rename this, *Block convention is reserved for fullpage sections
-*/
+import { useScrollEasing } from "@/lib/useScrollEasing";
+
 export type LinksStackProps = {
   links: string[];
 };
@@ -12,11 +11,14 @@ export type LinksStackProps = {
 export const LinksStack: FunctionComponent<LinksStackProps> = (
   props: LinksStackProps
 ) => {
+  const handleScroll = useScrollEasing();
+
   return (
     <VStack
       align="flex-start"
-      divider={<Divider color={"brand.accent"} />}
-      gap={"0.5rem"}
+      divider={<Divider color={"#cecece"} />}
+      gap={"0.75rem"}
+      width={"100%"}
     >
       {props.links.map((link, idx) => (
         <motion.div
@@ -29,10 +31,11 @@ export const LinksStack: FunctionComponent<LinksStackProps> = (
         >
           <Link
             href={`#${link}`}
-            fontSize="0.75rem"
+            fontSize="0.875rem"
             letterSpacing="2px"
             lineHeight="1.8"
             style={{ textDecoration: "none" }}
+            onClick={handleScroll}
           >
             {link.toUpperCase()}
           </Link>

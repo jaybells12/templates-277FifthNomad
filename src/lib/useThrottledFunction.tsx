@@ -13,7 +13,7 @@ export const useThrottledFunction = (
   lastTriggered: MutableRefObject<number>
 ) => {
   const throttledFn = useCallback(
-    (args) => {
+    (args?: any) => {
       let remainingTime = getRemainingTime(lastTriggered.current, interval);
 
       if (remainingTime === 0) {

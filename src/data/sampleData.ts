@@ -27,6 +27,10 @@ import ftLogo1 from "../../public/Footer-Shokai.svg"
 import ftLogo2 from "../../public/Footer-DEDM.svg"
 import ftLogo3 from "../../public/Footer-Julia-Jiang.svg"
 import ftLogo4 from "../../public/Footer-EG.svg"
+import ssBedroom from "../../public/SS-Bedroom.jpg"
+import ssBath from "../../public/SS-Bath.jpg"
+import ssLivingRoom from "../../public/SS-LivingRoom.jpg"
+import ssKitchen from "../../public/SS-Kitchen.jpg"
 
 const amenitiesCards = [
   
@@ -178,14 +182,15 @@ const availability: Array<{[key: string]: string | { src: string }}> = [
   },
 ]
 
-const slideshow = [
-  cardImg1.src,
-  cardImg5.src,
-  cardImg6.src,
-  cardImg7.src
-]
-
-const slideshowTag = "Homes designed by internationally acclaimed architect Rafael Viñoly, with thoughtfully appointed interiors by Jeffrey Beers International."
+const slideshowBlock = {
+  images: [
+    ssLivingRoom,
+    ssKitchen,
+    ssBath,
+    ssBedroom
+  ],
+  text: "Homes designed by internationally acclaimed architect Rafael Viñoly, with thoughtfully appointed interiors by Jeffrey Beers International."
+}
 
 const blockLinks = [
   "residences",
@@ -215,7 +220,7 @@ const logoBlack = {
 }
 
 const aboutBlock = {
-  imgSrc: aboutImg1.src,
+  img: aboutImg1,
   links: blockLinks,
   title: "Uniting Sky and Earth",
   text: "In the very heart of NoMad, where the elegance of uptown meets the energy of downtown, 277 Fifth Avenue soars toward the clouds.\n\nAward of Excellence & Winner for Best Tall Residential Building"
@@ -283,8 +288,6 @@ export default {
   navLogo: navLogo.src,
   navLinks,
   residencesCards,
-  slideshow,
-  slideshowTag,
   blockLinks,
   CTATagline,
   aboutBlock,
@@ -293,6 +296,7 @@ export default {
   infoBlock,
   availabilityBlock,
   inquireBlock,
+  slideshowBlock,
   footer,
   companyName,
   navMenuLinks

@@ -29,14 +29,14 @@ export const Template277FN: FunctionComponent<any> = (props: any) => {
         scrolled={isScrolled}
       />
       <AboutBlock
-        imgSrc={sampleData.aboutBlock.imgSrc}
+        img={sampleData.aboutBlock.img}
         links={sampleData.aboutBlock.links}
         title={sampleData.aboutBlock.title}
         text={sampleData.aboutBlock.text}
       />
       <SlideshowBlock
-        images={sampleData.slideshow}
-        text={sampleData.slideshowTag}
+        images={sampleData.slideshowBlock.images}
+        text={sampleData.slideshowBlock.text}
       />
       <ResidencesBlock
         factSheet={sampleData.residenceBlock.factSheet}

@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useThrottledFunction } from "./useThrottle";
+import { useThrottledFunction } from "./useThrottledFunction";
 
 export const useCarousel = (
   length: number,
@@ -7,8 +7,8 @@ export const useCarousel = (
 ): [
   { current: number; next: number; prev: number },
   1 | -1,
-  (args) => void,
-  (args) => void
+  (args?: any) => void,
+  (args?: any) => void
 ] => {
   const lastTriggered = useRef(Date.now());
   const [index, setIndex] = useState({
