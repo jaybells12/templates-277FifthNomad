@@ -2,13 +2,12 @@ import { useCarousel } from "@/lib/useCarousel";
 import { TextBar } from "../TextBar";
 import {
   motion,
-  AnimatePresence,
   useAnimation,
   PanInfo,
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef } from "react";
 import { HStack, VStack, Circle, Container } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 
@@ -24,37 +23,32 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
 ) => {
   const { images, text } = props;
   const [index, , plusOne, minusOne] = useCarousel(images.length, 800);
+  const disablePan = useRef(false);
   const controls = useAnimation();
   const x = useMotionValue(0);
-  const opacity = useTransform(x, [-1000, 0, 1000], [0, 1, 0]);
+  const opacity = useTransform(x, [-500, 0, 500], [0.5, 1, 0.5]);
   const zIndex = useTransform(x, (val) => (val > 0 ? 1 : 3));
 
   const handlePan = (event: any, info: PanInfo) => {
-    console.log("Panning");
-    x.set(info.offset.x);
-    console.log(`X Offset: ${x.get()}`);
-    console.log(`Opacity: ${opacity.get()}`);
-    console.log(`zIndex: ${zIndex.get()}`);
+    if (!disablePan.current) {
+      x.set(info.offset.x);
+    }
   };
 
   const handlePanStart = (event: any, info: PanInfo) => {};
 
   const handlePanEnd = (event: any, info: PanInfo) => {
-    // controls.start({ opacity: 0, transition: { duration: 1 } }).then(() => {
-    //   console.log("Animation finished");
-    //   console.log(`X value: ${x.get()}`);
-    //   if (x.get() > 0) minusOne();
-    //   if (x.get() < 0) plusOne();
-    //   x.set(0);
-    // });
-    if (x.get() > 0) {
-      minusOne();
-      x.set(0);
-    }
-    if (x.get() < 0) {
-      plusOne();
-      x.set(0);
-    }
+    disablePan.current = true;
+    controls.start({ opacity: 0, transition: { duration: 0.5 } }).then(() => {
+      if (x.get() > 0) {
+        minusOne();
+        x.set(0);
+      } else if (x.get() < 0) {
+        plusOne();
+        x.set(0);
+      }
+      disablePan.current = false;
+    });
   };
   return (
     <Container as={"section"} variant={"section"}>
