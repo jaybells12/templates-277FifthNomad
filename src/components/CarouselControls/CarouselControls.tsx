@@ -57,6 +57,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
         style={{ transition: "background-color 0.3s ease" }}
         _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}
         borderColor={split ? "white" : TRIM_COLOR}
+        cursor={"pointer"}
       >
         <Image
           fill
@@ -78,6 +79,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
         style={{ transition: "background-color 0.3s ease" }}
         _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}
         borderColor={split ? "white" : TRIM_COLOR}
+        cursor={"pointer"}
       >
         <Image
           fill

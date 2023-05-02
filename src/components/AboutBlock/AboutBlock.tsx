@@ -29,10 +29,7 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
             }}
             titleProps={{
               as: "h2",
-              fontSize: "7.25rem",
-              fontWeight: "normal",
-              lineHeight: "0.9",
-              textAlign: "left",
+              variant: "title",
             }}
             textProps={{
               fontSize: "1.0625rem",

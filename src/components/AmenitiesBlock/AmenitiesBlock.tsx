@@ -25,16 +25,16 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
       bgColor={"brand.trim"}
       overflowY={"visible"}
       overflowX={"clip"}
+      paddingTop={"3rem"}
     >
       <Heading
         as={"h2"}
-        fontWeight={"normal"}
-        fontSize={"7rem"}
+        variant={"title"}
         color={"white"}
         margin={"0 auto"}
         width={"max-content"}
         position="relative"
-        transform={"translateY(25%)"}
+        transform={"translateY(36%)"}
         zIndex={1}
       >
         Amenities
@@ -48,7 +48,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
           textAlign: "center",
         }}
       />
-      <TextBar text={text} />
+      <TextBar text={text} paddingBlock={"5rem"} />
     </Container>
   );
 };

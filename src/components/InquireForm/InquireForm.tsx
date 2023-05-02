@@ -42,13 +42,7 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
       flexGrow={"0"}
       width={"unset"}
     >
-      <Heading
-        as={"h2"}
-        fontSize={"7.25rem"}
-        lineHeight={"0.9"}
-        fontWeight={"normal"}
-        textAlign={"left"}
-      >
+      <Heading as={"h2"} variant={"title"}>
         Inquire
       </Heading>
       <HStack gap={"2rem"}>

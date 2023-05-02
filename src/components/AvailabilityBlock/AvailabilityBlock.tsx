@@ -51,9 +51,8 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
       <Heading
         as={"h2"}
         marginBottom={"5rem"}
-        fontSize={"6rem"}
-        fontWeight={"normal"}
-        color={TRIM_COLOR}
+        variant={"title"}
+        color={"brand.trim"}
       >
         AVAILABILITY
       </Heading>

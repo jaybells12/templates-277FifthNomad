@@ -12,6 +12,8 @@ import { HStack, VStack, Circle, Container } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 
 // How expensive is this component? Three images are layered over eachother to create the dragging opacity effect.
+// Throttling needs to be tweaked. Not working as expected. Image flashing on rapid fire pan operation. May need to rethink
+// implementation entirely.
 
 export type SlideshowProps = {
   images: StaticImageData[];
@@ -29,31 +31,36 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
   const opacity = useTransform(x, [-500, 0, 500], [0.5, 1, 0.5]);
   const zIndex = useTransform(x, (val) => (val > 0 ? 1 : 3));
 
-  const handlePan = (event: any, info: PanInfo) => {
+  const handlePan = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     if (!disablePan.current) {
       x.set(info.offset.x);
     }
   };
 
-  const handlePanStart = (event: any, info: PanInfo) => {};
-
-  const handlePanEnd = (event: any, info: PanInfo) => {
-    disablePan.current = true;
-    controls.start({ opacity: 0, transition: { duration: 0.5 } }).then(() => {
-      if (x.get() > 0) {
-        minusOne();
-        x.set(0);
-      } else if (x.get() < 0) {
-        plusOne();
-        x.set(0);
-      }
-      disablePan.current = false;
-    });
+  const handlePanEnd = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    if (!disablePan.current) {
+      disablePan.current = true;
+      controls.start({ opacity: 0, transition: { duration: 0.5 } }).then(() => {
+        if (x.get() > 0) {
+          minusOne();
+          x.set(0);
+        } else if (x.get() < 0) {
+          plusOne();
+          x.set(0);
+        }
+        disablePan.current = false;
+      });
+    }
   };
   return (
     <Container as={"section"} variant={"section"}>
       <VStack overflowX="hidden" position={"relative"}>
-        {/* <AnimatePresence > */}
         <motion.img
           draggable={"false"}
           custom={-1}
@@ -71,7 +78,6 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
         <motion.img
           draggable={"false"}
           onPan={handlePan}
-          onPanStart={handlePanStart}
           onPanEnd={handlePanEnd}
           key={"center"}
           src={images[index.current].src}
@@ -101,7 +107,6 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
             zIndex,
           }}
         />
-        {/* </AnimatePresence> */}
         <HStack
           gap={"0.75rem"}
           zIndex={"5"}

@@ -18,7 +18,25 @@ const footer = defineStyle({
   textAlign: "left",
 })
 
+const features = defineStyle({
+  fontFamily: "PortraitText",
+  fontSize: "0.875rem",
+  letterSpacing: "2px",
+})
+
+const banner = defineStyle({
+  color: "white",
+  fontSize: "1.125rem",
+  padding: "3rem 11rem",
+  maxWidth: "72%",
+  margin: "0 auto",
+  lineHeight: "1.4",
+  letterSpacing: "2.7px",
+  opacity: "0.6",
+  textAlign: "left"
+})
+
 export const textTheme = defineStyleConfig({
-  variants: { contact, footer },
+  variants: { contact, footer, features, banner },
 
 })

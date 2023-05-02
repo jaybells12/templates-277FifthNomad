@@ -10,7 +10,14 @@ const contact = defineStyle({
   marginBottom: "0.5rem"
 })
 
+const title = defineStyle({
+  fontSize: "7.25rem",
+  fontWeight: "normal",
+  lineHeight: "0.9",
+  textAlign: "left",
+})
+
 export const headingTheme = defineStyleConfig({
-  variants: { contact },
+  variants: { contact, title },
 
 })

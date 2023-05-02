@@ -2,16 +2,16 @@ import {
   Card,
   CardFooter,
   useBoolean,
-  Popover,
-  PopoverTrigger,
+  useDisclosure,
   Text,
   Heading,
-  PopoverContent,
-  PopoverBody,
   CardProps,
+  List,
+  ListItem,
+  Collapse,
 } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/next-js";
-import { FunctionComponent, forwardRef } from "react";
+import { FunctionComponent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const wholeVariant = {
@@ -69,7 +69,7 @@ const wholeVariant = {
           },
         }
       : null,
-  hidden: ({ width, dir, pos }) =>
+  hidden: ({ dir, pos }) =>
     dir < 0 && pos < 0
       ? {
           opacity: 0,
@@ -89,13 +89,13 @@ const wholeVariant = {
 };
 
 const splitVariant = {
-  exit: ({ width, dir, pos }) => ({
+  exit: () => ({
     opacity: 0,
     transition: {
       opacity: { from: 1, duration: 0.75 },
     },
   }),
-  enter: ({ width, dir, pos }) => ({
+  enter: () => ({
     opacity: 1,
     transition: {
       opacity: { from: 0, duration: 1.5, delay: 0.75 },
@@ -117,14 +117,13 @@ export type CarouselCardProps = {
   features?: string[];
 } & CardProps;
 
-// Popover is not pushing down content below it, because its absolutely positioned.
-// Need to change this in order to emulate template behavior.
-// Check out Collapse component
+// There is a slight transition in / out animation. Should it be removed?
 
 export const CarouselCard: FunctionComponent<CarouselCardProps> = (
   props: CarouselCardProps
 ) => {
   const [show, setShow] = useBoolean(false);
+  const { isOpen, onToggle } = useDisclosure();
 
   const {
     imgSrc,
@@ -158,6 +157,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         w={cardWth}
         bgColor={"inherit"}
         color={split && "white"}
+        textAlign={"left"}
         variant="unstyled"
         key={imgSrc}
         custom={{
@@ -202,7 +202,9 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         >
           <Heading
             as={"h5"}
-            size={"sm"}
+            fontFamily={"PortraitText"}
+            fontSize={"0.875rem"}
+            lineHeight={"1.5"}
             letterSpacing={"2px"}
             fontWeight={"normal"}
             mb={"1.5rem"}
@@ -211,8 +213,8 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
           </Heading>
           {/* May need to come up with a better way to handle sizing of text box */}
           <Text
-            size={"md"}
-            lineHeight={1.8}
+            fontSize={"1.0625rem"}
+            lineHeight={"1.8"}
             mb={"1.5rem"}
             width={split && "310px"}
             height={split && "90px"}
@@ -220,8 +222,41 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
             {text}
           </Text>
           {features && (
-            <CardFooter p="0">
-              <Popover
+            <CardFooter
+              p="0"
+              flexDirection={"column"}
+              alignItems={"flex-start"}
+            >
+              <Text
+                onClick={onToggle}
+                variant={"features"}
+                cursor={"pointer"}
+                marginBottom={"1.5rem"}
+              >
+                FEATURES & FINISHES{" "}
+                <span style={{ fontSize: "22px" }}>{isOpen ? "-" : "+"}</span>
+              </Text>
+              <Collapse in={isOpen}>
+                <List
+                  textAlign={"left"}
+                  fontSize={"1.0625rem"}
+                  lineHeight={"1.5"}
+                >
+                  {features.map((text, idx) => (
+                    <ListItem key={idx}>- {text}</ListItem>
+                  ))}
+                </List>
+              </Collapse>
+            </CardFooter>
+          )}
+        </motion.div>
+      </Card>
+    </AnimatePresence>
+  );
+};
+
+/*
+<Popover
                 flip={false}
                 closeOnBlur={false}
                 eventListeners={false}
@@ -245,7 +280,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
                   boxShadow={"none"}
                   mt={"1rem"}
                 >
-                  <PopoverBody p={"0"}>
+                  <PopoverBody p={"0"} as={"aside"}>
                     {features.map((feature, idx) => (
                       <Text key={idx} fontSize={"md"} lineHeight={1.8}>
                         - {feature}
@@ -254,10 +289,4 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
                   </PopoverBody>
                 </PopoverContent>
               </Popover>
-            </CardFooter>
-          )}
-        </motion.div>
-      </Card>
-    </AnimatePresence>
-  );
-};
+*/
