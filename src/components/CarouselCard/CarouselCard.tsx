@@ -159,13 +159,15 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         color={split && "white"}
         textAlign={"left"}
         variant="unstyled"
-        key={imgSrc}
+        key={imgSrc} //imgSrc
         custom={{
           width: cardWth + cardGap * 16,
           dir: cardDirection,
           pos: cardPosition,
         }}
         variants={!split && wholeVariant}
+        // This initial position fixed some image flashing happening at the beginning of the animation cycle
+        initial={!split && { x: cardWth + cardGap * 16 }}
         animate={!split && "enter"}
         exit={!split && "exit"}
         {...rest}
@@ -254,39 +256,3 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
     </AnimatePresence>
   );
 };
-
-/*
-<Popover
-                flip={false}
-                closeOnBlur={false}
-                eventListeners={false}
-                autoFocus={false}
-                placement={"bottom-start"}
-              >
-                <PopoverTrigger>
-                  <Text
-                    size="md"
-                    onClick={setShow.toggle}
-                    letterSpacing="1.5px"
-                    cursor="pointer"
-                  >
-                    FEATURES & FINISHES {show ? "-" : "+"}
-                  </Text>
-                </PopoverTrigger>
-                <PopoverContent
-                  width={cardWth}
-                  bgColor={"inherit"}
-                  border={"none"}
-                  boxShadow={"none"}
-                  mt={"1rem"}
-                >
-                  <PopoverBody p={"0"} as={"aside"}>
-                    {features.map((feature, idx) => (
-                      <Text key={idx} fontSize={"md"} lineHeight={1.8}>
-                        - {feature}
-                      </Text>
-                    ))}
-                  </PopoverBody>
-                </PopoverContent>
-              </Popover>
-*/

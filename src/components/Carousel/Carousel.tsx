@@ -1,5 +1,5 @@
 import { CarouselCard } from "../CarouselCard";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { Box, HStack, FlexboxProps, TextProps } from "@chakra-ui/react";
 import { useCarousel } from "@/lib/useCarousel";
 import { CarouselControls } from "../CarouselControls";
@@ -30,6 +30,14 @@ export const Carousel: FunctionComponent<CarouselProps> = (
 ) => {
   const { split, cards, cardProps, flexProps } = props;
   const [index, direction, next, prev] = useCarousel(cards.length, 1050);
+
+  useEffect(() => {
+    if (split) return; // Only runs for non-split variant
+    const interval = setInterval(() => {
+      next();
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [next]);
 
   return (
     <Box

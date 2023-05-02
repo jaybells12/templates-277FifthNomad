@@ -1,4 +1,4 @@
-import { useCallback, useRef, useEffect, MutableRefObject } from "react";
+import { useCallback, MutableRefObject } from "react";
 
 const getRemainingTime = (lastTriggered: number, throttleMs: number) => {
   const elapsedTime = Date.now() - lastTriggered;
