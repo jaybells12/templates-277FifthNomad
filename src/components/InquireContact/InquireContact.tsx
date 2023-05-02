@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { Logo } from "../Logo";
 import { Box, Heading, Text, VStack } from "@chakra-ui/react";
+import { Link } from "@chakra-ui/next-js";
 import { motion } from "framer-motion";
 
 export type InquireContactProps = {
@@ -10,7 +11,7 @@ export type InquireContactProps = {
     width: number;
     height: number;
   };
-  contactInfo: string[];
+  contactInfo: { text: string; href: string }[];
   address: string;
   teamsInfo: string[];
 };
@@ -40,9 +41,9 @@ export const InquireContact: FunctionComponent<InquireContactProps> = (
           </Heading>
         </motion.div>
         {contactInfo.map((contact, idx) => (
-          <Text key={idx} variant={"contact"}>
-            {contact}
-          </Text>
+          <Link key={idx} href={contact.href} variant={"contact"}>
+            {contact.text}
+          </Link>
         ))}
       </Box>
       <Box>

@@ -254,7 +254,7 @@ const availabilityBlock = {
 const inquireBlock = {
   contact: {
     logo: logoBlack,
-    contactInfo: ["sales@277fifthnomad.com", "212 779 2772"],
+    contactInfo: [{text:"sales@277fifthnomad.com", href: "mailto: sales@277fifthnomad.com"}, {text: "212 779 2772", href: "tel: 212 779 2772"}],
     address: "277 Fifth Avenue, New York, NY",
     teamsInfo: ["Douglas Elliman Development Marketing", "Julia Jiang Hawkins and Charles Hawkins of\nThe Julia Jiang and Charles Hawkins Team", "Fredrik Eklund and John Gomes of\nThe Eklund|Gomes Team"]
   },
