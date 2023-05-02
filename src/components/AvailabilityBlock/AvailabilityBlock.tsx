@@ -47,14 +47,19 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
   };
 
   return (
-    <Container as={"section"} id={"availability"} variant={"section"}>
+    <Container
+      as={"section"}
+      id={"availability"}
+      variant={"section"}
+      paddingInline={"7rem"}
+    >
       <Heading
         as={"h2"}
         marginBottom={"5rem"}
         variant={"title"}
         color={"brand.trim"}
       >
-        AVAILABILITY
+        Availability
       </Heading>
       <TableContainer>
         <Table variant={"unstyled"}>
@@ -64,9 +69,13 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
                 <Th
                   key={idx}
                   onClick={() => sortData(title, idx)}
-                  textAlign={"center"}
+                  fontFamily={"PortraitText"}
+                  fontSize={"0.75rem"}
+                  lineHeight={"1.6"}
                   letterSpacing={"2px"}
+                  textAlign={"center"}
                   cursor={"pointer"}
+                  paddingBottom={"21px"}
                 >
                   {title}
                 </Th>
@@ -88,13 +97,19 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
             }}
           >
             {data.map((row, idx) => (
-              <Tr key={idx}>
+              <Tr
+                key={idx}
+                _hover={{ bgColor: "brand.tableHover" }}
+                transition={"background-color 0.4s ease-in-out"}
+              >
                 {Object.values(row).map((value, index) => (
                   <Td
                     key={index}
                     textAlign={"center"}
                     padding={"8px 10px 8px"}
                     fontWeight={"light"}
+                    fontSize={"1.0625rem"}
+                    lineHeight={"1.7"}
                   >
                     {typeof value === "object" ? (
                       <Button

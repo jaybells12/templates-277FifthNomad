@@ -32,7 +32,8 @@ export const Theme = extendTheme({
       accent: "#86878D",
       trim: "#3B3D47",
       placeholder: "#535353",
-      inputBorder: "#53535380"
+      inputBorder: "#53535380",
+      tableHover: "#A9BDCE",
     },
   },
   components: { 
