@@ -3,7 +3,7 @@ import { CallToAction } from "../CallToAction";
 import { Logo } from "../Logo";
 import { VideoFull } from "../VideoFull";
 import { Container } from "@chakra-ui/react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const logoVariants = {
   enter: {
@@ -57,22 +57,13 @@ export const HeroBlock: FunctionComponent<HeroProps> = (props: HeroProps) => {
           zIndex: "2",
         }}
       >
-        <Logo
-          fill
-          src={logo.src}
-          alt={logo.alt}
-          // position={"fixed"}
-          // left={"0"}
-          // right={"0"}
-          // margin={"0 auto"}
-          // top={"55px"}
-        />
+        <Logo fill src={logo.src} alt={logo.alt} />
       </motion.div>
       <VideoFull src={videoSrc} />
       <CallToAction
         tagline={tagline}
         position={"absolute"}
-        bottom={"2%"}
+        bottom={"5%"}
         zIndex={"2"}
       />
     </Container>

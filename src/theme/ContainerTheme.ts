@@ -6,7 +6,7 @@ const section = defineStyle({
   padding: "0",
   textAlign: "center",
   _notLast: {
-    marginBottom: "14.375rem"
+    marginBottom: ["5rem", "9rem", "14.375rem"]
   }
 })
 

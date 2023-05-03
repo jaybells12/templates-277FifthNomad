@@ -27,13 +27,13 @@ const features = defineStyle({
 const banner = defineStyle({
   color: "white",
   fontSize: "1.125rem",
-  padding: "3rem 11rem",
-  maxWidth: "72%",
+  padding: ["4rem 0 1.75rem 0","3rem 11rem"],
+  maxWidth: ["88%", "72%"],
   margin: "0 auto",
   lineHeight: "1.4",
   letterSpacing: "2.7px",
   opacity: "0.6",
-  textAlign: "left"
+  textAlign: ["center","left"]
 })
 
 export const textTheme = defineStyleConfig({

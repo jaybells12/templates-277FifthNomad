@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
-// Params: Distance (number)
+// Params: none
 // Returns: Boolean value
-// True if Vertical scroll is greater than or equal to distance param
+// True if Vertical scroll is greater than or equal to viewport height
 
-export const useScrolledOffset = (distance: number) => {
+export const useScrolledOffset = (offset: number) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!isScrolled && window.scrollY >= distance) {
+      if (!isScrolled && window.scrollY >= window.innerHeight - offset) {
         setIsScrolled(true);
-      } else if (isScrolled && window.scrollY < distance) {
+      } else if (isScrolled && window.scrollY < window.innerHeight - offset) {
         setIsScrolled(false);
       }
     };
@@ -22,7 +22,7 @@ export const useScrolledOffset = (distance: number) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [distance, isScrolled]);
+  }, [offset, isScrolled]);
 
   return isScrolled;
 };

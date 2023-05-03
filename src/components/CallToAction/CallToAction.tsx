@@ -16,11 +16,14 @@ export const CallToAction: FunctionComponent<CallToActionProps> = (
     <VStack width="100%" align="center" {...props}>
       <Text
         color="white"
-        whiteSpace="pre"
+        whiteSpace="break-spaces"
         textAlign="center"
         lineHeight="1.4"
         fontWeight={"medium"}
-        fontSize="1.75rem"
+        paddingInline={["55px", "0"]}
+        sx={{
+          fontSize: "clamp(1.125rem,2vw,1.75rem)",
+        }}
       >
         {props.tagline}
       </Text>

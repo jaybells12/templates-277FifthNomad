@@ -11,7 +11,7 @@ const contact = defineStyle({
 })
 
 const title = defineStyle({
-  fontSize: "7.25rem",
+  fontSize: "clamp(5.3125rem, 3vw, 7.25rem)",
   fontWeight: "normal",
   lineHeight: "0.9",
   textAlign: "left",

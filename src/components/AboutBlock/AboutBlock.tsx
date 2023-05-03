@@ -1,4 +1,4 @@
-import { Container, HStack, VStack } from "@chakra-ui/react";
+import { Container, Flex, VStack, Box } from "@chakra-ui/react";
 import { TextCard } from "../TextCard";
 import { Image } from "@chakra-ui/next-js";
 import { LinksStack } from "../LinksStack";
@@ -18,30 +18,46 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
   const { img, title, text, links } = props;
   return (
     <Container as={"section"} variant={"section"}>
-      <HStack align={"center"} justify={"center"} gap={"8rem"}>
-        <Image src={img.src} alt={img.src} width={520} height={782} />
-        <VStack gap={"4rem"}>
-          <TextCard
-            title={title}
-            text={text}
-            cardProps={{
-              maxWidth: "374px",
-            }}
-            titleProps={{
-              as: "h2",
-              variant: "title",
-            }}
-            textProps={{
-              fontSize: "1.0625rem",
-              fontWeight: "light",
-              lineHeight: "1.7",
-              whiteSpace: "pre-line",
-              textAlign: "left",
-            }}
-          />
-          <LinksStack links={links} />
-        </VStack>
-      </HStack>
+      <Flex
+        align={"center"}
+        justify={"center"}
+        direction={["column", , "row"]}
+        gap={["3rem"]}
+      >
+        <TextCard
+          title={title}
+          text={text}
+          cardProps={{
+            maxWidth: "385px",
+            gap: ["1rem", "0"],
+          }}
+          titleProps={{
+            as: "h2",
+            variant: "title",
+            textAlign: ["center", "center", "left"],
+          }}
+          textProps={{
+            fontSize: "clamp(0.875rem, 3vw, 1.0625rem)",
+            fontWeight: "light",
+            lineHeight: "1.7",
+            whiteSpace: "break-spaces",
+            textAlign: ["center", "left"],
+          }}
+        />
+        <LinksStack links={links} />
+        <Image
+          src={img.src}
+          alt={img.src}
+          width={520}
+          height={782}
+          paddingInline={["4rem", "4rem", 0]}
+          sx={{
+            objectFit: "contain",
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      </Flex>
     </Container>
   );
 };

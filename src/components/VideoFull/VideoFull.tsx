@@ -4,12 +4,12 @@ import { FunctionComponent } from "react";
 export type VideoFullProps = {
   src: string;
 };
-// Rename - *Block convention reserved for full page sections
+
 export const VideoFull: FunctionComponent<VideoFullProps> = (
   props: VideoFullProps
 ) => {
   return (
-    <AspectRatio ratio={16 / 9} minH="100vh" bgColor="black">
+    <AspectRatio ratio={16 / 9} bgColor={"black"} height={"100vh"}>
       <video
         src={props.src}
         muted={true}

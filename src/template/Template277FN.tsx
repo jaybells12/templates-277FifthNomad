@@ -13,7 +13,7 @@ import { Footer } from "@/components/Footer";
 import { useScrolledOffset } from "@/lib/useScrolledOffset";
 
 export const Template277FN: FunctionComponent<any> = (props: any) => {
-  const isScrolled = useScrolledOffset(600);
+  const isScrolled = useScrolledOffset(400);
   return (
     <>
       <NavBar
