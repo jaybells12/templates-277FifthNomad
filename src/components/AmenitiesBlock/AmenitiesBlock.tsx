@@ -48,7 +48,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
           textAlign: "center",
         }}
       />
-      <TextBar text={text} paddingBlock={"5rem"} />
+      <TextBar text={text} variant={"banner"} />
     </Container>
   );
 };

@@ -31,25 +31,24 @@ export const Carousel: FunctionComponent<CarouselProps> = (
   const { split, cards, cardProps, flexProps } = props;
   const [index, direction, next, prev] = useCarousel(cards.length, 1050);
 
-  useEffect(() => {
-    if (split) return; // Only runs for non-split variant
-    const interval = setInterval(() => {
-      next();
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [next]);
+  // useEffect(() => {
+  //   if (split) return; // Only runs for non-split variant
+  //   const interval = setInterval(() => {
+  //     next();
+  //   }, 6000);
+  //   return () => clearInterval(interval);
+  // }, [next]);
 
   return (
     <Box
       position="relative"
-      marginLeft={!split && "22%"}
+      marginLeft={!split && ["0", "0", "22%"]}
       marginBottom={split && "2.5rem"}
     >
       <CarouselControls nextFn={next} prevFn={prev} zIndex={2} split={split} />
       <HStack
         position="relative"
-        width="100%"
-        justifyContent={split && "center"}
+        justifyContent={["center", null, split && "center"]}
         alignItems={"flex-start"}
         gap={`${cardProps.gap}rem`}
       >
@@ -65,6 +64,7 @@ export const Carousel: FunctionComponent<CarouselProps> = (
           cardPosition={-1}
           cardDirection={direction}
           split={split}
+          padding={["1.5rem", null, "0"]}
           {...flexProps}
         />
         <CarouselCard

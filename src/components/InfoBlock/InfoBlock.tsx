@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { TextCard } from "../TextCard";
-import Image from "next/image";
-import { Container, Box, HStack } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/next-js";
+import { Container, Box, Flex } from "@chakra-ui/react";
 
 export type InfoBlockProps = {
   companyName: string;
@@ -17,11 +17,12 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
   const { title, text, topImg, botImg, companyName } = props;
   return (
     <Container as={"section"} id={`${companyName}`} variant={"section"}>
-      <HStack
+      <Flex
+        direction={["column", null, "row"]}
         justify={"center"}
         align={"center"}
         gap={"6rem"}
-        marginLeft={"4rem"}
+        // marginLeft={"4rem"}
       >
         {/* Margin here to center*/}
         <TextCard
@@ -38,19 +39,23 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
             textAlign: "center",
           }}
           cardProps={{
-            width: "381px",
+            maxWidth: "381px",
           }}
         />
-        <Box display={"inline-block"} height={"566px"}>
+        {/* width: 381px */}
+        {/* height={"566px"} */}
+        <Box whiteSpace={"nowrap"}>
           <Image
             src={topImg}
             width={319}
             height={424}
             alt={"Top of overlapped images"}
-            style={{
+            sx={{
               display: "inline-block",
-              position: "relative",
-              zIndex: 2,
+              objectFit: "cover",
+              width: "clamp(150px, 25vw, 330px)",
+              height: "auto",
+              marginBottom: "20%",
             }}
           />
           <Image
@@ -58,16 +63,18 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
             width={319}
             height={424}
             alt={"Bottom of overlapped images"}
-            style={{
+            sx={{
               display: "inline-block",
+              objectFit: "cover",
+              width: "clamp(150px, 25vw, 330px)",
+              height: "auto",
+              marginTop: "20%",
               position: "relative",
-              top: "142px",
-              left: "-70px",
-              zIndex: 1,
+              left: "-10%",
             }}
           />
         </Box>
-      </HStack>
+      </Flex>
     </Container>
   );
 };

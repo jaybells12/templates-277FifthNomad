@@ -20,23 +20,29 @@ const footer = defineStyle({
 
 const features = defineStyle({
   fontFamily: "PortraitText",
-  fontSize: "0.875rem",
+  fontSize: "clamp(0.75rem, 2.5vw, 0.875rem)",
   letterSpacing: "2px",
+})
+
+const card = defineStyle({
+  fontSize: "clamp(0.875rem, 3vw, 1.0625rem)",
+  lineHeight: "1.5",
+  fontWeight: "normal",
 })
 
 const banner = defineStyle({
   color: "white",
   fontSize: "1.125rem",
-  padding: ["4rem 0 1.75rem 0","3rem 11rem"],
-  maxWidth: ["88%", "72%"],
+  padding: ["2rem 0", null, "3rem 11rem"],
+  maxWidth: ["88%", null, "72%"],
   margin: "0 auto",
   lineHeight: "1.4",
   letterSpacing: "2.7px",
   opacity: "0.6",
-  textAlign: ["center","left"]
+  textAlign: ["center", null, "left"]
 })
 
 export const textTheme = defineStyleConfig({
-  variants: { contact, footer, features, banner },
+  variants: { contact, footer, features, banner, card },
 
 })

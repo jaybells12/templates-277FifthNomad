@@ -8,7 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { FunctionComponent, useRef } from "react";
-import { HStack, VStack, Circle, Container } from "@chakra-ui/react";
+import { HStack, VStack, Circle, Container, Box } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 
 // How expensive is this component? Three images are layered over eachother to create the dragging opacity effect.
@@ -24,7 +24,7 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
   props: SlideshowProps
 ) => {
   const { images, text } = props;
-  const [index, , plusOne, minusOne] = useCarousel(images.length, 800);
+  const [index, , plusOne, minusOne] = useCarousel(images.length, 500);
   const disablePan = useRef(false);
   const controls = useAnimation();
   const x = useMotionValue(0);
@@ -58,55 +58,68 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
       });
     }
   };
+
   return (
     <Container as={"section"} variant={"section"}>
-      <VStack overflowX="hidden" position={"relative"}>
-        <motion.img
-          draggable={"false"}
-          custom={-1}
-          key={"left"}
-          src={images[index.prev].src}
+      <VStack>
+        <Box
+          overflow="clip"
+          position={"relative"}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"flex-end"}
           style={{
-            objectFit: "cover",
-            position: "absolute",
+            aspectRatio: "3/2",
             width: "100%",
-            height: "718px",
-            margin: 0,
-            zIndex: 2,
+            height: "auto",
+            overflow: "hidden",
           }}
-        />
-        <motion.img
-          draggable={"false"}
-          onPan={handlePan}
-          onPanEnd={handlePanEnd}
-          key={"center"}
-          src={images[index.current].src}
-          animate={controls}
-          style={{
-            zIndex: 4,
-            opacity,
-            cursor: "grab",
-            objectFit: "cover",
-            height: "718px",
-            width: "100%",
-            margin: 0,
-            touchAction: "none",
-          }}
-        />
-        <motion.img
-          draggable={"false"}
-          custom={1}
-          key={"right"}
-          src={images[index.next].src}
-          style={{
-            objectFit: "cover",
-            position: "absolute",
-            width: "100%",
-            height: "718px",
-            margin: 0,
-            zIndex,
-          }}
-        />
+        >
+          <motion.img
+            draggable={"false"}
+            key={"left"}
+            src={images[index.prev].src}
+            style={{
+              position: "absolute",
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+              margin: 0,
+              zIndex: 2,
+            }}
+          />
+          <motion.img
+            draggable={"false"}
+            onPan={handlePan}
+            onPanEnd={handlePanEnd}
+            key={"center"}
+            src={images[index.current].src}
+            animate={controls}
+            style={{
+              opacity,
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+              margin: 0,
+              cursor: "grab",
+              touchAction: "none",
+              zIndex: 4,
+            }}
+          />
+          <motion.img
+            draggable={"false"}
+            key={"right"}
+            src={images[index.next].src}
+            style={{
+              position: "absolute",
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+              margin: 0,
+              zIndex,
+            }}
+          />
+        </Box>
         <HStack
           gap={"0.75rem"}
           zIndex={"5"}

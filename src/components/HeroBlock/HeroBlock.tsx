@@ -10,7 +10,6 @@ const logoVariants = {
     scale: 1,
     transition: {
       scale: {
-        from: 0,
         duration: 0.2,
       },
     },
@@ -19,7 +18,6 @@ const logoVariants = {
     scale: 0,
     transition: {
       scale: {
-        from: 1,
         duration: 0.2,
       },
     },
@@ -40,10 +38,10 @@ export type HeroProps = {
 
 export const HeroBlock: FunctionComponent<HeroProps> = (props: HeroProps) => {
   const { logo, videoSrc, tagline, scrolled } = props;
+
   return (
     <Container as={"section"} variant={"section"} position={"relative"}>
       <motion.div
-        layout
         variants={logoVariants}
         animate={scrolled ? "exit" : "enter"}
         style={{

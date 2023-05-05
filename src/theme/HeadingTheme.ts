@@ -10,6 +10,14 @@ const contact = defineStyle({
   marginBottom: "0.5rem"
 })
 
+const card = defineStyle({
+  fontFamily: "PortraitText",
+  fontSize: "clamp(0.75rem, 2.5vw, 0.875rem)",
+  lineHeight: "1.5",
+  letterSpacing: "2px",
+  fontWeight: "normal",
+})
+
 const title = defineStyle({
   fontSize: "clamp(5.3125rem, 3vw, 7.25rem)",
   fontWeight: "normal",
@@ -18,6 +26,6 @@ const title = defineStyle({
 })
 
 export const headingTheme = defineStyleConfig({
-  variants: { contact, title },
+  variants: { contact, title, card },
 
 })

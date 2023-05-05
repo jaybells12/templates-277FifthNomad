@@ -5,6 +5,7 @@ const section = defineStyle({
   minW: "full",
   padding: "0",
   textAlign: "center",
+  overflowX: "hidden",
   _notLast: {
     marginBottom: ["5rem", "9rem", "14.375rem"]
   }

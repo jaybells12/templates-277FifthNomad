@@ -33,17 +33,18 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
         titleProps={{
           as: "h2",
           variant: "title",
+          lineHeight: "0.5",
         }}
         textProps={{
-          fontSize: "1.0625rem",
+          fontSize: "clamp(0.875rem, 3vw, 1.0625rem)",
           fontWeight: "light",
           lineHeight: "1.7",
-          textAlign: "left",
+          textAlign: ["center", "left"],
         }}
         cardProps={{
-          width: "572px",
-          alignItems: "flex-start",
-          ml: "22%",
+          alignItems: ["center", "flex-start"],
+          paddingInline: ["1.55rem", "1.55rem", "0"],
+          // ml: "22%",
           mb: "3rem",
           gap: "1rem",
         }}
@@ -53,8 +54,8 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
           href={factSheet}
           target={"_blank"}
           lineHeight={"2.5"}
-          height={"34px"}
-          paddingInline={"1.4rem"}
+          height={"40px"}
+          paddingInline={"2.5rem"}
         >
           FACT SHEET
         </Button>
@@ -62,7 +63,6 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
       <Carousel
         cards={cards}
         split={splitVariant}
-        //These values are to match template as is, could be rearranged to be dynamically input
         cardProps={{
           cardWth: 600,
           imgWth: 600,

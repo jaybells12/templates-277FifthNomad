@@ -1,38 +1,26 @@
 import {
-  HStack,
+  Flex,
   FlexboxProps,
   Circle,
   PositionProps,
   Box,
+  useStyleConfig,
 } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/next-js";
 import { FunctionComponent } from "react";
 import leftArrow from "../../../public/Arrow-Left.svg";
 import rightArrow from "../../../public/Arrow-Right.svg";
-import { PRIMARY_COLOR, TRIM_COLOR } from "@/styles/GlobalStyles";
+import { TRIM_COLOR } from "@/styles/GlobalStyles";
 
 // Color here is an approximation of an overlay which achieves similar results to the template
 // This should allow for different background colors
 const OVERLAY_COLOR = "#3063";
 const STATIC_COLOR = "#DBCED5";
 
-// Controls need to accept props to change positioning, coloring, and hover effects
-
-const layout = {
-  split: {
-    position: "absolute",
-    top: "37%",
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "88%",
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  box: {
-    position: "absolute",
-    right: "200px",
-    top: "-100px",
-  },
+const Controls = (props: any) => {
+  const { variant, ...rest } = props;
+  const styles = useStyleConfig("Controls", { variant });
+  return <Flex __css={styles} {...rest} />;
 };
 
 export type CarouselControlProps = {
@@ -48,7 +36,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
   const { nextFn, prevFn, split, ...rest } = props;
 
   return (
-    <HStack bgColor={"unset"} sx={split ? layout.split : layout.box} {...rest}>
+    <Controls variant={[null, null, split ? "split" : "whole"]} {...rest}>
       <Circle
         size="50px"
         position="relative"
@@ -56,7 +44,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
         border={"2px"}
         style={{ transition: "background-color 0.3s ease" }}
         _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}
-        borderColor={split ? "white" : TRIM_COLOR}
+        borderColor={split ? "white" : "brand.trim"}
         cursor={"pointer"}
       >
         <Image
@@ -94,6 +82,6 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
           }
         />
       </Circle>
-    </HStack>
+    </Controls>
   );
 };
