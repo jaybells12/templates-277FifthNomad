@@ -11,6 +11,7 @@ import { textTheme } from "./TextTheme";
 import { linkTheme } from "./LinkTheme";
 import { Controls } from "./ControlsTheme";
 import { cardTheme } from "./CardTheme";
+import { tableTheme } from "./TableTheme";
 
 export const publicSans = Public_Sans({ subsets: ["latin"] });
 
@@ -49,6 +50,7 @@ export const Theme = extendTheme({
     Text: textTheme,
     Link: linkTheme,
     Card: cardTheme,
+    Table: tableTheme,
     Controls
   },
 });

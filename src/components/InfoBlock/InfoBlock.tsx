@@ -56,6 +56,9 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
               width: "clamp(150px, 25vw, 330px)",
               height: "auto",
               marginBottom: "20%",
+              position: "relative",
+              right: "-5%",
+              zIndex: "2",
             }}
           />
           <Image
@@ -70,7 +73,8 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
               height: "auto",
               marginTop: "20%",
               position: "relative",
-              left: "-10%",
+              left: "-5%",
+              zIndex: "1",
             }}
           />
         </Box>

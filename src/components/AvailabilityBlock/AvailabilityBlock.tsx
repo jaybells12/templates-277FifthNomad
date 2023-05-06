@@ -10,8 +10,9 @@ import {
   Td,
   Button,
   Heading,
+  useBreakpointValue,
 } from "@chakra-ui/react";
-import { PRIMARY_COLOR, TRIM_COLOR } from "@/styles/GlobalStyles";
+import { Link } from "@chakra-ui/next-js";
 
 export type AvailabilityBlockProps = {
   data: {
@@ -27,6 +28,8 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
   props: AvailabilityBlockProps
 ) => {
   const { data } = props;
+  const columnCount = useBreakpointValue({ base: "2", md: "auto" });
+  const isMediumWidth = useBreakpointValue({ base: false, md: true });
 
   //Do i need to useState here or can I use useRef?
   const [dir, setDir] = useState(Object.keys(data).map(() => ""));
@@ -51,77 +54,78 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
       as={"section"}
       id={"availability"}
       variant={"section"}
-      paddingInline={"7rem"}
+      paddingInline={[null, null, "7rem"]}
     >
       <Heading
         as={"h2"}
-        marginBottom={"5rem"}
+        marginBottom={[null, null, "5rem"]}
+        marginLeft={["1.75rem", null, "0"]}
         variant={"title"}
         color={"brand.trim"}
       >
         Availability
       </Heading>
       <TableContainer>
-        <Table variant={"unstyled"}>
-          <Thead borderBottom={"1px solid #cecece"}>
-            <Tr>
-              {Object.keys(data[0]).map((title, idx) => (
-                <Th
-                  key={idx}
-                  onClick={() => sortData(title, idx)}
-                  fontFamily={"PortraitText"}
-                  fontSize={"0.75rem"}
-                  lineHeight={"1.6"}
-                  letterSpacing={"2px"}
-                  textAlign={"center"}
-                  cursor={"pointer"}
-                  paddingBottom={"21px"}
-                >
-                  {title}
-                </Th>
-              ))}
-            </Tr>
-          </Thead>
-          <Tbody
-            borderBottom={"1px solid #cecece"}
-            paddingBlock={"5rem"}
-            _before={{
-              content: `""`,
-              display: "block",
-              height: "2rem",
-            }}
-            _after={{
-              content: `""`,
-              display: "block",
-              height: "2rem",
-            }}
-          >
+        <Table
+          variant={["base", null, "md"]}
+          // borderBottom={"1px solid #cecece"}
+        >
+          {isMediumWidth && (
+            <Thead borderBottom={"1px solid #cecece"}>
+              <Tr>
+                {Object.keys(data[0]).map((title, idx) => (
+                  <Th
+                    key={idx}
+                    onClick={() => sortData(title, idx)}
+                    fontFamily={"PortraitText"}
+                    fontSize={"0.75rem"}
+                    lineHeight={"1.6"}
+                    letterSpacing={"2px"}
+                    textAlign={"center"}
+                    cursor={"pointer"}
+                    paddingBottom={"21px"}
+                  >
+                    {title}
+                  </Th>
+                ))}
+              </Tr>
+            </Thead>
+          )}
+          <Tbody>
             {data.map((row, idx) => (
-              <Tr
-                key={idx}
-                _hover={{ bgColor: "brand.tableHover" }}
-                transition={"background-color 0.4s ease-in-out"}
-              >
-                {Object.values(row).map((value, index) => (
+              <Tr key={idx}>
+                {Object.entries(row).map((pair, index) => (
                   <Td
                     key={index}
-                    textAlign={"center"}
-                    padding={"8px 10px 8px"}
-                    fontWeight={"light"}
-                    fontSize={"1.0625rem"}
-                    lineHeight={"1.7"}
+                    data-label={pair[0]}
+                    _before={
+                      typeof pair[1] === "object" && { content: "unset" }
+                    }
                   >
-                    {typeof value === "object" ? (
-                      <Button
-                        as={"a"}
-                        width={"80%"}
-                        href={value.src}
-                        target={"_blank"}
-                      >
-                        FLOORPLAN
-                      </Button>
+                    {typeof pair[1] === "object" ? (
+                      isMediumWidth ? (
+                        <Button
+                          as={"a"}
+                          width={"80%"}
+                          href={pair[1].src}
+                          target={"_blank"}
+                        >
+                          FLOORPLAN
+                        </Button>
+                      ) : (
+                        <Link
+                          href={pair[1].src}
+                          target={"_blank"}
+                          fontSize={"clamp(0.5625rem, 2.5vw, 0.6875rem)"}
+                          letterSpacing={"1px"}
+                          textDecoration={"underline"}
+                          _hover={{ textDecoration: "none" }}
+                        >
+                          FLOOR PLAN
+                        </Link>
+                      )
                     ) : (
-                      value
+                      pair[1]
                     )}
                   </Td>
                 ))}
