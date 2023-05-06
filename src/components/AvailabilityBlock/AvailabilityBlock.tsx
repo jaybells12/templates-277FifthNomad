@@ -66,10 +66,7 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
         Availability
       </Heading>
       <TableContainer>
-        <Table
-          variant={["base", null, "md"]}
-          // borderBottom={"1px solid #cecece"}
-        >
+        <Table variant={["base", null, "md"]}>
           {isMediumWidth && (
             <Thead borderBottom={"1px solid #cecece"}>
               <Tr>

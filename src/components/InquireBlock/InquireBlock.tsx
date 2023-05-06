@@ -19,7 +19,12 @@ export const InquireBlock: FunctionComponent<InquireBlockProps> = (
       variant={"section"}
       marginBottom={"10rem"}
     >
-      <Flex justify={"center"} gap={"9rem"}>
+      <Flex
+        justify={"center"}
+        align={"center"}
+        direction={["column-reverse", null, "row"]}
+        gap={["6rem", null, "9rem"]}
+      >
         <InquireContact
           logo={contact.logo}
           address={contact.address}

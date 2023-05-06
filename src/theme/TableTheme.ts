@@ -3,17 +3,6 @@ import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(tableAnatomy.keys);
-
-  const baseStyle = definePartsStyle({
-    
-  })
-  /*
-                    textAlign={"center"}
-                    padding={"8px 10px 8px"}
-                    fontWeight={"light"}
-                    fontSize={"1.0625rem"}
-                    lineHeight={"1.7"}
-  */
   
   const variants = {
     base: definePartsStyle({
@@ -72,28 +61,9 @@ const { definePartsStyle, defineMultiStyleConfig } =
   }
 
   const sizes = {
-    sm: definePartsStyle({
-      tr: {
-        display: "block",
-        columnCount: "2",
-      },
-      td: {
-        display: "block"
-      }
-    }),
-    md: definePartsStyle({
-      tr: {
-        display: "table-row",
-        columnCount: "auto"
-      },
-      td: {
-        display: "table-cell"
-      }
-    })
   }
 
   const defaultProps = {
-    
   }
 
   export const tableTheme = defineMultiStyleConfig({

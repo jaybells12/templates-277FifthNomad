@@ -4,24 +4,29 @@ import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(selectAnatomy.keys)
 
-const underlined = definePartsStyle({
-  field: {
-    width: "100%",
+const variants = {
+  mobile: definePartsStyle({
+    field:{
     bgColor: "inherit",
     borderRadius: "0",
     border: "0",
     borderBottom: "1px solid",
     borderColor: "brand.inputBorder",
-    padding: "11px 0 11px 0",
-    fontFamily: "PortraitText",
-    letterSpacing: "2px",
-    fontSize: "0.875rem"
-  },
-})
+    fontSize: "0.75rem",
+    letterSpacing: "1px",
+    lineHeight: "1",
+    height: "auto",
+    minHeight: "1.125rem",
+    padding: "0",
+    paddingBlock: "0.5rem",
+    },
+  }),
+  md: definePartsStyle({})
+}
 
 export const selectTheme = defineMultiStyleConfig({
-  variants: { underlined },
+  variants,
   defaultProps: {
-    variant: "underlined"
+    variant: "mobile"
   }
 })

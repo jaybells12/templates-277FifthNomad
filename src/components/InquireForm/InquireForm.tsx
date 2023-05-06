@@ -35,17 +35,11 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
   const [heard, setHeard] = useState("");
 
   return (
-    <FormControl
-      display={"flex"}
-      flexDir={"column"}
-      gap={"1.75rem"}
-      flexGrow={"0"}
-      width={"unset"}
-    >
+    <FormControl>
       <Heading as={"h2"} variant={"title"}>
         Inquire
       </Heading>
-      <HStack gap={"2rem"}>
+      <HStack gap={["0.75rem", null, "2rem"]}>
         <Input
           id="firstName"
           type={"text"}
@@ -88,14 +82,7 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
         onChange={(e) => setTel(e.target.value)}
       />
       <Box>
-        <FormLabel
-          htmlFor="residence"
-          fontSize={"0.875rem"}
-          letterSpacing={"2px"}
-          marginBottom={"1.25rem"}
-        >
-          DESIRED RESIDENCE TYPE
-        </FormLabel>
+        <FormLabel htmlFor="residence">DESIRED RESIDENCE TYPE</FormLabel>
         <RadioGroup
           id="residence"
           aria-label={"Desired residence type"}
@@ -147,14 +134,7 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
         ))}
       </Select>
       <Box>
-        <FormLabel
-          htmlFor="broker"
-          fontSize={"0.875rem"}
-          letterSpacing={"2px"}
-          marginBottom={"1.25rem"}
-        >
-          ARE YOU A BROKER?
-        </FormLabel>
+        <FormLabel htmlFor="broker">ARE YOU A BROKER?</FormLabel>
         <RadioGroup
           id="broker"
           aria-label={"Are you a broker?"}

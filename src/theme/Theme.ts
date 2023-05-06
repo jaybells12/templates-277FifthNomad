@@ -12,6 +12,8 @@ import { linkTheme } from "./LinkTheme";
 import { Controls } from "./ControlsTheme";
 import { cardTheme } from "./CardTheme";
 import { tableTheme } from "./TableTheme";
+import { formTheme } from "./FormTheme";
+import { formLabelTheme } from "./FormLabelTheme";
 
 export const publicSans = Public_Sans({ subsets: ["latin"] });
 
@@ -51,6 +53,8 @@ export const Theme = extendTheme({
     Link: linkTheme,
     Card: cardTheme,
     Table: tableTheme,
+    Form: formTheme,
+    FormLabel: formLabelTheme,
     Controls
   },
 });
