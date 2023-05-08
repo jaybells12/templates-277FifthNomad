@@ -21,7 +21,7 @@ export const InquireContact: FunctionComponent<InquireContactProps> = (
 ) => {
   const { logo, contactInfo, address, teamsInfo } = props;
   return (
-    <VStack alignItems={"flex-start"} gap={"2rem"}>
+    <VStack alignItems={["center", null, "flex-start"]} gap={"2rem"}>
       <Logo
         src={logo.src}
         alt={logo.alt}

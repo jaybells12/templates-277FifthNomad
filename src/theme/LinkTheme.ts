@@ -6,7 +6,7 @@ const contact = defineStyle({
   fontSize: "1rem",
   lineHeight: "1.7",
   whiteSpace: "pre",
-  textAlign: "left",
+  textAlign: ["center", null, "left"],
   letterSpacing: "0.2px",
   display: "block",
   _hover:{

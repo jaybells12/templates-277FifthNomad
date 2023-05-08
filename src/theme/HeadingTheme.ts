@@ -6,7 +6,7 @@ const contact = defineStyle({
   fontSize: "0.875rem",
   letterSpacing: "2px",
   lineHeight: "1.8",
-  textAlign: "left",
+  textAlign: ["center", null, "left"],
   marginBottom: "0.5rem"
 })
 

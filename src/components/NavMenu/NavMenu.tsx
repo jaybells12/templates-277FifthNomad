@@ -1,7 +1,11 @@
 import { NavMenuIcon } from "../NavMenuIcon";
 import { NavMenuItem } from "../NavMenuItem";
-import { StyledNavMenu } from "./NavMenu.style";
-import { DrawerOverlay, DrawerContent, DrawerBody } from "@chakra-ui/react";
+import {
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerBody,
+} from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 
 export type NavMenuProps = {
@@ -23,12 +27,7 @@ export const NavMenu: FunctionComponent<NavMenuProps> = (
           onToggle();
         }}
       />
-      <StyledNavMenu
-        isOpen={isOpen}
-        placement={"top"}
-        onClose={onClose}
-        size={"full"}
-      >
+      <Drawer isOpen={isOpen} placement={"top"} onClose={onClose} size={"full"}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody
@@ -44,7 +43,7 @@ export const NavMenu: FunctionComponent<NavMenuProps> = (
             ))}
           </DrawerBody>
         </DrawerContent>
-      </StyledNavMenu>
+      </Drawer>
     </>
   );
 };

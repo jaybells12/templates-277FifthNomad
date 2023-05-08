@@ -3,11 +3,11 @@ import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
 const contact = defineStyle({
   fontFamily: "PortraitText",
   fontWeight: "light",
-  fontSize: "1rem",
+  fontSize: "clamp(0.875rem, 3vw, 1rem)",
   lineHeight: "1.7",
   whiteSpace: "pre",
-  textAlign: "left",
-  letterSpacing: "0.2px"
+  letterSpacing: "0.2px",
+  textAlign: ["center", null, "left"]
 })
 
 const footer = defineStyle({
