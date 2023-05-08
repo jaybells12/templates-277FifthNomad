@@ -285,7 +285,7 @@ const navMenuLinks = [
 export default {
   logo,
   videoSrc,
-  navLogo: navLogo.src,
+  navLogo,
   navLinks,
   residencesCards,
   blockLinks,

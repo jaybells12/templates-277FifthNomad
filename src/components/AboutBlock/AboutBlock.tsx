@@ -17,31 +17,35 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
 ) => {
   const { img, title, text, links } = props;
   return (
-    <Container as={"section"} variant={"section"}>
+    <Container
+      as={"section"}
+      variant={"section"}
+      padding={["1.5rem", null, "0"]}
+    >
       <Flex
         align={"center"}
         justify={"center"}
-        direction={["column", , "row"]}
-        gap={["3rem"]}
+        direction={["column", null, "row"]}
+        gap={["3rem", null, "0"]}
       >
         <TextCard
           title={title}
           text={text}
           cardProps={{
             maxWidth: "385px",
-            gap: ["1rem", "0"],
+            gap: ["1rem", null, "0"],
           }}
           titleProps={{
             as: "h2",
             variant: "title",
-            textAlign: ["center", "center", "left"],
+            textAlign: ["center", null, "left"],
           }}
           textProps={{
             fontSize: "clamp(0.875rem, 3vw, 1.0625rem)",
             fontWeight: "light",
             lineHeight: "1.7",
             whiteSpace: "break-spaces",
-            textAlign: ["center", "left"],
+            textAlign: ["center", null, "left"],
           }}
         />
         <LinksStack links={links} />
@@ -50,7 +54,7 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
           alt={img.src}
           width={520}
           height={782}
-          paddingInline={["4rem", "4rem", 0]}
+          paddingInline={["2rem", null, 0]}
           sx={{
             objectFit: "contain",
             width: "100%",

@@ -2,19 +2,26 @@ import { NavLogo } from "../NavLogo";
 import { NavLink } from "../NavLink";
 import { NavMenu } from "../NavMenu";
 import { FunctionComponent } from "react";
-import { useDisclosure, Text, Flex } from "@chakra-ui/react";
+import {
+  useDisclosure,
+  Text,
+  Flex,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import { StaticImageData } from "next/image";
 
 // Need Href prop for each link
 export type NavBarProps = {
   links: string[];
   menuLinks: string[];
-  logoSrc: string;
+  logo: StaticImageData;
   scrolled: boolean;
 };
 
 export const NavBar: FunctionComponent<NavBarProps> = (props: NavBarProps) => {
   const { isOpen, onClose, onToggle } = useDisclosure();
-  const { links, menuLinks, logoSrc, scrolled } = props;
+  const mobile = useBreakpointValue({ base: true, md: false });
+  const { links, menuLinks, logo, scrolled } = props;
 
   return (
     <Flex
@@ -28,7 +35,20 @@ export const NavBar: FunctionComponent<NavBarProps> = (props: NavBarProps) => {
       zIndex={"2000"}
       display={scrolled ? "flex" : "none"}
     >
-      <NavLogo src={logoSrc} />
+      <NavLogo
+        src={logo.src}
+        alt={"Navigation bar logo"}
+        width={logo.width}
+        height={logo.height}
+        marginLeft={"1rem"}
+        marginRight={"auto"}
+        sx={
+          mobile && {
+            width: "126px",
+            height: "30px",
+          }
+        }
+      />
       {isOpen ? (
         <Text
           onClick={onClose}
@@ -39,6 +59,8 @@ export const NavBar: FunctionComponent<NavBarProps> = (props: NavBarProps) => {
         >
           CLOSE
         </Text>
+      ) : mobile ? (
+        <NavLink text={links[links.length - 1]} marginRight={"1rem"} />
       ) : (
         links.map((link, idx) => <NavLink key={idx} text={link} />)
       )}

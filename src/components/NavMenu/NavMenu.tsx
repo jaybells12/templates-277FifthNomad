@@ -23,6 +23,9 @@ export const NavMenu: FunctionComponent<NavMenuProps> = (
   return (
     <>
       <NavMenuIcon
+        stroke={"brand.trim"}
+        cursor={"pointer"}
+        marginRight={"1.5rem"}
         onClick={() => {
           onToggle();
         }}

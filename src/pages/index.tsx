@@ -18,7 +18,7 @@ export default function Index() {
       <NavBar
         links={sampleData.navLinks}
         menuLinks={sampleData.navMenuLinks}
-        logoSrc={sampleData.navLogo}
+        logo={sampleData.navLogo}
         scrolled={isScrolled}
       />
       <HeroBlock
