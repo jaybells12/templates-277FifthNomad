@@ -40,7 +40,12 @@ export const HeroBlock: FunctionComponent<HeroProps> = (props: HeroProps) => {
   const { logo, videoSrc, tagline, scrolled } = props;
 
   return (
-    <Container as={"section"} variant={"section"} position={"relative"}>
+    <Container
+      as={"section"}
+      variant={"section"}
+      position={"relative"}
+      overflow={"hidden"}
+    >
       <motion.div
         variants={logoVariants}
         animate={scrolled ? "exit" : "enter"}
