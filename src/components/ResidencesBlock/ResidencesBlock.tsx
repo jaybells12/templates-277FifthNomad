@@ -47,7 +47,7 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
           paddingInline: ["1.55rem", null, "0"],
           minWidth: "312px",
           maxWidth: "572px",
-          width: "50%",
+          width: ["100%", null, "50%"],
           mb: "3rem",
           gap: "1rem",
         }}
