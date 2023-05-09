@@ -6,9 +6,7 @@ const section = defineStyle({
   padding: "0",
   textAlign: "center",
   overflowX: "hidden",
-  _notLast: {
-    marginBottom: ["5rem", "9rem", "14.375rem"]
-  }
+  marginBottom: ["4rem", null, "8rem", "12rem"]
 })
 
 export const containerTheme = defineStyleConfig({

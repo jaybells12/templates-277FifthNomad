@@ -54,11 +54,11 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
       as={"section"}
       id={"availability"}
       variant={"section"}
-      paddingInline={[null, null, "7rem"]}
+      paddingInline={[null, null, "2rem", "4rem", "8rem"]} //
     >
       <Heading
         as={"h2"}
-        marginBottom={[null, null, "5rem"]}
+        marginBottom={[null, null, "3rem"]}
         marginLeft={["1.75rem", null, "0"]}
         variant={"title"}
         color={"brand.trim"}
@@ -66,22 +66,12 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
         Availability
       </Heading>
       <TableContainer>
-        <Table variant={["base", null, "md"]}>
+        <Table variant={["mobile", null, "responsive"]}>
           {isMediumWidth && (
             <Thead borderBottom={"1px solid #cecece"}>
               <Tr>
                 {Object.keys(data[0]).map((title, idx) => (
-                  <Th
-                    key={idx}
-                    onClick={() => sortData(title, idx)}
-                    fontFamily={"PortraitText"}
-                    fontSize={"0.75rem"}
-                    lineHeight={"1.6"}
-                    letterSpacing={"2px"}
-                    textAlign={"center"}
-                    cursor={"pointer"}
-                    paddingBottom={"21px"}
-                  >
+                  <Th key={idx} onClick={() => sortData(title, idx)}>
                     {title}
                   </Th>
                 ))}
@@ -90,7 +80,7 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
           )}
           <Tbody>
             {data.map((row, idx) => (
-              <Tr key={idx}>
+              <Tr key={idx} _hover={{ bgColor: "brand.tableHover" }}>
                 {Object.entries(row).map((pair, index) => (
                   <Td
                     key={index}
@@ -103,8 +93,9 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
                       isMediumWidth ? (
                         <Button
                           as={"a"}
-                          width={"80%"}
+                          width={"100%"}
                           href={pair[1].src}
+                          fontSize={"clamp(0.5rem, 1.5vw, 0.75rem)"}
                           target={"_blank"}
                         >
                           FLOORPLAN

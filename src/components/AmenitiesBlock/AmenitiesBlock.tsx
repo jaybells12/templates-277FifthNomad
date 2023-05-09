@@ -1,6 +1,6 @@
 import { Carousel } from "../Carousel";
 import { TextBar } from "../TextBar";
-import { Container, Heading } from "@chakra-ui/react";
+import { Container, Flex, Heading } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 
 export type AmenitiesBlockProps = {

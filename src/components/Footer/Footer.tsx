@@ -18,7 +18,7 @@ export type FooterProps = {
 export const Footer: FunctionComponent<FooterProps> = (props: FooterProps) => {
   const { text, logos, pdf } = props;
   const mobile = useBreakpointValue({ base: true, md: false });
-  /*what is margin bottom here for?*/
+
   return (
     <Container
       as={"footer"}
@@ -44,9 +44,10 @@ export const Footer: FunctionComponent<FooterProps> = (props: FooterProps) => {
         </HStack>
         <HStack
           width={"100%"}
+          maxWidth={[null, null, "537px", null]}
           justifyContent={["space-between", null, "space-around"]}
-          flexWrap={["wrap", null, "nowrap"]}
-          gap={mobile && "1.75rem"}
+          flexWrap={["wrap", null, null, "nowrap"]}
+          gap={["1.75rem", null, "1rem"]}
           spacing={"0"}
         >
           {logos.map((logo, idx) => (

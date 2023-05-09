@@ -40,7 +40,7 @@ export const NavBar: FunctionComponent<NavBarProps> = (props: NavBarProps) => {
         alt={"Navigation bar logo"}
         width={logo.width}
         height={logo.height}
-        marginLeft={"1rem"}
+        marginLeft={["1.5rem", "3rem", "4.5rem"]}
         marginRight={"auto"}
         sx={
           mobile && {
@@ -60,7 +60,10 @@ export const NavBar: FunctionComponent<NavBarProps> = (props: NavBarProps) => {
           CLOSE
         </Text>
       ) : mobile ? (
-        <NavLink text={links[links.length - 1]} marginRight={"1rem"} />
+        <NavLink
+          text={links[links.length - 1]}
+          marginRight={["1.5rem", "2rem"]}
+        />
       ) : (
         links.map((link, idx) => <NavLink key={idx} text={link} />)
       )}

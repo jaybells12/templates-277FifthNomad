@@ -1,4 +1,4 @@
-import { Container, Flex, VStack, Box } from "@chakra-ui/react";
+import { Container, Flex, Box, useBreakpointValue } from "@chakra-ui/react";
 import { TextCard } from "../TextCard";
 import { Image } from "@chakra-ui/next-js";
 import { LinksStack } from "../LinksStack";
@@ -16,49 +16,51 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
   props: AboutBlockProps
 ) => {
   const { img, title, text, links } = props;
+  const mobile = useBreakpointValue({ base: true, md: false });
   return (
-    <Container
-      as={"section"}
-      variant={"section"}
-      padding={["1.5rem", null, "0"]}
-    >
+    <Container as={"section"} variant={"section"} padding={"1.5rem"}>
       <Flex
         align={"center"}
         justify={"center"}
         direction={["column", null, "row"]}
-        gap={["3rem", null, "0"]}
+        gap={["3rem", null, "1rem", "3rem", "8rem"]}
       >
-        <TextCard
-          title={title}
-          text={text}
-          cardProps={{
-            maxWidth: "385px",
-            gap: ["1rem", null, "0"],
-          }}
-          titleProps={{
-            as: "h2",
-            variant: "title",
-            textAlign: ["center", null, "left"],
-          }}
-          textProps={{
-            fontSize: "clamp(0.875rem, 3vw, 1.0625rem)",
-            fontWeight: "light",
-            lineHeight: "1.7",
-            whiteSpace: "break-spaces",
-            textAlign: ["center", null, "left"],
-          }}
-        />
-        <LinksStack links={links} />
+        <Box order={!mobile && "1"} flexShrink={1}>
+          <TextCard
+            title={title}
+            text={text}
+            cardProps={{
+              maxWidth: "385px",
+              gap: ["1rem", null, "0"],
+            }}
+            titleProps={{
+              as: "h2",
+              variant: "title",
+              textAlign: ["center", null, "left"],
+            }}
+            textProps={{
+              fontSize: "clamp(0.875rem, 3vw, 1.0625rem)",
+              fontWeight: "light",
+              lineHeight: "1.7",
+              whiteSpace: "break-spaces",
+              textAlign: ["center", null, "left"],
+            }}
+          />
+          {!mobile && <LinksStack links={links} marginTop={"4rem"} />}
+        </Box>
+        {mobile && <LinksStack links={links} />}
         <Image
           src={img.src}
           alt={img.src}
           width={520}
           height={782}
+          flexShrink={10}
           paddingInline={["2rem", null, 0]}
           sx={{
             objectFit: "contain",
             width: "100%",
             height: "100%",
+            maxWidth: "520px",
           }}
         />
       </Flex>

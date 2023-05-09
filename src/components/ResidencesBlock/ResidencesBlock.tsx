@@ -39,12 +39,15 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
           fontSize: "clamp(0.875rem, 3vw, 1.0625rem)",
           fontWeight: "light",
           lineHeight: "1.7",
-          textAlign: ["center", "left"],
+          textAlign: ["center", null, "left"],
         }}
         cardProps={{
-          alignItems: ["center", "flex-start"],
-          paddingInline: ["1.55rem", "1.55rem", "0"],
-          // ml: "22%",
+          marginLeft: [null, null, "11%", "15%"],
+          alignItems: ["center", null, "flex-start"],
+          paddingInline: ["1.55rem", null, "0"],
+          minWidth: "312px",
+          maxWidth: "572px",
+          width: "50%",
           mb: "3rem",
           gap: "1rem",
         }}

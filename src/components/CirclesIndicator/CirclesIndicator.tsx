@@ -32,14 +32,18 @@ export const CirclesIndicator = (props: CirclesIndicatorProps) => {
         <Circles
           key={idx}
           variant={variant}
+          backgroundColor={
+            mobile ? null : index.current === idx ? "white" : null
+          }
           opacity={
-            variant === "mobileLight"
+            mobile &&
+            (variant === "mobileLight"
               ? index.current === idx
                 ? "1"
                 : "0.5"
               : index.current === idx
               ? "0.5"
-              : "1"
+              : "1")
           }
         />
       ))}

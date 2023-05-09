@@ -17,11 +17,7 @@ const contact = defineStyle({
 const nav = defineStyle({
   fontSize: "0.7rem",
   letterSpacing: "2px",
-  // margin: "0 1.5rem",
-  // _last: {
-  //   marginRight: "3rem",
-  // }
-  
+  marginRight: [null, null, "2rem", "3rem"]
 })
 
 export const linkTheme = defineStyleConfig({

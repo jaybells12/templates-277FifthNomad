@@ -35,7 +35,7 @@ export const Carousel: FunctionComponent<CarouselProps> = (
   return (
     <Box
       position="relative"
-      marginLeft={!split && ["0", null, "15%"]}
+      marginLeft={!split && ["0", null, "11%", "15%"]}
       marginBottom={split && "2.5rem"}
     >
       <CarouselControls nextFn={next} prevFn={prev} zIndex={2} split={split} />
@@ -59,7 +59,7 @@ export const Carousel: FunctionComponent<CarouselProps> = (
           circLength={cards.length}
           circIdx={index}
           split={split}
-          padding={["1.5rem", null, "0"]}
+          padding={["1.5rem", null, "1px"]}
           {...flexProps}
         />
         <CarouselCard

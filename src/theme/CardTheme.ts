@@ -8,12 +8,13 @@ const { definePartsStyle, defineMultiStyleConfig } =
     container: {
       display: "flex",
       flexShrink: "0",
-      width: "50vw",
+      width: "100%",
       maxWidth: "600px",
       minWidth: "300px",
       margin: "0",
       bgColor: "inherit",
       textAlign: "left",
+      paddingInline: ["1.5rem", null, "0"]
     },
     header: {
       margin: "0",

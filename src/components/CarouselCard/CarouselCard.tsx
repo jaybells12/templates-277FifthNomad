@@ -227,6 +227,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
           <CirclesIndicator
             length={circLength}
             index={circIdx}
+            marginBottom={"1.5rem"}
             variant={split ? "mobileLight" : "mobileDark"}
           />
         )}
@@ -242,7 +243,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
           animate={split && "enter"}
           exit={split && "exit"}
         >
-          <Heading as={"h5"} variant={"card"} mb={["0.75rem", null, "1.5rem"]}>
+          <Heading as={"h5"} variant={"card"}>
             {title.toUpperCase()}
           </Heading>
           {/* May need to come up with a better way to handle sizing of text box */}
@@ -258,6 +259,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
               p="0"
               flexDirection={"column"}
               alignItems={"flex-start"}
+              marginTop={"1.5rem"}
             >
               <Text
                 onClick={onToggle}

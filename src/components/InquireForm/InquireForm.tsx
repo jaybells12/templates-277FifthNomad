@@ -35,7 +35,7 @@ export const InquireForm: FunctionComponent<InquireFormProps> = (
   const [heard, setHeard] = useState("");
 
   return (
-    <FormControl>
+    <FormControl maxWidth={"425px"} minWidth={"350px"} width={"40%"}>
       <Heading as={"h2"} variant={"title"}>
         Inquire
       </Heading>

@@ -21,10 +21,11 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
         direction={["column", null, "row"]}
         justify={"center"}
         align={"center"}
-        gap={"6rem"}
-        // marginLeft={"4rem"}
+        // Margin splits offset of images flex child, brings elements back to center
+        marginLeft={[null, null, "1.25%"]}
+        padding={[null, null, "2rem"]}
+        gap={["2rem", null, "0.5rem"]}
       >
-        {/* Margin here to center*/}
         <TextCard
           title={title}
           text={text}
@@ -33,17 +34,17 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
             variant: "title",
           }}
           textProps={{
-            fontSize: "1.0625rem",
+            fontSize: "clamp(0.875rem, 3vw, 1.0625rem)",
             fontWeight: "light",
             lineHeight: "1.7",
             textAlign: "center",
           }}
           cardProps={{
+            minWidth: "312px",
+            width: "40%",
             maxWidth: "381px",
           }}
         />
-        {/* width: 381px */}
-        {/* height={"566px"} */}
         <Box whiteSpace={"nowrap"}>
           <Image
             src={topImg}

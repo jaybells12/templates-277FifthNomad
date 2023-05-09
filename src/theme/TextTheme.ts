@@ -33,8 +33,9 @@ const card = defineStyle({
 const banner = defineStyle({
   color: "white",
   fontSize: "1.125rem",
-  padding: ["2rem 0", null, "3rem 11rem"],
-  maxWidth: ["88%", null, "72%"],
+  paddingBlock: ["2rem", null, "3rem"],
+  width: "60%",
+  minWidth: "314px",
   margin: "0 auto",
   lineHeight: "1.4",
   letterSpacing: "2.7px",

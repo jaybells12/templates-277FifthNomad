@@ -9,7 +9,7 @@ export const Controls = defineStyleConfig({
     whole: {
       display: "flex",
       position: "absolute",
-      right: "200px",
+      right: "clamp(100px,10vw,200px)",
       top: "-100px",
       gap: "1.5rem",
     },

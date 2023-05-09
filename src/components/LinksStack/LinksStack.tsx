@@ -16,11 +16,12 @@ export const LinksStack: FunctionComponent<LinksStackProps> = (
   const { links, ...rest } = props;
   return (
     <VStack
-      align={["center", "flex-start"]}
-      order={["1", "0"]}
+      align={["center", null, "flex-start"]}
+      order={["1", null, "0"]}
       divider={<Divider color={"#cecece"} />}
-      gap={["0.5rem", "0.75rem"]}
-      width={["50%", "100%"]}
+      gap={["0.5rem", null, "0.75rem"]}
+      width={["50%", null, "100%"]}
+      {...rest}
     >
       {links.map((link, idx) => (
         <motion.div
