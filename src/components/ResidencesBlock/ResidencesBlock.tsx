@@ -6,7 +6,7 @@ import { FunctionComponent } from "react";
 export type ResidencesBlockProps = {
   factSheet: string;
   textCard: TextCardProps;
-  splitVariant: boolean;
+  split: boolean;
   cards: {
     imgSrc: string;
     title: string;
@@ -18,7 +18,7 @@ export type ResidencesBlockProps = {
 export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
   props: ResidencesBlockProps
 ) => {
-  const { cards, factSheet, textCard, splitVariant } = props;
+  const { cards, factSheet, textCard, split } = props;
   return (
     <Container
       as={"section"}
@@ -62,12 +62,17 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
       </TextCard>
       <Carousel
         cards={cards}
-        split={splitVariant}
+        split={split}
         cardProps={{
           cardWth: 600,
           imgWth: 600,
           imgHgt: 346,
           gap: 9,
+        }}
+        flexProps={{
+          justifyContent: "flex-start",
+          alignItems: "center",
+          textAlign: "left",
         }}
       />
     </Container>

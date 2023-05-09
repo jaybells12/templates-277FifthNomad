@@ -1,6 +1,6 @@
 import { CarouselCard } from "../CarouselCard";
 import { FunctionComponent, useEffect } from "react";
-import { Box, HStack, FlexboxProps, TextProps } from "@chakra-ui/react";
+import { Box, Flex, FlexboxProps, TextProps } from "@chakra-ui/react";
 import { useCarousel } from "@/lib/useCarousel";
 import { CarouselControls } from "../CarouselControls";
 
@@ -20,6 +20,7 @@ export type CarouselProps = {
   };
   flexProps?: FlexboxProps & TextProps;
 };
+
 /* Carousel Component comes in two variants via the "split" prop <boolean>:
  * False: Card components are animated as one unit; controls located in upper right corner as whole
  * True: Card components are animated as two units, Image and Text; controls split to the left and right edges respectively
@@ -31,24 +32,16 @@ export const Carousel: FunctionComponent<CarouselProps> = (
   const { split, cards, cardProps, flexProps } = props;
   const [index, direction, next, prev] = useCarousel(cards.length, 1050);
 
-  // useEffect(() => {
-  //   if (split) return; // Only runs for non-split variant
-  //   const interval = setInterval(() => {
-  //     next();
-  //   }, 6000);
-  //   return () => clearInterval(interval);
-  // }, [next]);
-
   return (
     <Box
       position="relative"
-      marginLeft={!split && ["0", "0", "22%"]}
+      marginLeft={!split && ["0", null, "15%"]}
       marginBottom={split && "2.5rem"}
     >
       <CarouselControls nextFn={next} prevFn={prev} zIndex={2} split={split} />
-      <HStack
+      <Flex
         position="relative"
-        justifyContent={["center", null, split && "center"]}
+        justifyContent={["center", null, (split && "center") || "flex-start"]}
         alignItems={"flex-start"}
         gap={`${cardProps.gap}rem`}
       >
@@ -63,6 +56,8 @@ export const Carousel: FunctionComponent<CarouselProps> = (
           features={cards[index.prev].features}
           cardPosition={-1}
           cardDirection={direction}
+          circLength={cards.length}
+          circIdx={index}
           split={split}
           padding={["1.5rem", null, "0"]}
           {...flexProps}
@@ -78,6 +73,8 @@ export const Carousel: FunctionComponent<CarouselProps> = (
           features={cards[index.current].features}
           cardPosition={0}
           cardDirection={direction}
+          circLength={cards.length}
+          circIdx={index}
           split={split}
           {...flexProps}
         />
@@ -92,10 +89,12 @@ export const Carousel: FunctionComponent<CarouselProps> = (
           features={cards[index.next].features}
           cardPosition={1}
           cardDirection={direction}
+          circLength={cards.length}
+          circIdx={index}
           split={split}
           {...flexProps}
         />
-      </HStack>
+      </Flex>
     </Box>
   );
 };

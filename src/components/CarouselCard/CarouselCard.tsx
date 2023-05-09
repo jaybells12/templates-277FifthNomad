@@ -16,8 +16,8 @@ import {
 import { Image } from "@chakra-ui/next-js";
 import { FunctionComponent, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { CirclesIndicator } from "../CirclesIndicator";
 
-//What if i pass gap instead of width?
 const wholeVariant = {
   enter: ({ gap, dir, pos }) =>
     dir > 0
@@ -139,6 +139,12 @@ export type CarouselCardProps = {
   title: string;
   text: string;
   split: boolean;
+  circLength: number;
+  circIdx: {
+    current: number;
+    prev: number;
+    next: number;
+  };
   features?: string[];
 } & CardProps;
 
@@ -146,13 +152,15 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
   props: CarouselCardProps
 ) => {
   const { isOpen, onToggle } = useDisclosure();
-  const breakpoint = useBreakpointValue({ base: false, md: true });
+  const mobile = useBreakpointValue({ base: true, md: false });
   const cardVariants = useBreakpointValue({
     base: "singleColumn",
     md: "multiColumn",
   });
 
   const {
+    circLength,
+    circIdx,
     imgSrc,
     title,
     text,
@@ -214,8 +222,14 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
               width: "auto",
             }}
           />
-          {breakpoint && <h1>TEST</h1>}
         </CardHeader>
+        {mobile && (
+          <CirclesIndicator
+            length={circLength}
+            index={circIdx}
+            variant={split ? "mobileLight" : "mobileDark"}
+          />
+        )}
         <CardBody
           as={motion.div}
           key={title}

@@ -41,12 +41,12 @@ export default function Index() {
         factSheet={sampleData.residenceBlock.factSheet}
         cards={sampleData.residenceBlock.cards}
         textCard={sampleData.residenceBlock.textCard}
-        splitVariant={false}
+        split={false}
       />
       <AmenitiesBlock
         cards={sampleData.amenitiesBlock.cards}
         text={sampleData.amenitiesBlock.text}
-        splitVariant={true}
+        split={true}
       />
       <InfoBlock
         companyName={sampleData.companyName}

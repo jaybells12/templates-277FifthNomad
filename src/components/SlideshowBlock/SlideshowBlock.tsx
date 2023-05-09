@@ -1,5 +1,6 @@
 import { useCarousel } from "@/lib/useCarousel";
 import { TextBar } from "../TextBar";
+import { CirclesIndicator } from "../CirclesIndicator";
 import {
   motion,
   useAnimation,
@@ -8,7 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { FunctionComponent, useRef } from "react";
-import { HStack, VStack, Circle, Container, Box } from "@chakra-ui/react";
+import { VStack, Container, Box, useBreakpointValue } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 
 // How expensive is this component? Three images are layered over eachother to create the dragging opacity effect.
@@ -25,6 +26,7 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
 ) => {
   const { images, text } = props;
   const [index, , plusOne, minusOne] = useCarousel(images.length, 500);
+  const mobile = useBreakpointValue({ base: true, md: false });
   const disablePan = useRef(false);
   const controls = useAnimation();
   const x = useMotionValue(0);
@@ -61,7 +63,7 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
 
   return (
     <Container as={"section"} variant={"section"}>
-      <VStack>
+      <VStack position={"relative"}>
         <Box
           overflow="clip"
           position={"relative"}
@@ -120,20 +122,17 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
             }}
           />
         </Box>
-        <HStack
-          gap={"0.75rem"}
-          zIndex={"5"}
-          style={{ marginTop: "-35px", marginBottom: "21px" }}
-        >
-          {images.map((image, idx) => (
-            <Circle
-              size="6px"
-              bg={index.current === idx ? "white" : "brand.accent"}
-              key={idx}
-            />
-          ))}
-        </HStack>
-        <TextBar text={text} />
+        <CirclesIndicator
+          length={images.length}
+          index={index}
+          variant={mobile ? "mobileLight" : null}
+          style={
+            mobile
+              ? { marginTop: "33px", marginBottom: "-47px" }
+              : { marginTop: "-35px", marginBottom: "21px" }
+          }
+        />
+        <TextBar text={text} paddingTop={mobile && "4rem"} />
       </VStack>
     </Container>
   );

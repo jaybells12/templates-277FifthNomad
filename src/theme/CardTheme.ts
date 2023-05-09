@@ -10,7 +10,7 @@ const { definePartsStyle, defineMultiStyleConfig } =
       flexShrink: "0",
       width: "50vw",
       maxWidth: "600px",
-      minWidth: "400px",
+      minWidth: "300px",
       margin: "0",
       bgColor: "inherit",
       textAlign: "left",
@@ -31,9 +31,6 @@ const { definePartsStyle, defineMultiStyleConfig } =
   
   const variants = {
     singleColumn: definePartsStyle({
-      container:{
-        paddingInline: "0.5rem",
-      },
       header:{
         marginBottom: "1rem"
       },

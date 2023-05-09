@@ -14,6 +14,7 @@ import { cardTheme } from "./CardTheme";
 import { tableTheme } from "./TableTheme";
 import { formTheme } from "./FormTheme";
 import { formLabelTheme } from "./FormLabelTheme";
+import { circleTheme } from "./CircleTheme";
 
 export const publicSans = Public_Sans({ subsets: ["latin"] });
 
@@ -55,6 +56,7 @@ export const Theme = extendTheme({
     Table: tableTheme,
     Form: formTheme,
     FormLabel: formLabelTheme,
+    Circle: circleTheme,
     Controls
   },
 });
