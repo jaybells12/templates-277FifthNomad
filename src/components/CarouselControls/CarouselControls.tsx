@@ -8,14 +8,13 @@ import {
 } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/next-js";
 import { FunctionComponent } from "react";
-import leftArrow from "../../../public/Arrow-Left.svg";
-import rightArrow from "../../../public/Arrow-Right.svg";
 
 // Color here is an approximation of an overlay which achieves similar results to the template
 // This should allow for different background colors
 const OVERLAY_COLOR = "#3063";
 const STATIC_COLOR = "#DBCED5";
 
+// Custom Chakra Component, allows for variant theming
 const Controls = (props: any) => {
   const { variant, ...rest } = props;
   const styles = useStyleConfig("Controls", { variant });
@@ -48,7 +47,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
       >
         <Image
           fill
-          src={leftArrow}
+          src={"./Arrow-Left.svg"}
           alt="left arrow"
           sx={
             split && {
@@ -70,7 +69,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
       >
         <Image
           fill
-          src={rightArrow}
+          src={"./Arrow-Right.svg"}
           alt="right arrow"
           filter={"auto"}
           sx={

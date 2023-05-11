@@ -5,9 +5,6 @@ import cardImg1 from "../../public/TW__5764_HIGH-RES.webp"
 import cardImg2 from "../../public/TW__5698_HIGH-RES.webp"
 import cardImg3 from "../../public/TW__5477_HIGH-RES.webp"
 import cardImg4 from "../../public/TW__5748_HIGH-RES.webp"
-import cardImg5 from "../../public/Kitchens.webp"
-import cardImg6 from "../../public/Bath.webp"
-import cardImg7 from "../../public/Fluff_TW__5521_HIGH-RES.webp"
 import aboutImg1 from "../../public/Loggia-Image.jpg"
 import amDining from "../../public/Amenity_Dining.jpg"
 import amFitness from "../../public/Amenity_Fitness.jpg"
@@ -31,6 +28,8 @@ import ssBedroom from "../../public/SS-Bedroom.jpg"
 import ssBath from "../../public/SS-Bath.jpg"
 import ssLivingRoom from "../../public/SS-LivingRoom.jpg"
 import ssKitchen from "../../public/SS-Kitchen.jpg"
+
+const companyName = "nomad";
 
 const amenitiesCards = [
   
@@ -182,16 +181,6 @@ const availability: Array<{[key: string]: string | { src: string }}> = [
   },
 ]
 
-const slideshowBlock = {
-  images: [
-    ssLivingRoom,
-    ssKitchen,
-    ssBath,
-    ssBedroom
-  ],
-  text: "Homes designed by internationally acclaimed architect Rafael Viñoly, with thoughtfully appointed interiors by Jeffrey Beers International."
-}
-
 const blockLinks = [
   "residences",
   "amenities",
@@ -199,11 +188,19 @@ const blockLinks = [
   "availability"
 ]
 
+const navMenuLinks = [
+  "residences",
+  "amenities",
+  companyName,
+  "availability",
+  "inquire",
+];
+
+const navLinks = ["residences", "inquire"];
+
 const CTATagline = "The Tallest Residential Condominium on Fifth Avenue.\nImmediate Occupancy"
 
 const videoSrc = "/Unbranded-277-5th-Ave-New-York-NY-100162-Fredrik-Eklund-1.mp4"
-
-const navLinks = ["residences", "inquire"];
 
 const logo = {
   src: logoImg.src,
@@ -219,19 +216,36 @@ const logoBlack = {
   height: logoImgBlack.height
 }
 
-const aboutBlock = {
+const NavBar = {
+  links: navLinks,
+  menuLinks: navMenuLinks,
+  logo: navLogo,      
+}
+
+const Hero = {
+  logo,
+  text: CTATagline,
+  video: videoSrc
+}
+
+const About = {
   img: aboutImg1,
   links: blockLinks,
   title: "Uniting Sky and Earth",
   text: "In the very heart of NoMad, where the elegance of uptown meets the energy of downtown, 277 Fifth Avenue soars toward the clouds.\n\nAward of Excellence & Winner for Best Tall Residential Building"
 }
 
-const amenitiesBlock = {
-  cards: amenitiesCards,
-  text: "Over 7,000 square feet of thoughtfully curated recreational spaces."
+const Slideshow = {
+  images: [
+    ssLivingRoom,
+    ssKitchen,
+    ssBath,
+    ssBedroom
+  ],
+  text: "Homes designed by internationally acclaimed architect Rafael Viñoly, with thoughtfully appointed interiors by Jeffrey Beers International."
 }
 
-const residenceBlock = {
+const Residences = {
   factSheet: "/277_5TH_FactSheet.pdf",
   cards: residencesCards,
   textCard: {
@@ -240,18 +254,24 @@ const residenceBlock = {
   }
 }
 
-const infoBlock = {
+const Amenities = {
+  cards: amenitiesCards,
+  text: "Over 7,000 square feet of thoughtfully curated recreational spaces."
+}
+
+const Info = {
+  name: companyName,
   title: "NoMad",
   text: "With a distinguished Fifth Avenue address and moments away from Madison Square Park, 277 Fifth Ave boasts access to Manhattan’s most elite restaurants, parks, shops, and hotels.",
   topImgSrc: infoFountain.src,
   botImgSrc: infoFlatiron.src,
 }
 
-const availabilityBlock = {
+const Availability = {
   data: availability,
 }
 
-const inquireBlock = {
+const Inquire = {
   contact: {
     logo: logoBlack,
     contactInfo: [{text:"sales@277fifthnomad.com", href: "mailto: sales@277fifthnomad.com"}, {text: "212 779 2772", href: "tel: 212 779 2772"}],
@@ -264,7 +284,7 @@ const inquireBlock = {
   }
 }
 
-const footer = {
+const Footer = {
   text: "The complete offering terms are in an offering plan amendment available from Successor Sponsor. File No. CD17-0021. This is not an offering. Successor Sponsor: Shokai 5th Avenue LLC, 224 West 30th Street, Suite 601, New York, NY 10001 This advertising material is not an offer to sell nor a solicitation of an offer to buy to residents of any jurisdiction in which registration requirements have not been fulfilled. Equal Housing Opportunity. Sponsor reserves the right to make changes in accordance with the terms of the Offering Plan. Equal housing opportunity.",
   logos: [
     ftLogo1, ftLogo2, ftLogo3, ftLogo4
@@ -272,32 +292,15 @@ const footer = {
   pdf: "/fairhousingnotice.pdf"
 }
 
-const companyName = "nomad";
-
-const navMenuLinks = [
-  "residences",
-  "amenities",
-  companyName,
-  "availability",
-  "inquire",
-];
-
 export default {
-  logo,
-  videoSrc,
-  navLogo,
-  navLinks,
-  residencesCards,
-  blockLinks,
-  CTATagline,
-  aboutBlock,
-  amenitiesBlock,
-  residenceBlock,
-  infoBlock,
-  availabilityBlock,
-  inquireBlock,
-  slideshowBlock,
-  footer,
-  companyName,
-  navMenuLinks
+  NavBar,
+  Hero,
+  About,
+  Slideshow,
+  Residences,
+  Amenities,
+  Info,
+  Availability,
+  Inquire,
+  Footer,
 }

@@ -1,4 +1,4 @@
-import sampleData from "@/data/sampleData";
+import data from "@/data/sampleData";
 import { NavBar } from "@/components/NavBar/NavBar";
 import { HeroBlock } from "@/components/HeroBlock";
 import { AboutBlock } from "@/components/AboutBlock";
@@ -16,54 +16,51 @@ export default function Index() {
   return (
     <>
       <NavBar
-        links={sampleData.navLinks}
-        menuLinks={sampleData.navMenuLinks}
-        logo={sampleData.navLogo}
+        links={data.NavBar.links}
+        menuLinks={data.NavBar.menuLinks}
+        logo={data.NavBar.logo}
         scrolled={isScrolled}
       />
       <HeroBlock
-        logo={sampleData.logo}
-        tagline={sampleData.CTATagline}
-        videoSrc={sampleData.videoSrc}
+        logo={data.Hero.logo}
+        tagline={data.Hero.text}
+        videoSrc={data.Hero.video}
         scrolled={isScrolled}
       />
       <AboutBlock
-        img={sampleData.aboutBlock.img}
-        links={sampleData.aboutBlock.links}
-        title={sampleData.aboutBlock.title}
-        text={sampleData.aboutBlock.text}
+        img={data.About.img}
+        links={data.About.links}
+        title={data.About.title}
+        text={data.About.text}
       />
       <SlideshowBlock
-        images={sampleData.slideshowBlock.images}
-        text={sampleData.slideshowBlock.text}
+        images={data.Slideshow.images}
+        text={data.Slideshow.text}
       />
       <ResidencesBlock
-        factSheet={sampleData.residenceBlock.factSheet}
-        cards={sampleData.residenceBlock.cards}
-        textCard={sampleData.residenceBlock.textCard}
+        factSheet={data.Residences.factSheet}
+        cards={data.Residences.cards}
+        textCard={data.Residences.textCard}
         split={false}
       />
       <AmenitiesBlock
-        cards={sampleData.amenitiesBlock.cards}
-        text={sampleData.amenitiesBlock.text}
+        cards={data.Amenities.cards}
+        text={data.Amenities.text}
         split={true}
       />
       <InfoBlock
-        companyName={sampleData.companyName}
-        title={sampleData.infoBlock.title}
-        text={sampleData.infoBlock.text}
-        topImg={sampleData.infoBlock.topImgSrc}
-        botImg={sampleData.infoBlock.botImgSrc}
+        companyName={data.Info.name}
+        title={data.Info.title}
+        text={data.Info.text}
+        topImg={data.Info.topImgSrc}
+        botImg={data.Info.botImgSrc}
       />
-      <AvailabilityBlock data={sampleData.availabilityBlock.data} />
-      <InquireBlock
-        contact={sampleData.inquireBlock.contact}
-        form={sampleData.inquireBlock.form}
-      />
+      <AvailabilityBlock data={data.Availability.data} />
+      <InquireBlock contact={data.Inquire.contact} form={data.Inquire.form} />
       <Footer
-        text={sampleData.footer.text}
-        logos={sampleData.footer.logos}
-        pdf={sampleData.footer.pdf}
+        text={data.Footer.text}
+        logos={data.Footer.logos}
+        pdf={data.Footer.pdf}
       />
     </>
   );

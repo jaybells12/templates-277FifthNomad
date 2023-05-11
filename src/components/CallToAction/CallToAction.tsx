@@ -1,7 +1,6 @@
 import { Link } from "@chakra-ui/next-js";
 import { VStack, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import downArrow from "../../../public/Down-Arrow.svg";
 import { FunctionComponent } from "react";
 
 export type CallToActionProps = {
@@ -29,7 +28,7 @@ export const CallToAction: FunctionComponent<CallToActionProps> = (
       </Text>
       <Link href="#second" padding="2rem">
         <motion.img
-          src={downArrow.src}
+          src={"./Down-Arrow.svg"}
           style={{ marginInline: "auto" }}
           animate={{ y: [0, 0, -7, 0, -5, 0, 0] }}
           transition={{
