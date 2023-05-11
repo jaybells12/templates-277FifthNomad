@@ -20,6 +20,6 @@ const nav = defineStyle({
   marginRight: [null, null, "2rem", "3rem"]
 })
 
-export const linkTheme = defineStyleConfig({
+export default defineStyleConfig({
   variants: { contact, nav }
 })

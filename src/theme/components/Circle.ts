@@ -5,6 +5,7 @@ const baseStyle = defineStyle({
   height: "6px",
   backgroundColor: "brand.accent"
 })
+
 const variants = {
   mobileLight: defineStyle({
     backgroundColor: "white",
@@ -16,7 +17,7 @@ const variants = {
   })
 }
 
-export const circleTheme = defineStyleConfig({
+export default defineStyleConfig({
   baseStyle,
   variants
 })

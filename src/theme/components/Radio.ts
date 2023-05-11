@@ -4,33 +4,6 @@ import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(radioAnatomy.keys);
 
-// const baseStyle = definePartsStyle({
-//   control: {
-//     borderWidth: "2px",
-//     borderColor: "brand.trim",
-//     _checked: {
-//       borderWidth: "2px",
-//       borderColor: "brand.trim",
-//       background: "brand.trim",
-//       color: "brand.trim",
-//       _hover: {
-//         borderColor: "brand.trim",
-//         background: "brand.trim",
-//       },
-//     },
-//     _hover: {
-//       borderWidth: "2px",
-//       borderColor: "brand.trim",
-//     },
-//   },
-// });
-// const sizes = {
-//   md: definePartsStyle({
-//     control: { w:"3.5", h:"3.5"},
-//     label:{ fontSize: "0.875rem", letterSpacing: "2px"}
-//   })
-// }
-// Is there an easier way to unset base styling?
 const variants = {
   mobile: definePartsStyle({
     label: {
@@ -61,6 +34,6 @@ const variants = {
   md: definePartsStyle({})
 }
 
-export const radioTheme = defineMultiStyleConfig({ variants, defaultProps: {
+export default defineMultiStyleConfig({ variants, defaultProps: {
   variant: "mobile"
 } });

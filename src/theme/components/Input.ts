@@ -36,7 +36,7 @@ const variants = {
 }
 
 
-export const inputTheme = defineMultiStyleConfig({
+export default defineMultiStyleConfig({
   variants,
   defaultProps: {
     variant: "mobile"

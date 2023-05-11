@@ -43,7 +43,6 @@ const banner = defineStyle({
   textAlign: ["center", null, "left"]
 })
 
-export const textTheme = defineStyleConfig({
+export default defineStyleConfig({
   variants: { contact, footer, features, banner, card },
-
 })

@@ -8,7 +8,7 @@ const variants = {
   }),
 }
 
-export const formLabelTheme = defineStyleConfig({
+export default defineStyleConfig({
   variants,
   defaultProps: {
     variant: "mobile"

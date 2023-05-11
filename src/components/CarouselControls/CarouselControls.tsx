@@ -10,7 +10,6 @@ import { Image } from "@chakra-ui/next-js";
 import { FunctionComponent } from "react";
 import leftArrow from "../../../public/Arrow-Left.svg";
 import rightArrow from "../../../public/Arrow-Right.svg";
-import { TRIM_COLOR } from "@/styles/GlobalStyles";
 
 // Color here is an approximation of an overlay which achieves similar results to the template
 // This should allow for different background colors
@@ -66,7 +65,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
         border={"2px"}
         style={{ transition: "background-color 0.3s ease" }}
         _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}
-        borderColor={split ? "white" : TRIM_COLOR}
+        borderColor={split ? "white" : "brand.trim"}
         cursor={"pointer"}
       >
         <Image

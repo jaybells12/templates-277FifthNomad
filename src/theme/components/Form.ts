@@ -11,15 +11,9 @@ const baseStyle = definePartsStyle({
     gap: "1.5rem",
     flexGrow: "0",
     paddingInline: "1.5rem",
-    // width: "unset",
   },
 })
 
-const variants = definePartsStyle({
-
-})
-
-export const formTheme = defineMultiStyleConfig({
-  baseStyle,
-  variants
+export default defineMultiStyleConfig({
+  baseStyle
 })

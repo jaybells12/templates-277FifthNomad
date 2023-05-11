@@ -24,7 +24,7 @@ const variants = {
   md: definePartsStyle({})
 }
 
-export const selectTheme = defineMultiStyleConfig({
+export default defineMultiStyleConfig({
   variants,
   defaultProps: {
     variant: "mobile"
