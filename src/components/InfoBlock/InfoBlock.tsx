@@ -26,7 +26,7 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
       animate(
         containerRef.current,
         { y: [400, 0] },
-        { duration: 0.4, ease: "easeOut" }
+        { duration: 0.7, ease: "easeOut" }
       );
     }
   }, [isInView]);

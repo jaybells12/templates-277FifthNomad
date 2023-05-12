@@ -246,7 +246,6 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
           <Heading as={"h5"} variant={"card"}>
             {title.toUpperCase()}
           </Heading>
-          {/* May need to come up with a better way to handle sizing of text box */}
           <Text
             variant={"card"}
             width={split && "310px"}

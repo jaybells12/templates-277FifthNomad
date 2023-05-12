@@ -30,7 +30,7 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
       animate(
         containerRef.current,
         { y: [400, 0] },
-        { duration: 0.4, ease: "easeOut" }
+        { duration: 0.7, ease: "easeOut" }
       );
     }
   }, [isInView]);
@@ -42,8 +42,8 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
       as={"section"}
       id={"residences"}
       variant={"section"}
-      overflowY={"visible"}
-      overflowX={"clip"}
+      // overflowY={"visible"}
+      // overflowX={"clip"}
     >
       <TextCard
         title={textCard.title}
@@ -51,7 +51,8 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
         titleProps={{
           as: "h2",
           variant: "title",
-          lineHeight: "0.5",
+          lineHeight: "1",
+          marginBottom: "-2.5%",
         }}
         textProps={{
           fontSize: "clamp(0.875rem, 3vw, 1.0625rem)",

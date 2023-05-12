@@ -28,7 +28,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
       animate(
         containerRef.current,
         { y: [400, 0] },
-        { duration: 0.4, ease: "easeOut" }
+        { duration: 0.7, ease: "easeOut" }
       );
     }
   }, [isInView]);
@@ -40,8 +40,6 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
       id={"amenities"}
       variant={"section"}
       bgColor={"brand.trim"}
-      overflowY={"visible"}
-      overflowX={"clip"}
       paddingTop={"3rem"}
     >
       <Heading
@@ -50,7 +48,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
         color={"white"}
         margin={"0 auto"}
         width={"max-content"}
-        position="relative"
+        position={"relative"}
         transform={"translateY(36%)"}
         zIndex={1}
       >
