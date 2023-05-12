@@ -1,7 +1,8 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef, useEffect } from "react";
 import { TextCard } from "../TextCard";
 import { Image } from "@chakra-ui/next-js";
 import { Container, Box, Flex } from "@chakra-ui/react";
+import { useInView, animate } from "framer-motion";
 
 export type InfoBlockProps = {
   companyName: string;
@@ -15,13 +16,35 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
   props: InfoBlockProps
 ) => {
   const { title, text, topImg, botImg, companyName } = props;
+  const containerRef = useRef();
+  const isInView = useInView(containerRef, {
+    once: true,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      animate(
+        containerRef.current,
+        { y: [400, 0] },
+        { duration: 0.4, ease: "easeOut" }
+      );
+    }
+  }, [isInView]);
+
   return (
-    <Container as={"section"} id={`${companyName}`} variant={"section"}>
+    <Container
+      ref={containerRef}
+      transform={"translateY(400px)"}
+      as={"section"}
+      id={`${companyName}`}
+      variant={"section"}
+    >
       <Flex
         direction={["column", null, "row"]}
         justify={"center"}
         align={"center"}
         // Margin splits offset of images flex child, brings elements back to center
+        // ^^ this might be a "spacing" prop issue with chakra Flex component
         marginLeft={[null, null, "1.25%"]}
         padding={[null, null, "2rem"]}
         gap={["2rem", null, "0.5rem"]}

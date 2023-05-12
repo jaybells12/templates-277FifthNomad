@@ -1,7 +1,8 @@
 import { Carousel } from "../Carousel";
 import { TextBar } from "../TextBar";
-import { Container, Flex, Heading } from "@chakra-ui/react";
-import { FunctionComponent } from "react";
+import { Container, Heading } from "@chakra-ui/react";
+import { FunctionComponent, useRef, useEffect } from "react";
+import { useInView, animate } from "framer-motion";
 
 export type AmenitiesBlockProps = {
   cards: {
@@ -17,8 +18,24 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
   props: AmenitiesBlockProps
 ) => {
   const { cards, text, split } = props;
+  const containerRef = useRef();
+  const isInView = useInView(containerRef, {
+    once: true,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      animate(
+        containerRef.current,
+        { y: [400, 0] },
+        { duration: 0.4, ease: "easeOut" }
+      );
+    }
+  }, [isInView]);
   return (
     <Container
+      ref={containerRef}
+      transform={"translateY(400px)"}
       as={"section"}
       id={"amenities"}
       variant={"section"}

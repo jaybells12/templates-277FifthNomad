@@ -7,8 +7,10 @@ import {
   PanInfo,
   useMotionValue,
   useTransform,
+  animate,
+  useInView,
 } from "framer-motion";
-import { FunctionComponent, useRef } from "react";
+import { FunctionComponent, useRef, useEffect } from "react";
 import { VStack, Container, Box, useBreakpointValue } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 
@@ -32,6 +34,20 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
   const x = useMotionValue(0);
   const opacity = useTransform(x, [-500, 0, 500], [0.5, 1, 0.5]);
   const zIndex = useTransform(x, (val) => (val > 0 ? 1 : 3));
+  const containerRef = useRef();
+  const isInView = useInView(containerRef, {
+    once: true,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      animate(
+        containerRef.current,
+        { y: [400, 0] },
+        { duration: 0.4, ease: "easeOut" }
+      );
+    }
+  }, [isInView]);
 
   const handlePan = (
     event: MouseEvent | TouchEvent | PointerEvent,
@@ -62,7 +78,12 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
   };
 
   return (
-    <Container as={"section"} variant={"section"}>
+    <Container
+      ref={containerRef}
+      as={"section"}
+      variant={"section"}
+      transform={"translateY(400px)"}
+    >
       <VStack position={"relative"}>
         <Box
           overflow="clip"

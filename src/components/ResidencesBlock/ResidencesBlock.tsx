@@ -1,7 +1,8 @@
 import { TextCard, TextCardProps } from "../TextCard";
 import { Button, Container } from "@chakra-ui/react";
 import { Carousel } from "../Carousel";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
+import { useInView, animate } from "framer-motion";
 
 export type ResidencesBlockProps = {
   factSheet: string;
@@ -19,8 +20,25 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
   props: ResidencesBlockProps
 ) => {
   const { cards, factSheet, textCard, split } = props;
+  const containerRef = useRef();
+  const isInView = useInView(containerRef, {
+    once: true,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      animate(
+        containerRef.current,
+        { y: [400, 0] },
+        { duration: 0.4, ease: "easeOut" }
+      );
+    }
+  }, [isInView]);
+
   return (
     <Container
+      ref={containerRef}
+      transform={"translateY(400px)"}
       as={"section"}
       id={"residences"}
       variant={"section"}

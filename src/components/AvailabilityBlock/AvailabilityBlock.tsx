@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useState, useRef, useEffect } from "react";
 import {
   Container,
   TableContainer,
@@ -13,6 +13,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/next-js";
+import { useInView, animate } from "framer-motion";
 
 export type AvailabilityBlockProps = {
   data: {
@@ -28,8 +29,21 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
   props: AvailabilityBlockProps
 ) => {
   const { data } = props;
-  const columnCount = useBreakpointValue({ base: "2", md: "auto" });
   const isMediumWidth = useBreakpointValue({ base: false, md: true });
+  const containerRef = useRef();
+  const isInView = useInView(containerRef, {
+    once: true,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      animate(
+        containerRef.current,
+        { y: [400, 0] },
+        { duration: 0.4, ease: "easeOut" }
+      );
+    }
+  }, [isInView]);
 
   //Do i need to useState here or can I use useRef?
   const [dir, setDir] = useState(Object.keys(data).map(() => ""));
@@ -51,6 +65,8 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
 
   return (
     <Container
+      ref={containerRef}
+      transform={"translateY(400px)"}
       as={"section"}
       id={"availability"}
       variant={"section"}

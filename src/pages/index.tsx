@@ -10,9 +10,15 @@ import { AvailabilityBlock } from "@/components/AvailabilityBlock";
 import { InquireBlock } from "@/components/InquireBlock";
 import { Footer } from "@/components/Footer";
 import { useScrolledOffset } from "@/lib/useScrolledOffset";
+import { useEffect } from "react";
 
 export default function Index() {
   const isScrolled = useScrolledOffset(400);
+
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
+
   return (
     <>
       <NavBar

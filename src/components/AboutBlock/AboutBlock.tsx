@@ -2,8 +2,9 @@ import { Container, Flex, Box, useBreakpointValue } from "@chakra-ui/react";
 import { TextCard } from "../TextCard";
 import { Image } from "@chakra-ui/next-js";
 import { LinksStack } from "../LinksStack";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
 import { StaticImageData } from "next/image";
+import { useInView, animate } from "framer-motion";
 
 export type AboutBlockProps = {
   img: StaticImageData;
@@ -17,8 +18,29 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
 ) => {
   const { img, title, text, links } = props;
   const mobile = useBreakpointValue({ base: true, md: false });
+  const containerRef = useRef();
+  const isInView = useInView(containerRef, {
+    once: true,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      animate(
+        containerRef.current,
+        { y: [400, 0] },
+        { duration: 0.4, ease: "easeOut" }
+      );
+    }
+  }, [isInView]);
+
   return (
-    <Container as={"section"} variant={"section"} padding={"1.5rem"}>
+    <Container
+      ref={containerRef}
+      as={"section"}
+      variant={"section"}
+      padding={"1.5rem"}
+      transform={"translateY(400px)"}
+    >
       <Flex
         align={"center"}
         justify={"center"}

@@ -1,7 +1,8 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef, useEffect } from "react";
 import { InquireContact, InquireContactProps } from "../InquireContact";
 import { InquireForm, InquireFormProps } from "../InquireForm";
 import { Container, Flex } from "@chakra-ui/react";
+import { useInView, animate } from "framer-motion";
 
 export type InquireBlockProps = {
   contact: InquireContactProps;
@@ -12,12 +13,28 @@ export const InquireBlock: FunctionComponent<InquireBlockProps> = (
   props: InquireBlockProps
 ) => {
   const { contact, form } = props;
+  const containerRef = useRef();
+  const isInView = useInView(containerRef, {
+    once: true,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      animate(
+        containerRef.current,
+        { y: [400, 0] },
+        { duration: 0.4, ease: "easeOut" }
+      );
+    }
+  }, [isInView]);
+
   return (
     <Container
+      ref={containerRef}
+      transform={"translateY(400px)"}
       as={"section"}
       id={"inquire"}
       variant={"section"}
-      // marginBottom={"10rem"}
     >
       <Flex
         justify={"center"}
