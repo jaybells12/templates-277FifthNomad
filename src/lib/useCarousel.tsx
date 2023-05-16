@@ -5,10 +5,10 @@ export const useCarousel = (
   length: number,
   throttleDelay: number
 ): [
-  { current: number; next: number; prev: number },
-  1 | -1,
-  (args?: any) => void,
-  (args?: any) => void
+  Index: { current: number; next: number; prev: number },
+  Direction: 1 | -1,
+  Next: (args?: any) => void,
+  Prev: (args?: any) => void
 ] => {
   const lastTriggered = useRef(Date.now());
   const [index, setIndex] = useState({

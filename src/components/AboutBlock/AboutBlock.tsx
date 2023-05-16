@@ -89,19 +89,3 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
     </Container>
   );
 };
-
-/*
-<Grid
-        templateAreas={`"image text"
-                      "image text"
-                      "image links"`}
-        templateColumns={"1fr 1fr"}
-        templateRows={"auto"}
-        placeItems="center"
-        maxW={868}
-        marginInline={"auto"}
-      >
-        <GridItem w="100%" h="100%" area={"image"} position="relative"> 
-              {/* </GridItem>
-        <GridItem w="70%" area={"text"} placeSelf="end center"> 
-*/

@@ -17,6 +17,7 @@ import { Image } from "@chakra-ui/next-js";
 import { FunctionComponent, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CirclesIndicator } from "../CirclesIndicator";
+import { Niramit } from "next/font/google";
 
 const wholeVariant = {
   enter: ({ gap, dir, pos }) =>
@@ -81,8 +82,6 @@ const wholeVariant = {
             x: {
               from: 0,
               duration: 1,
-              // Could be fine tuned, but I think it'll do. Something with Chakra + Framer-Motion
-              // messes up easing consistency for mount and unmount animations
               ease: [0.15, 0.3, 0.5, 1],
             },
             opacity: { duration: 1 },
@@ -129,13 +128,18 @@ const splitVariant = {
 };
 
 export type CarouselCardProps = {
-  imgSrc: string;
-  imgHgt: number;
-  imgWth: number;
-  cardWth: number;
-  cardGap: number;
-  cardDirection: 1 | -1;
-  cardPosition: -1 | 0 | 1;
+  img: {
+    width: number;
+    height: number;
+    src: string;
+  };
+  card: {
+    width: number;
+    gap: number;
+    position: -1 | 0 | 1;
+    direction: 1 | -1;
+  };
+
   title: string;
   text: string;
   split: boolean;
@@ -161,16 +165,11 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
   const {
     circLength,
     circIdx,
-    imgSrc,
+    img,
+    card,
     title,
     text,
     features,
-    imgHgt,
-    imgWth,
-    cardWth,
-    cardGap,
-    cardDirection,
-    cardPosition,
     split,
     ...rest
   } = props;
@@ -178,9 +177,9 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
   return (
     <AnimatePresence
       custom={{
-        gap: cardGap * 16,
-        dir: cardDirection,
-        pos: cardPosition,
+        gap: card.gap * 16,
+        dir: card.direction,
+        pos: card.position,
       }}
       mode={"popLayout"}
     >
@@ -188,38 +187,42 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         as={motion.div}
         color={split && "white"} // <----
         variant={cardVariants}
-        key={imgSrc}
+        key={img.src}
         custom={{
-          gap: cardGap * 16,
-          dir: cardDirection,
-          pos: cardPosition,
+          gap: card.gap * 16,
+          dir: card.direction,
+          pos: card.position,
         }}
         variants={!split && wholeVariant}
+        initial={!split && { opacity: 0 }}
         animate={!split && "enter"}
         exit={!split && "exit"}
         {...rest}
       >
         <CardHeader
           as={motion.div}
-          key={`${imgSrc}${title}`}
+          key={`${img.src}${title}`}
           custom={{
-            gap: cardGap * 16,
-            dir: cardDirection,
-            pos: cardPosition,
+            gap: card.gap * 16,
+            dir: card.direction,
+            pos: card.position,
           }}
           variants={split && wholeVariant}
+          initial={split && { opacity: 0 }}
           animate={split && "enter"}
           exit={split && ["exit", "hidden"]}
         >
           <Image
-            width={imgWth}
-            height={imgHgt}
-            src={imgSrc}
+            priority={true}
+            width={img.width}
+            height={img.height}
+            src={img.src}
             alt={title}
             sx={{
               objectFit: "cover",
               height: "auto",
               width: "auto",
+              pointerEvents: "none",
             }}
           />
         </CardHeader>
@@ -235,9 +238,9 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
           as={motion.div}
           key={title}
           custom={{
-            gap: cardGap * 16,
-            dir: cardDirection,
-            pos: cardPosition,
+            gap: card.gap * 16,
+            dir: card.direction,
+            pos: card.position,
           }}
           variants={split && splitVariant}
           animate={split && "enter"}

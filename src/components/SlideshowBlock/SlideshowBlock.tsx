@@ -15,8 +15,6 @@ import { VStack, Container, Box, useBreakpointValue } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 
 // How expensive is this component? Three images are layered over eachother to create the dragging opacity effect.
-// Throttling needs to be tweaked. Not working as expected. Image flashing on rapid fire pan operation. May need to rethink
-// implementation entirely.
 
 export type SlideshowProps = {
   images: StaticImageData[];

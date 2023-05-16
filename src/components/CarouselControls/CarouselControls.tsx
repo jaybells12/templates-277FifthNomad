@@ -34,7 +34,11 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
   const { nextFn, prevFn, split, ...rest } = props;
 
   return (
-    <Controls variant={[null, null, split ? "split" : "whole"]} {...rest}>
+    <Controls
+      variant={[null, null, split ? "split" : "whole"]}
+      pointerEvents={"none"}
+      {...rest}
+    >
       <Circle
         size="50px"
         position="relative"
@@ -44,6 +48,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
         _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}
         borderColor={split ? "white" : "brand.trim"}
         cursor={"pointer"}
+        pointerEvents={"auto"}
       >
         <Image
           fill
@@ -66,6 +71,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
         _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}
         borderColor={split ? "white" : "brand.trim"}
         cursor={"pointer"}
+        pointerEvents={"auto"}
       >
         <Image
           fill

@@ -11,7 +11,10 @@ import { InquireBlock } from "@/components/InquireBlock";
 import { Footer } from "@/components/Footer";
 import { useScrolledOffset } from "@/lib/useScrolledOffset";
 import { useEffect } from "react";
+import { GetStaticProps } from "next";
+import { Template } from "template";
 
+// export default function Index({sections}) {
 export default function Index() {
   const isScrolled = useScrolledOffset(400);
 
@@ -71,3 +74,22 @@ export default function Index() {
     </>
   );
 }
+
+// export const getStaticProps: GetStaticProps<{
+//   sections: Template;
+// }> = async () => {
+//   const res = await fetch(""); //`${process.env.NEXT_PUBLIC_WP_URL}/graphql`
+//   const sections: Template = await res.json();
+
+//   if (!sections) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: {
+//       sections,
+//     },
+//   };
+// };

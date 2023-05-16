@@ -1,0 +1,84 @@
+{
+  navbar {
+    name
+    logo
+  }
+  hero {
+    logo
+    heading
+    video
+  }
+  about {
+    name
+    heading
+    content
+    image
+  }
+  slideshow {
+    heading
+    images {
+      image
+    }
+  }
+  residences {
+    content
+    pdf
+    cards {
+      card {
+        heading
+        content
+        image
+        list
+      }
+    }
+  }
+  amenities {
+    heading
+    cards {
+      card {
+        heading
+        content
+        image
+      }
+    }
+  }
+  info {
+    heading
+    content
+    images {
+      image
+    }
+  }
+  # Headings array needs to be in sync with content array: headings length === values length + 1 (because of pdf),
+  # content of value[x] falls under headings[x]
+  availability {
+    headings {
+      heading
+    }
+    rows {
+      row {
+        values {
+          content
+        }
+        pdf
+      }
+    }
+  }
+  inquire {
+    logo
+    email
+    phone
+    address
+    names {
+      name
+    }
+    prices {
+      range
+    }
+  }
+  footer {
+    logos {
+      image
+    }
+  }
+}
