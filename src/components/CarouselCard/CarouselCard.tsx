@@ -1,7 +1,6 @@
 import {
   Card,
   CardFooter,
-  useBoolean,
   useDisclosure,
   Text,
   Heading,
@@ -14,7 +13,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/next-js";
-import { FunctionComponent, useRef, MutableRefObject } from "react";
+import { FunctionComponent, MutableRefObject } from "react";
 import { AnimatePresence, motion, PanInfo } from "framer-motion";
 
 const wholeVariant = {
@@ -150,7 +149,6 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
   props: CarouselCardProps
 ) => {
   const { isOpen, onToggle } = useDisclosure();
-  // const isAnimating = useRef(false);
   const large = useBreakpointValue({ base: true, lg: false });
   const cardVariants = useBreakpointValue({
     base: "singleColumn",
@@ -194,7 +192,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         exit={!split && "exit"}
         onAnimationComplete={
           !split &&
-          ((def) => {
+          ((def: string) => {
             if (def === "enter") {
               aniRef.current = false;
             }
@@ -211,6 +209,9 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
           onDragEnd={handleDragEnd}
           dragSnapToOrigin={true}
           dragElastic={0.2}
+          style={{
+            touchAction: "none",
+          }}
           custom={{
             gap: card.gap * 16,
             dir: card.direction,

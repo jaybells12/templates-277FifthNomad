@@ -40,7 +40,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
       id={"amenities"}
       variant={"section"}
       bgColor={"brand.trim"}
-      // paddingTop={"3rem"}
+      paddingTop={[null, null, "3rem"]}
     >
       <Heading
         as={"h2"}
@@ -64,7 +64,11 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
           textAlign: "center",
         }}
       />
-      <TextBar text={text} variant={"banner"} />
+      <TextBar
+        text={text}
+        variant={"banner"}
+        marginTop={[null, null, "3rem"]}
+      />
     </Container>
   );
 };

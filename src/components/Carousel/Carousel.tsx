@@ -81,6 +81,9 @@ export const Carousel: FunctionComponent<CarouselProps> = (
         justifyContent={["center", null, (split && "center") || "flex-start"]}
         alignItems={"flex-start"}
         gap={`${cardProps.gap}rem`}
+        style={{
+          touchAction: "none",
+        }}
       >
         <CarouselCard
           img={{
