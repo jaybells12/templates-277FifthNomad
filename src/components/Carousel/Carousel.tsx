@@ -1,9 +1,16 @@
 import { CarouselCard } from "../CarouselCard";
-import { FunctionComponent, useEffect } from "react";
-import { Box, Flex, FlexboxProps, TextProps } from "@chakra-ui/react";
+import { FunctionComponent, useRef } from "react";
+import {
+  Box,
+  Flex,
+  FlexboxProps,
+  TextProps,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useCarousel } from "@/lib/useCarousel";
 import { CarouselControls } from "../CarouselControls";
-import { motion, PanInfo, DragHandlers } from "framer-motion";
+import { CirclesIndicator } from "../CirclesIndicator";
+import { motion, PanInfo } from "framer-motion";
 
 export type CarouselProps = {
   split: boolean;
@@ -31,32 +38,45 @@ export const Carousel: FunctionComponent<CarouselProps> = (
   props: CarouselProps
 ) => {
   const { split, cards, cardProps, flexProps } = props;
+  const mobile = useBreakpointValue({ base: true, md: false });
+  const large = useBreakpointValue({ base: false, lg: true });
   const [index, direction, next, prev] = useCarousel(cards.length, 1050);
+  const isAnimating = useRef(false);
 
   const handleDragEnd = (
     e: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) => {
-    info.offset.x > 0 ? prev() : next();
-    console.log(info.offset.x);
+    if (!isAnimating.current) {
+      isAnimating.current = true;
+      info.offset.x > 0 ? prev() : next();
+    }
   };
 
   return (
-    <Box
-      position="relative"
-      marginLeft={!split && ["0", null, "11%", "15%"]}
-      marginBottom={split && "2.5rem"}
-    >
+    <Box position="relative" marginLeft={!split && ["0", null, "11%", "15%"]}>
+      {mobile && (
+        <CirclesIndicator
+          length={cards.length}
+          index={index}
+          variant={split ? "mobileLight" : "mobileDark"}
+          position={"absolute"}
+          insetInline={0}
+          margin={"0 auto"}
+          width={"fit-content"}
+          height={"fit-content"}
+          top={"250px"}
+        />
+      )}
       <CarouselControls nextFn={next} prevFn={prev} zIndex={2} split={split} />
       <Flex
         as={motion.div}
-        drag={"x"}
+        drag={split ? (large ? "x" : null) : "x"}
         dragConstraints={{ left: -100, right: 100 }}
-        //@ts-ignore -- using "as" prop isn't properly forwarding the "onDragEnd" prop
+        //@ts-ignore -- onDragEnd is defaulting to React type instead of Framer Motion type
         onDragEnd={handleDragEnd}
-        dragSnapToOrigin={true}
         dragElastic={0.2}
-        dragMomentum={false}
+        dragSnapToOrigin={true}
         position="relative"
         justifyContent={["center", null, (split && "center") || "flex-start"]}
         alignItems={"flex-start"}
@@ -76,9 +96,9 @@ export const Carousel: FunctionComponent<CarouselProps> = (
           }}
           text={cards[index.prev].text}
           title={cards[index.prev].title}
+          aniRef={isAnimating}
           features={cards[index.prev].features}
-          circLength={cards.length}
-          circIdx={index}
+          dragFn={split ? handleDragEnd : null}
           split={split}
           padding={["1.5rem", null, "0"]}
           {...flexProps}
@@ -97,10 +117,11 @@ export const Carousel: FunctionComponent<CarouselProps> = (
           }}
           text={cards[index.current].text}
           title={cards[index.current].title}
+          aniRef={isAnimating}
           features={cards[index.current].features}
-          circLength={cards.length}
-          circIdx={index}
+          dragFn={split ? handleDragEnd : null}
           split={split}
+          padding={["1.5rem", null, "0"]}
           {...flexProps}
         />
         <CarouselCard
@@ -117,10 +138,11 @@ export const Carousel: FunctionComponent<CarouselProps> = (
           }}
           text={cards[index.next].text}
           title={cards[index.next].title}
+          aniRef={isAnimating}
           features={cards[index.next].features}
-          circLength={cards.length}
-          circIdx={index}
+          dragFn={split ? handleDragEnd : null}
           split={split}
+          padding={["1.5rem", null, "0"]}
           {...flexProps}
         />
       </Flex>

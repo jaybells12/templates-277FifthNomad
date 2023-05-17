@@ -40,7 +40,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
       id={"amenities"}
       variant={"section"}
       bgColor={"brand.trim"}
-      paddingTop={"3rem"}
+      // paddingTop={"3rem"}
     >
       <Heading
         as={"h2"}
@@ -49,7 +49,7 @@ export const AmenitiesBlock: FunctionComponent<AmenitiesBlockProps> = (
         margin={"0 auto"}
         width={"max-content"}
         position={"relative"}
-        transform={"translateY(36%)"}
+        transform={["translateY(65%)", null, "translateY(35%)"]}
         zIndex={1}
       >
         Amenities

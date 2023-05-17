@@ -14,10 +14,8 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/next-js";
-import { FunctionComponent, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { CirclesIndicator } from "../CirclesIndicator";
-import { Niramit } from "next/font/google";
+import { FunctionComponent, useRef, MutableRefObject } from "react";
+import { AnimatePresence, motion, PanInfo } from "framer-motion";
 
 const wholeVariant = {
   enter: ({ gap, dir, pos }) =>
@@ -143,12 +141,8 @@ export type CarouselCardProps = {
   title: string;
   text: string;
   split: boolean;
-  circLength: number;
-  circIdx: {
-    current: number;
-    prev: number;
-    next: number;
-  };
+  aniRef: MutableRefObject<boolean>;
+  dragFn?: (e: MouseEvent | TouchEvent | PointerEvent, i: PanInfo) => void;
   features?: string[];
 } & CardProps;
 
@@ -156,23 +150,24 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
   props: CarouselCardProps
 ) => {
   const { isOpen, onToggle } = useDisclosure();
-  const mobile = useBreakpointValue({ base: true, md: false });
+  // const isAnimating = useRef(false);
+  const large = useBreakpointValue({ base: true, lg: false });
   const cardVariants = useBreakpointValue({
     base: "singleColumn",
     md: "multiColumn",
   });
 
-  const {
-    circLength,
-    circIdx,
-    img,
-    card,
-    title,
-    text,
-    features,
-    split,
-    ...rest
-  } = props;
+  const { img, card, title, text, features, split, aniRef, dragFn, ...rest } =
+    props;
+
+  const handleDragEnd = (
+    e: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    if (!aniRef.current) {
+      dragFn(e, info);
+    }
+  };
 
   return (
     <AnimatePresence
@@ -197,11 +192,25 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         initial={!split && { opacity: 0 }}
         animate={!split && "enter"}
         exit={!split && "exit"}
+        onAnimationComplete={
+          !split &&
+          ((def) => {
+            if (def === "enter") {
+              aniRef.current = false;
+            }
+          })
+        }
         {...rest}
       >
         <CardHeader
           as={motion.div}
           key={`${img.src}${title}`}
+          drag={split && large ? "x" : false}
+          dragConstraints={{ left: -100, right: 100 }}
+          //@ts-ignore -- onDragEnd is defaulting to React type instead of Framer Motion type
+          onDragEnd={handleDragEnd}
+          dragSnapToOrigin={true}
+          dragElastic={0.2}
           custom={{
             gap: card.gap * 16,
             dir: card.direction,
@@ -214,6 +223,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         >
           <Image
             priority={true}
+            loading={"eager"}
             width={img.width}
             height={img.height}
             src={img.src}
@@ -222,18 +232,12 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
               objectFit: "cover",
               height: "auto",
               width: "auto",
+              minWidth: "312px",
+              minHeight: "208px",
               pointerEvents: "none",
             }}
           />
         </CardHeader>
-        {mobile && (
-          <CirclesIndicator
-            length={circLength}
-            index={circIdx}
-            marginBottom={"1.5rem"}
-            variant={split ? "mobileLight" : "mobileDark"}
-          />
-        )}
         <CardBody
           as={motion.div}
           key={title}
@@ -242,9 +246,18 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
             dir: card.direction,
             pos: card.position,
           }}
+          initial={split && { opacity: 0 }}
           variants={split && splitVariant}
           animate={split && "enter"}
           exit={split && "exit"}
+          onAnimationComplete={
+            split &&
+            ((def) => {
+              if (def === "enter") {
+                aniRef.current = false;
+              }
+            })
+          }
         >
           <Heading as={"h5"} variant={"card"}>
             {title.toUpperCase()}

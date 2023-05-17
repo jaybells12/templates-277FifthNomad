@@ -42,8 +42,6 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
       as={"section"}
       id={"residences"}
       variant={"section"}
-      // overflowY={"visible"}
-      // overflowX={"clip"}
     >
       <TextCard
         title={textCard.title}
@@ -93,7 +91,7 @@ export const ResidencesBlock: FunctionComponent<ResidencesBlockProps> = (
         }}
         flexProps={{
           justifyContent: "flex-start",
-          alignItems: "center",
+          alignItems: "flex-start",
           textAlign: "left",
         }}
       />

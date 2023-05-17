@@ -16,7 +16,7 @@ const variants = {
     lineHeight: "1.5",
     letterSpacing: "2px",
     fontWeight: "normal",
-    marginTop: [null, null, "1.5rem"],
+    marginTop: "1.5rem",
     marginBottom: ["0.75rem", null, "1.5rem"]
   }),
   title: defineStyle({
