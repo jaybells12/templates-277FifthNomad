@@ -24,6 +24,7 @@ export const NavMenuItem: FunctionComponent<NavMenuItemProps> = (
       fontWeight={'light'}
       _hover={{ textDecoration: 'underline' }}
       _first={{ marginTop: '7rem' }}
+      aria-label={`${text} section`}
       onClick={(e) => {
         onClose()
         handleScroll(e)

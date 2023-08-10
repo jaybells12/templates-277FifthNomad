@@ -19,6 +19,7 @@ export const NavLink: FunctionComponent<NavLinkProps> = (
       href={`#${text}`}
       onClick={handleScroll}
       variant={'nav'}
+      aria-label={`${text} section`}
       {...rest}
     >
       {text.toUpperCase()}

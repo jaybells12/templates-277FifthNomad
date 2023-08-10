@@ -41,6 +41,7 @@ export const CallToAction: FunctionComponent<CallToActionProps> = ({
         ref={ref}
         onClick={handleScroll}
         padding='2rem'
+        aria-label={'call to action to scroll to next section'}
       >
         <motion.img
           src={'./Down-Arrow.svg'}

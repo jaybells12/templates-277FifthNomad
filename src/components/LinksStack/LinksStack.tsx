@@ -34,6 +34,7 @@ export const LinksStack: FunctionComponent<LinksStackProps> = (
           }}
         >
           <Link
+            aria-label={`${link} section`}
             href={`#${link}`}
             ref={ref}
             fontSize='clamp(0.75rem,2.5vw,0.875rem)'
