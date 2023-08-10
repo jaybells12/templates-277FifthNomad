@@ -1,13 +1,21 @@
-import { FunctionComponent } from "react";
-import { Image, ImageProps } from "@chakra-ui/next-js";
-import { PositionProps } from "@chakra-ui/react";
+import { FunctionComponent } from 'react'
+import { Image, ImageProps } from '@chakra-ui/next-js'
+import { PositionProps } from '@chakra-ui/react'
 
 export type LogoProps = {
-  src: string;
+  src: string
 } & PositionProps &
-  ImageProps;
+  ImageProps
 
 export const Logo: FunctionComponent<LogoProps> = (props: LogoProps) => {
-  const { src, alt, ...rest } = props;
-  return <Image src={src} alt={alt} {...rest} />;
-};
+  const { src, alt, ...rest } = props
+  return (
+    <Image
+      priority
+      placeholder={'blur'}
+      src={src}
+      alt={alt}
+      {...rest}
+    />
+  )
+}

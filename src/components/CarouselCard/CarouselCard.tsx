@@ -11,10 +11,10 @@ import {
   CardBody,
   CardHeader,
   useBreakpointValue,
-} from "@chakra-ui/react";
-import { Image } from "@chakra-ui/next-js";
-import { FunctionComponent, MutableRefObject } from "react";
-import { AnimatePresence, motion, PanInfo } from "framer-motion";
+} from '@chakra-ui/react'
+import { Image } from '@chakra-ui/next-js'
+import { FunctionComponent, MutableRefObject } from 'react'
+import { AnimatePresence, motion, PanInfo } from 'framer-motion'
 
 const wholeVariant = {
   enter: ({ gap, dir, pos }) =>
@@ -44,7 +44,7 @@ const wholeVariant = {
             x: {
               from: `calc((100% + ${gap}px) * -1)`,
               duration: 1,
-              ease: "linear",
+              ease: 'linear',
             },
             opacity: { from: 0, duration: 1 },
           },
@@ -56,7 +56,7 @@ const wholeVariant = {
             x: {
               from: `calc((100% + ${gap}px) * -1)`,
               duration: 1,
-              ease: "linear",
+              ease: 'linear',
             },
             opacity: { from: 1, duration: 1 },
           },
@@ -107,7 +107,7 @@ const wholeVariant = {
           transition: { duration: 0 },
         }
       : null,
-};
+}
 
 const splitVariant = {
   exit: () => ({
@@ -122,50 +122,50 @@ const splitVariant = {
       opacity: { from: 0, duration: 1.5, delay: 0.75 },
     },
   }),
-};
+}
 
 export type CarouselCardProps = {
   img: {
-    width: number;
-    height: number;
-    src: string;
-  };
+    width: number
+    height: number
+    src: string
+  }
   card: {
-    width: number;
-    gap: number;
-    position: -1 | 0 | 1;
-    direction: 1 | -1;
-  };
+    width: number
+    gap: number
+    position: -1 | 0 | 1
+    direction: 1 | -1
+  }
 
-  title: string;
-  text: string;
-  split: boolean;
-  aniRef: MutableRefObject<boolean>;
-  dragFn?: (e: MouseEvent | TouchEvent | PointerEvent, i: PanInfo) => void;
-  features?: string[];
-} & CardProps;
+  title: string
+  text: string
+  split: boolean
+  aniRef: MutableRefObject<boolean>
+  dragFn?: (e: MouseEvent | TouchEvent | PointerEvent, i: PanInfo) => void
+  features?: string[]
+} & CardProps
 
 export const CarouselCard: FunctionComponent<CarouselCardProps> = (
   props: CarouselCardProps
 ) => {
-  const { isOpen, onToggle } = useDisclosure();
-  const large = useBreakpointValue({ base: true, lg: false });
+  const { isOpen, onToggle } = useDisclosure()
+  const large = useBreakpointValue({ base: true, lg: false })
   const cardVariants = useBreakpointValue({
-    base: "singleColumn",
-    md: "multiColumn",
-  });
+    base: 'singleColumn',
+    md: 'multiColumn',
+  })
 
   const { img, card, title, text, features, split, aniRef, dragFn, ...rest } =
-    props;
+    props
 
   const handleDragEnd = (
     e: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) => {
     if (!aniRef.current) {
-      dragFn(e, info);
+      dragFn(e, info)
     }
-  };
+  }
 
   return (
     <AnimatePresence
@@ -174,11 +174,11 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         dir: card.direction,
         pos: card.position,
       }}
-      mode={"popLayout"}
+      mode={'popLayout'}
     >
       <Card
         as={motion.div}
-        color={split && "white"} // <----
+        color={split && 'white'} // <----
         variant={cardVariants}
         key={img.src}
         custom={{
@@ -188,13 +188,13 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         }}
         variants={!split && wholeVariant}
         initial={!split && { opacity: 0 }}
-        animate={!split && "enter"}
-        exit={!split && "exit"}
+        animate={!split && 'enter'}
+        exit={!split && 'exit'}
         onAnimationComplete={
           !split &&
           ((def: string) => {
-            if (def === "enter") {
-              aniRef.current = false;
+            if (def === 'enter') {
+              aniRef.current = false
             }
           })
         }
@@ -203,14 +203,14 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         <CardHeader
           as={motion.div}
           key={`${img.src}${title}`}
-          drag={split && large ? "x" : false}
+          drag={split && large ? 'x' : false}
           dragConstraints={{ left: -100, right: 100 }}
           //@ts-ignore -- onDragEnd is defaulting to React type instead of Framer Motion type
           onDragEnd={handleDragEnd}
           dragSnapToOrigin={true}
           dragElastic={0.2}
           style={{
-            touchAction: "none",
+            touchAction: 'none',
           }}
           custom={{
             gap: card.gap * 16,
@@ -219,23 +219,22 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
           }}
           variants={split && wholeVariant}
           initial={split && { opacity: 0 }}
-          animate={split && "enter"}
-          exit={split && ["exit", "hidden"]}
+          animate={split && 'enter'}
+          exit={split && ['exit', 'hidden']}
         >
           <Image
-            priority={true}
-            loading={"eager"}
+            placeholder={'blur'}
             width={img.width}
             height={img.height}
             src={img.src}
-            alt={title}
+            alt={title || 'Carousel Image'}
             sx={{
-              objectFit: "cover",
-              height: "auto",
-              width: "auto",
-              minWidth: "312px",
-              minHeight: "208px",
-              pointerEvents: "none",
+              objectFit: 'cover',
+              height: 'auto',
+              width: 'auto',
+              minWidth: '312px',
+              minHeight: '208px',
+              pointerEvents: 'none',
             }}
           />
         </CardHeader>
@@ -249,50 +248,53 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
           }}
           initial={split && { opacity: 0 }}
           variants={split && splitVariant}
-          animate={split && "enter"}
-          exit={split && "exit"}
+          animate={split && 'enter'}
+          exit={split && 'exit'}
           onAnimationComplete={
             split &&
             ((def: string) => {
-              if (def === "enter") {
-                aniRef.current = false;
+              if (def === 'enter') {
+                aniRef.current = false
               }
             })
           }
         >
-          <Heading as={"h5"} variant={"card"}>
+          <Heading
+            as={'h5'}
+            variant={'card'}
+          >
             {title.toUpperCase()}
           </Heading>
           <Text
-            variant={"card"}
-            width={split && "310px"}
-            height={split && "90px"}
+            variant={'card'}
+            width={split && '310px'}
+            height={split && '90px'}
           >
             {text}
           </Text>
           {features && (
             <CardFooter
-              p="0"
-              flexDirection={"column"}
-              alignItems={"flex-start"}
-              marginTop={"1.5rem"}
+              p='0'
+              flexDirection={'column'}
+              alignItems={'flex-start'}
+              marginTop={'1.5rem'}
             >
               <Text
                 onClick={onToggle}
-                variant={"features"}
-                cursor={"pointer"}
-                marginBottom={"1.5rem"}
+                variant={'features'}
+                cursor={'pointer'}
+                marginBottom={'1.5rem'}
               >
-                FEATURES & FINISHES{" "}
-                <span style={{ fontSize: "clamp(18px, 2.5vw, 22px)" }}>
-                  {isOpen ? "-" : "+"}
+                FEATURES & FINISHES{' '}
+                <span style={{ fontSize: 'clamp(18px, 2.5vw, 22px)' }}>
+                  {isOpen ? '-' : '+'}
                 </span>
               </Text>
               <Collapse in={isOpen}>
                 <List
-                  textAlign={"left"}
-                  fontSize={"clamp(0.875rem, 3vw, 1.0625rem)"}
-                  lineHeight={"1.5"}
+                  textAlign={'left'}
+                  fontSize={'clamp(0.875rem, 3vw, 1.0625rem)'}
+                  lineHeight={'1.5'}
                 >
                   {features.map((text, idx) => (
                     <ListItem key={idx}>- {text}</ListItem>
@@ -304,5 +306,5 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
         </CardBody>
       </Card>
     </AnimatePresence>
-  );
-};
+  )
+}

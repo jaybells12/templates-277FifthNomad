@@ -81,8 +81,9 @@ export const AboutBlock: FunctionComponent<AboutBlockProps> = (
         </Box>
         {mobile && <LinksStack links={links} />}
         <Image
+          placeholder={'blur'}
           src={img.src}
-          alt={img.src}
+          alt={img.src || 'About Container Image'}
           width={520}
           height={782}
           flexShrink={10}
