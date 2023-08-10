@@ -7,15 +7,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <title>277 Fifth Nomad</title>
         <meta
           name='viewport'
           content='width=device-width, initial-scale=1'
           key='viewport'
-        />
-        <meta
-          name='title'
-          content='277 Fifth Nomad Template'
-          key='title'
         />
         <meta
           name='description'
