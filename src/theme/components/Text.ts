@@ -34,6 +34,7 @@ const banner = defineStyle({
   color: 'white',
   fontSize: '1.125rem',
   paddingBlock: ['2rem', null, '3rem'],
+  maxWidth: '60%',
   width: 'fit-content',
   minWidth: '314px',
   margin: '0 auto',
