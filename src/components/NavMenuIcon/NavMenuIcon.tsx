@@ -1,11 +1,11 @@
 import { FunctionComponent, LegacyRef, MutableRefObject } from "react";
 import { forwardRef, Icon, IconProps } from "@chakra-ui/react";
 
-//In order to use component as Chakra Menu button, need to implement and accept ref
+//In order to use component as Chakra Menu button, need to forward ref
 export const NavMenuIcon: FunctionComponent<IconProps> = forwardRef<
   IconProps,
   "svg"
->((props: IconProps, ref: LegacyRef<SVGSVGElement>) => {
+>((props: IconProps, ref: MutableRefObject<SVGSVGElement>) => {
   return (
     <Icon ref={ref} viewBox="0 0 35 10" width="35px" height="10px" {...props}>
       <line
@@ -27,10 +27,3 @@ export const NavMenuIcon: FunctionComponent<IconProps> = forwardRef<
     </Icon>
   );
 });
-
-/*
-margin-right: 3rem;
-  &:hover {
-    cursor: pointer;
-  }
-*/

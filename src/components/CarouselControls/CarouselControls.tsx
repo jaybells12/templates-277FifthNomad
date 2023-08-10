@@ -3,16 +3,10 @@ import {
   FlexboxProps,
   Circle,
   PositionProps,
-  Box,
   useStyleConfig,
 } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/next-js";
 import { FunctionComponent } from "react";
-
-// Color here is an approximation of an overlay which achieves similar results to the template
-// This should allow for different background colors
-const OVERLAY_COLOR = "#3063";
-const STATIC_COLOR = "#DBCED5";
 
 // Custom Chakra Component, allows for variant theming
 const Controls = (props: any) => {
@@ -45,7 +39,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
         onClick={prevFn}
         border={"2px"}
         style={{ transition: "background-color 0.3s ease" }}
-        _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}
+        _hover={{ bgColor: split ? "carousel.static" : "carousel.overlay" }}
         borderColor={split ? "white" : "brand.trim"}
         cursor={"pointer"}
         pointerEvents={"auto"}
@@ -68,7 +62,7 @@ export const CarouselControls: FunctionComponent<CarouselControlProps> = (
         onClick={nextFn}
         border={"2px"}
         style={{ transition: "background-color 0.3s ease" }}
-        _hover={{ bgColor: split ? STATIC_COLOR : OVERLAY_COLOR }}
+        _hover={{ bgColor: split ? "carousel.static" : "carousel.overlay" }}
         borderColor={split ? "white" : "brand.trim"}
         cursor={"pointer"}
         pointerEvents={"auto"}

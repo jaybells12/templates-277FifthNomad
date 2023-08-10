@@ -253,7 +253,7 @@ export const CarouselCard: FunctionComponent<CarouselCardProps> = (
           exit={split && "exit"}
           onAnimationComplete={
             split &&
-            ((def) => {
+            ((def: string) => {
               if (def === "enter") {
                 aniRef.current = false;
               }

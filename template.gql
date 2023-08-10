@@ -5,17 +5,17 @@
   }
   hero {
     logo
-    heading
+    header
     video
   }
   about {
     name
-    heading
+    header
     content
     image
   }
   slideshow {
-    heading
+    header
     images {
       image
     }
@@ -25,7 +25,7 @@
     pdf
     cards {
       card {
-        heading
+        header
         content
         image
         list
@@ -33,27 +33,27 @@
     }
   }
   amenities {
-    heading
+    header
     cards {
       card {
-        heading
+        header
         content
         image
       }
     }
   }
   info {
-    heading
+    header
     content
     images {
       image
     }
   }
-  # Headings array needs to be in sync with content array: headings length === values length + 1 (because of pdf),
-  # content of value[x] falls under headings[x]
+  # headers array needs to be in sync with content array: headers length === values length + 1 (because of pdf),
+  # content of value[x] falls under headers[x]
   availability {
-    headings {
-      heading
+    headers {
+      header
     }
     rows {
       row {

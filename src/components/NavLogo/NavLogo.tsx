@@ -1,5 +1,4 @@
 import { Image, ImageProps } from "@chakra-ui/next-js";
-import { resolveTxt } from "dns";
 import { FunctionComponent } from "react";
 
 export type NavLogoProps = {

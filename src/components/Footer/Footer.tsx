@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { HouseIcon } from "../HouseIcon";
 import { Logo } from "../Logo";
+
 export type FooterProps = {
   text: string;
   logos: any[]; // Array of SVGs

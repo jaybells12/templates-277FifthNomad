@@ -7,4 +7,10 @@ export default {
     inputBorder: "#53535380",
     tableHover: "#A9BDCE",
   },
+  // Color here achieves similar results to the template
+  // This should allow for different background colors
+  carousel: {
+    static: "#DBCED5",
+    overlay: "#3063",
+  }
 }

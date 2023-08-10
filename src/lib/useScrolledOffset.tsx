@@ -15,10 +15,13 @@ export const useScrolledOffset = (offset: number) => {
         setIsScrolled(false);
       }
     };
+
     // This will check for scroll position on mount,
     // so if page is reloaded in the middle, navbar will be displayed
     handleScroll();
+
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };

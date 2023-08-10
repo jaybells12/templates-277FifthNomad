@@ -32,7 +32,6 @@ import ssKitchen from "../../public/SS-Kitchen.jpg"
 const companyName = "nomad";
 
 const amenitiesCards = [
-  
   {
     imgSrc: amLobby.src,
     title: "lobby library",
@@ -68,7 +67,6 @@ const amenitiesCards = [
     title: "kid's club",
     text: "This playful space bursting with games and activities to explore."
   },
-
 ]
 
 const residencesCards = [

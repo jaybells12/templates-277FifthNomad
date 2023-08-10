@@ -43,9 +43,8 @@ export const InfoBlock: FunctionComponent<InfoBlockProps> = (
         direction={["column", null, "row"]}
         justify={"center"}
         align={"center"}
-        // Margin splits offset of images flex child, brings elements back to center
-        // ^^ this might be a "spacing" prop issue with chakra Flex component
-        marginLeft={[null, null, "1.25%"]}
+        width={"fit-content"}
+        margin={"0 auto"}
         padding={[null, null, "2rem"]}
         gap={["2rem", null, "0.5rem"]}
       >

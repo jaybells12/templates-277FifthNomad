@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
-import { Icon } from "@chakra-ui/react";
+import { Icon, IconProps } from "@chakra-ui/react";
 
-export const HouseIcon: FunctionComponent<any> = (props: any) => {
+export const HouseIcon: FunctionComponent<any> = (props: IconProps) => {
   return (
     <Icon width="25" height="19" viewBox="0 0 25 19" fill="none">
       <path

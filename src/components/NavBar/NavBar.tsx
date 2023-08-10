@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { StaticImageData } from "next/image";
 
-// Need Href prop for each link
 export type NavBarProps = {
   links: string[];
   menuLinks: string[];

@@ -32,14 +32,3 @@ export const NavMenuItem: FunctionComponent<NavMenuItemProps> = (
     </Link>
   );
 };
-
-/*
-font-size: 1.5rem;
-  letter-spacing: 2px;
-  &:hover {
-    text-decoration: underline;
-  }
-  &:first-child {
-    margin-top: 7rem;
-  }
-*/

@@ -29,6 +29,7 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
   props: AvailabilityBlockProps
 ) => {
   const { data } = props;
+  const [dir, setDir] = useState(Object.keys(data).map(() => ""));
   const isMediumWidth = useBreakpointValue({ base: false, md: true });
   const containerRef = useRef();
   const isInView = useInView(containerRef, {
@@ -44,9 +45,6 @@ export const AvailabilityBlock: FunctionComponent<AvailabilityBlockProps> = (
       );
     }
   }, [isInView]);
-
-  //Do i need to useState here or can I use useRef?
-  const [dir, setDir] = useState(Object.keys(data).map(() => ""));
 
   const sortData = (key: string, index: number) => {
     const direction = dir[index] || "asc";
