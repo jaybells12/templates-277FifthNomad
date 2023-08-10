@@ -1,9 +1,9 @@
-import { FunctionComponent } from "react";
-import { CallToAction } from "../CallToAction";
-import { Logo } from "../Logo";
-import { VideoFull } from "../VideoFull";
-import { Container } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { FunctionComponent } from 'react'
+import { CallToAction } from '../CallToAction'
+import { Logo } from '../Logo'
+import { VideoFull } from '../VideoFull'
+import { Container } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 
 const logoVariants = {
   enter: {
@@ -22,53 +22,58 @@ const logoVariants = {
       },
     },
   },
-};
+}
 
 export type HeroProps = {
   logo: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
-  videoSrc: string;
-  tagline: string;
-  scrolled: boolean;
-};
+    src: string
+    alt: string
+    width: number
+    height: number
+  }
+  videoSrc: string
+  tagline: string
+  scrolled: boolean
+}
 
 export const HeroBlock: FunctionComponent<HeroProps> = (props: HeroProps) => {
-  const { logo, videoSrc, tagline, scrolled } = props;
+  const { logo, videoSrc, tagline, scrolled } = props
 
   return (
     <Container
-      as={"section"}
-      variant={"section"}
-      position={"relative"}
-      overflow={"hidden"}
+      as={'section'}
+      variant={'section'}
+      position={'relative'}
+      overflow={'hidden'}
     >
       <motion.div
         variants={logoVariants}
-        animate={scrolled ? "exit" : "enter"}
+        animate={scrolled ? 'exit' : 'enter'}
         style={{
-          position: "fixed",
-          left: "0",
-          right: "0",
-          margin: "0 auto",
-          top: "55px",
+          position: 'fixed',
+          left: '0',
+          right: '0',
+          margin: '0 auto',
+          top: '55px',
           width: logo.width,
           height: logo.height,
-          zIndex: "2",
+          zIndex: '2',
         }}
       >
-        <Logo fill src={logo.src} alt={logo.alt} />
+        <Logo
+          fill
+          src={logo.src}
+          alt={logo.alt}
+        />
       </motion.div>
       <VideoFull src={videoSrc} />
       <CallToAction
         tagline={tagline}
-        position={"absolute"}
-        bottom={"5%"}
-        zIndex={"2"}
+        href={'#about'}
+        position={'absolute'}
+        bottom={'5%'}
+        zIndex={'2'}
       />
     </Container>
-  );
-};
+  )
+}
