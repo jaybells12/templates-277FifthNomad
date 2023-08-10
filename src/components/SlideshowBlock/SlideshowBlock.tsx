@@ -1,6 +1,6 @@
-import { useCarousel } from "@/lib/useCarousel";
-import { TextBar } from "../TextBar";
-import { CirclesIndicator } from "../CirclesIndicator";
+import { useCarousel } from '@/lib/useCarousel'
+import { TextBar } from '../TextBar'
+import { CirclesIndicator } from '../CirclesIndicator'
 import {
   motion,
   useAnimation,
@@ -9,133 +9,136 @@ import {
   useTransform,
   animate,
   useInView,
-} from "framer-motion";
-import { FunctionComponent, useRef, useEffect } from "react";
-import { VStack, Container, Box, useBreakpointValue } from "@chakra-ui/react";
-import { StaticImageData } from "next/image";
+} from 'framer-motion'
+import { FunctionComponent, useRef, useEffect } from 'react'
+import { VStack, Container, Box, useBreakpointValue } from '@chakra-ui/react'
+import { StaticImageData } from 'next/image'
 
 // How expensive is this component? Three images are layered over eachother to create the dragging opacity effect.
 
 export type SlideshowProps = {
-  images: StaticImageData[];
-  text: string;
-};
+  images: StaticImageData[]
+  text: string
+}
 
 export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
   props: SlideshowProps
 ) => {
-  const { images, text } = props;
-  const [index, , plusOne, minusOne] = useCarousel(images.length, 500);
-  const mobile = useBreakpointValue({ base: true, md: false });
-  const disablePan = useRef(false);
-  const controls = useAnimation();
-  const x = useMotionValue(0);
-  const opacity = useTransform(x, [-500, 0, 500], [0.5, 1, 0.5]);
-  const zIndex = useTransform(x, (val) => (val > 0 ? 1 : 3));
-  const containerRef = useRef();
+  const { images, text } = props
+  const [index, , plusOne, minusOne] = useCarousel(images.length, 500)
+  const mobile = useBreakpointValue({ base: true, md: false })
+  const disablePan = useRef(false)
+  const controls = useAnimation()
+  const x = useMotionValue(0)
+  const opacity = useTransform(x, [-500, 0, 500], [0.5, 1, 0.5])
+  const zIndex = useTransform(x, (val) => (val > 0 ? 1 : 3))
+  const containerRef = useRef()
   const isInView = useInView(containerRef, {
     once: true,
-  });
+  })
 
   useEffect(() => {
     if (isInView) {
       animate(
         containerRef.current,
         { y: [400, 0] },
-        { duration: 0.7, ease: "easeOut" }
-      );
+        { duration: 0.7, ease: 'easeOut' }
+      )
     }
-  }, [isInView]);
+  }, [isInView])
 
   const handlePan = (
     event: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) => {
     if (!disablePan.current) {
-      x.set(info.offset.x);
+      x.set(info.offset.x)
     }
-  };
+  }
 
   const handlePanEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) => {
     if (!disablePan.current) {
-      disablePan.current = true;
+      disablePan.current = true
       controls.start({ opacity: 0, transition: { duration: 0.5 } }).then(() => {
         if (x.get() > 0) {
-          minusOne();
-          x.set(0);
+          minusOne()
+          x.set(0)
         } else if (x.get() < 0) {
-          plusOne();
-          x.set(0);
+          plusOne()
+          x.set(0)
         }
-        disablePan.current = false;
-      });
+        disablePan.current = false
+      })
     }
-  };
+  }
 
   return (
     <Container
       ref={containerRef}
-      as={"section"}
-      variant={"section"}
-      transform={"translateY(400px)"}
+      as={'section'}
+      variant={'section'}
+      transform={'translateY(400px)'}
     >
-      <VStack position={"relative"}>
+      <VStack position={'relative'}>
         <Box
-          overflow="clip"
-          position={"relative"}
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"flex-end"}
+          overflow='clip'
+          position={'relative'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'flex-end'}
           style={{
-            aspectRatio: "3/2",
-            width: "100%",
-            height: "auto",
-            overflow: "hidden",
+            aspectRatio: '3/2',
+            width: '100%',
+            height: 'auto',
+            overflow: 'hidden',
           }}
         >
           <motion.img
-            draggable={"false"}
-            key={"left"}
+            draggable={'false'}
+            key={'left'}
             src={images[index.prev].src}
+            alt={images[index.prev].src}
             style={{
-              position: "absolute",
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
+              position: 'absolute',
+              objectFit: 'cover',
+              width: '100%',
+              height: '100%',
               margin: 0,
               zIndex: 2,
             }}
           />
           <motion.img
-            draggable={"false"}
+            draggable={'false'}
             onPan={handlePan}
             onPanEnd={handlePanEnd}
-            key={"center"}
+            key={'center'}
             src={images[index.current].src}
+            alt={images[index.current].src}
             animate={controls}
             style={{
               opacity,
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
+              objectFit: 'cover',
+              width: '100%',
+              height: '100%',
               margin: 0,
-              cursor: "grab",
-              touchAction: "none",
+              cursor: 'grab',
+              touchAction: 'none',
               zIndex: 4,
             }}
           />
           <motion.img
-            draggable={"false"}
-            key={"right"}
+            draggable={'false'}
+            key={'right'}
             src={images[index.next].src}
+            alt={images[index.next].src}
             style={{
-              position: "absolute",
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
+              position: 'absolute',
+              objectFit: 'cover',
+              width: '100%',
+              height: '100%',
               margin: 0,
               zIndex,
             }}
@@ -144,15 +147,18 @@ export const SlideshowBlock: FunctionComponent<SlideshowProps> = (
         <CirclesIndicator
           length={images.length}
           index={index}
-          variant={mobile ? "mobileLight" : null}
+          variant={mobile ? 'mobileLight' : null}
           style={
             mobile
-              ? { marginTop: "33px", marginBottom: "-47px" }
-              : { marginTop: "-35px", marginBottom: "21px" }
+              ? { marginTop: '33px', marginBottom: '-47px' }
+              : { marginTop: '-35px', marginBottom: '21px' }
           }
         />
-        <TextBar text={text} paddingTop={mobile && "4rem"} />
+        <TextBar
+          text={text}
+          paddingTop={mobile && '4rem'}
+        />
       </VStack>
     </Container>
-  );
-};
+  )
+}
