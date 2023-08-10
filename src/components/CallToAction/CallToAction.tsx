@@ -45,6 +45,8 @@ export const CallToAction: FunctionComponent<CallToActionProps> = ({
       >
         <motion.img
           src={'./Down-Arrow.svg'}
+          height={'100%'}
+          width={'100%'}
           style={{ marginInline: 'auto' }}
           animate={{ y: [0, 0, -7, 0, -5, 0, 0] }}
           transition={{
