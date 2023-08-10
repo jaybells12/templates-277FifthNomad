@@ -45,6 +45,7 @@ export const HeroBlock: FunctionComponent<HeroProps> = (props: HeroProps) => {
       variant={'section'}
       position={'relative'}
       overflow={'hidden'}
+      maxHeight={'100vh'}
     >
       <motion.div
         variants={logoVariants}
